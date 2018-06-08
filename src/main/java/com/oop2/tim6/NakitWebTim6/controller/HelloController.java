@@ -19,7 +19,7 @@ public class HelloController {
         return "Hello World";
     }
 
-    @RequestMapping("/person")
+    @RequestMapping("/user/person")
     public String person(Model model){
         Person p = new Person();
         p.setName("MArko");
