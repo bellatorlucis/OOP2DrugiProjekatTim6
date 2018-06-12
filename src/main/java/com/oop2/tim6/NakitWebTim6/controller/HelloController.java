@@ -36,7 +36,7 @@ public class HelloController {
 
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+   /** @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         return "login";
     }
@@ -45,7 +45,7 @@ public class HelloController {
     public String login(Model model){
         System.out.println("POKUSAJ LOGINA");
         return "login";
-    }
+    }**/
 
     @Autowired
     public void setService(IHelloWordlService service) {
