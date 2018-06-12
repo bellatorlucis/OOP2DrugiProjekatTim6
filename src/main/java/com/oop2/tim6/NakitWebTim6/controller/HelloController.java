@@ -36,6 +36,17 @@ public class HelloController {
 
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(Model model){
+        System.out.println("POKUSAJ LOGINA");
+        return "login";
+    }
+
     @Autowired
     public void setService(IHelloWordlService service) {
         this.service = service;
