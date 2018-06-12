@@ -83,6 +83,11 @@
 			<version>4.6.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>NakitJPA</groupId>
+			<artifactId>LibraryJPA</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 
