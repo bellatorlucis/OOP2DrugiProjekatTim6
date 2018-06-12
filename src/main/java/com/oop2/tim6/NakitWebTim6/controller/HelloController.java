@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @Autowired
-    IHelloWordlService service;
+    private IHelloWordlService service;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     @ResponseBody //Ova anotacija vraca String kao responseBody, ne gleda u folderu views da li postoji view sa ovim imenom
@@ -35,5 +34,10 @@ public class HelloController {
 
         return "personView";
 
+    }
+
+    @Autowired
+    public void setService(IHelloWordlService service) {
+        this.service = service;
     }
 }

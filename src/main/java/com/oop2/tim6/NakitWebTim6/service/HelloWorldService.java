@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class HelloWorldService implements IHelloWordlService {
 
-    @Autowired
     private KorisnikRepo korisnikRepo;
 
     @Override
@@ -15,5 +14,10 @@ public class HelloWorldService implements IHelloWordlService {
         //Ilitracija rada sa servisima i repositorijumima
         //korisnikRepo.getSveKorisnike();
         return "Hello Hello Hello";
+    }
+
+    @Autowired
+    public void setKorisnikRepo(KorisnikRepo korisnikRepo) {
+        this.korisnikRepo = korisnikRepo;
     }
 }
