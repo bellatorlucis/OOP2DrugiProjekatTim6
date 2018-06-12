@@ -2,6 +2,8 @@ package com.oop2.tim6.NakitWebTim6.controller;
 
 
 import com.oop2.tim6.NakitWebTim6.model.Person;
+import com.oop2.tim6.NakitWebTim6.service.IHelloWordlService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -13,10 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
+    @Autowired
+    IHelloWordlService service;
+
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    @ResponseBody
+    @ResponseBody //Ova anotacija vraca String kao responseBody, ne gleda u folderu views da li postoji view sa ovim imenom
     public String hello(){
-        return "Hello World";
+        String poruka = service.getHelloMessage();
+
+        return poruka;
     }
 
     @RequestMapping("/user/person")
