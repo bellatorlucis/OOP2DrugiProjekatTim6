@@ -1,30 +1,22 @@
 package com.oop2.tim6.NakitWebTim6.controller;
 
+import java.util.List;
 
-import com.oop2.tim6.NakitWebTim6.model.Person;
-import com.oop2.tim6.NakitWebTim6.service.IHelloWordlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oop2.tim6.NakitWebTim6.model.Korisnik;
+import com.oop2.tim6.NakitWebTim6.model.Person;
+import com.oop2.tim6.NakitWebTim6.repository.KorisnikJpaRepo;
 
 @Controller
 public class HelloController {
-
-    private IHelloWordlService service;
-
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    @ResponseBody //Ova anotacija vraca String kao responseBody, ne gleda u folderu views da li postoji view sa ovim imenom
-    public String hello(){
-        String poruka = service.getHelloMessage();
-
-        return poruka;
-    }
-
+    
+	@Autowired
+	KorisnikJpaRepo kJP;
+	
     @RequestMapping("/user/person")
     public String person(Model model){
         Person p = new Person();
@@ -33,22 +25,14 @@ public class HelloController {
         model.addAttribute("person", p);
 
         return "personView";
-
     }
-
-   /** @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(){
-        return "login";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(Model model){
-        System.out.println("POKUSAJ LOGINA");
-        return "login";
-    }**/
-
-    @Autowired
-    public void setService(IHelloWordlService service) {
-        this.service = service;
+    
+    @RequestMapping("/user/prikazKorisnika")
+    public String getAll(Model m){
+    	List<Korisnik> kor = kJP.findAll();
+    	
+    	m.addAttribute("korisnik", kor);
+    	
+        return "prikazKorisnika";
     }
 }
