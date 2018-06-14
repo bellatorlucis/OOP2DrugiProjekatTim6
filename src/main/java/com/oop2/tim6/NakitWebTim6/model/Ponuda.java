@@ -9,25 +9,32 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Ponuda.findAll", query="SELECT p FROM Ponuda p")
 @Table(name="ponuda")
+@NamedQuery(name="Ponuda.findAll", query="SELECT p FROM Ponuda p")
 public class Ponuda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_ponude")
 	private int idPonude;
 
 	private String datum;
 
+	@Column(name="ponuda_pare")
 	private double ponudaPare;
 
 	private String vreme;
 
 	//bi-directional many-to-one association to Ogla
 	@ManyToOne
-	@JoinColumn(name="Oglas_idOglasa")
+	@JoinColumn(name="Ogla_id_ogla")
 	private Ogla ogla;
+
+	//bi-directional many-to-one association to Korisnik
+	@ManyToOne
+	@JoinColumn(name="Korisnik_id_korisnika")
+	private Korisnik korisnik;
 
 	public Ponuda() {
 	}
@@ -70,6 +77,14 @@ public class Ponuda implements Serializable {
 
 	public void setOgla(Ogla ogla) {
 		this.ogla = ogla;
+	}
+
+	public Korisnik getKorisnik() {
+		return this.korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
 	}
 
 }

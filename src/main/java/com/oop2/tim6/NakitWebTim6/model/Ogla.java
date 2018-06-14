@@ -6,22 +6,26 @@ import java.util.List;
 
 
 /**
- * The persistent class for the oglas database table.
+ * The persistent class for the ogla database table.
  * 
  */
 @Entity
-@Table(name="oglas")
+@Table(name="ogla")
 @NamedQuery(name="Ogla.findAll", query="SELECT o FROM Ogla o")
 public class Ogla implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idOglasa;
+	@Column(name="id_ogla")
+	private int idOgla;
 
-	private int idKorisnika;
+	private int aktivan;
 
+	@Column(name="min_ponuda")
 	private double minPonuda;
+
+	private String naslov;
 
 	private String tekst;
 
@@ -31,10 +35,12 @@ public class Ogla implements Serializable {
 
 	//bi-directional many-to-one association to Korisnik
 	@ManyToOne
+	@JoinColumn(name="Korisnik_id_korisnika")
 	private Korisnik korisnik;
 
 	//bi-directional many-to-one association to Nakit
 	@ManyToOne
+	@JoinColumn(name="Nakit_id_nakita")
 	private Nakit nakit;
 
 	//bi-directional many-to-one association to Ponuda
@@ -44,20 +50,20 @@ public class Ogla implements Serializable {
 	public Ogla() {
 	}
 
-	public int getIdOglasa() {
-		return this.idOglasa;
+	public int getIdOgla() {
+		return this.idOgla;
 	}
 
-	public void setIdOglasa(int idOglasa) {
-		this.idOglasa = idOglasa;
+	public void setIdOgla(int idOgla) {
+		this.idOgla = idOgla;
 	}
 
-	public int getIdKorisnika() {
-		return this.idKorisnika;
+	public int getAktivan() {
+		return this.aktivan;
 	}
 
-	public void setIdKorisnika(int idKorisnika) {
-		this.idKorisnika = idKorisnika;
+	public void setAktivan(int aktivan) {
+		this.aktivan = aktivan;
 	}
 
 	public double getMinPonuda() {
@@ -66,6 +72,14 @@ public class Ogla implements Serializable {
 
 	public void setMinPonuda(double minPonuda) {
 		this.minPonuda = minPonuda;
+	}
+
+	public String getNaslov() {
+		return this.naslov;
+	}
+
+	public void setNaslov(String naslov) {
+		this.naslov = naslov;
 	}
 
 	public String getTekst() {

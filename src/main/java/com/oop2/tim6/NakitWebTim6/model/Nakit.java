@@ -10,26 +10,27 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Nakit.findAll", query="SELECT n FROM Nakit n")
 @Table(name="nakit")
+@NamedQuery(name="Nakit.findAll", query="SELECT n FROM Nakit n")
 public class Nakit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_nakita")
 	private int idNakita;
 
 	private String boja;
 
 	private String materijal;
 
+	@Column(name="slika_nakita")
 	private String slikaNakita;
 
-	private int tip;
-
-	//bi-directional many-to-one association to Nakittag
-	@OneToMany(mappedBy="nakit")
-	private List<Nakittag> nakittags;
+	//bi-directional many-to-one association to Tip
+	@ManyToOne
+	@JoinColumn(name="Tip_id_tipa")
+	private Tip tip;
 
 	//bi-directional many-to-one association to Ogla
 	@OneToMany(mappedBy="nakit")
@@ -70,34 +71,12 @@ public class Nakit implements Serializable {
 		this.slikaNakita = slikaNakita;
 	}
 
-	public int getTip() {
+	public Tip getTip() {
 		return this.tip;
 	}
 
-	public void setTip(int tip) {
+	public void setTip(Tip tip) {
 		this.tip = tip;
-	}
-
-	public List<Nakittag> getNakittags() {
-		return this.nakittags;
-	}
-
-	public void setNakittags(List<Nakittag> nakittags) {
-		this.nakittags = nakittags;
-	}
-
-	public Nakittag addNakittag(Nakittag nakittag) {
-		getNakittags().add(nakittag);
-		nakittag.setNakit(this);
-
-		return nakittag;
-	}
-
-	public Nakittag removeNakittag(Nakittag nakittag) {
-		getNakittags().remove(nakittag);
-		nakittag.setNakit(null);
-
-		return nakittag;
 	}
 
 	public List<Ogla> getOglas() {

@@ -10,31 +10,46 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Korisnik.findAll", query="SELECT k FROM Korisnik k")
 @Table(name="korisnik")
+@NamedQuery(name="Korisnik.findAll", query="SELECT k FROM Korisnik k")
 public class Korisnik implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_korisnika")
 	private int idKorisnika;
-	
-	@Column(name="ime")
+
 	private String ime;
 
+	@Column(name="korisnicko_ime")
 	private String korisnickoIme;
 
+	@Column(name="kratak_opis")
 	private String kratakOpis;
 
 	private String lozinka;
 
 	private String prezime;
-	
+
 	private String slika;
+
+	//bi-directional many-to-one association to Komentar
+	@OneToMany(mappedBy="korisnik")
+	private List<Komentar> komentars;
+
+	//bi-directional many-to-one association to Uloga
+	@ManyToOne
+	@JoinColumn(name="Uloga_id_uloge")
+	private Uloga uloga;
 
 	//bi-directional many-to-one association to Ogla
 	@OneToMany(mappedBy="korisnik")
 	private List<Ogla> oglas;
+
+	//bi-directional many-to-one association to Ponuda
+	@OneToMany(mappedBy="korisnik")
+	private List<Ponuda> ponudas;
 
 	public Korisnik() {
 	}
@@ -95,6 +110,36 @@ public class Korisnik implements Serializable {
 		this.slika = slika;
 	}
 
+	public List<Komentar> getKomentars() {
+		return this.komentars;
+	}
+
+	public void setKomentars(List<Komentar> komentars) {
+		this.komentars = komentars;
+	}
+
+	public Komentar addKomentar(Komentar komentar) {
+		getKomentars().add(komentar);
+		komentar.setKorisnik(this);
+
+		return komentar;
+	}
+
+	public Komentar removeKomentar(Komentar komentar) {
+		getKomentars().remove(komentar);
+		komentar.setKorisnik(null);
+
+		return komentar;
+	}
+
+	public Uloga getUloga() {
+		return this.uloga;
+	}
+
+	public void setUloga(Uloga uloga) {
+		this.uloga = uloga;
+	}
+
 	public List<Ogla> getOglas() {
 		return this.oglas;
 	}
@@ -117,12 +162,26 @@ public class Korisnik implements Serializable {
 		return ogla;
 	}
 
-	@Override
-	public String toString() {
-		return "Korisnik [idKorisnika=" + idKorisnika + ", ime=" + ime + ", korisnickoIme=" + korisnickoIme
-				+ ", kratakOpis=" + kratakOpis + ", lozinka=" + lozinka + ", prezime=" + prezime + ", slika=" + slika
-				+ ", oglas=" + oglas + "]";
+	public List<Ponuda> getPonudas() {
+		return this.ponudas;
 	}
-	
+
+	public void setPonudas(List<Ponuda> ponudas) {
+		this.ponudas = ponudas;
+	}
+
+	public Ponuda addPonuda(Ponuda ponuda) {
+		getPonudas().add(ponuda);
+		ponuda.setKorisnik(this);
+
+		return ponuda;
+	}
+
+	public Ponuda removePonuda(Ponuda ponuda) {
+		getPonudas().remove(ponuda);
+		ponuda.setKorisnik(null);
+
+		return ponuda;
+	}
 
 }

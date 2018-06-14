@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableJpaRepositories("com.oop2.tim6.NakitWebTim6.repository")
 @EntityScan("com.oop2.tim6.NakitWebTim6.model")
-@ComponentScan("com.oop2.tim6.NakitWebTim6.controller")
+@ComponentScan({"com.oop2.tim6.NakitWebTim6.controller", "com.oop2.tim6.NakitWebTim6.service"})
 @SpringBootApplication
 public class NakitWebTim6Application  {
 
