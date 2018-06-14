@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `ogla` (
 
 -- Ponuda
 CREATE TABLE IF NOT EXISTS `ponuda` (
-  `id_ponude` int(11) NOT NULL,
+  `id_ponude` int(11) NOT NULL AUTO_INCREMENT,
   `Ogla_id_ogla` int(11) NOT NULL,
   `Korisnik_id_korisnika` int(11) NOT NULL,
   `ponuda_pare` double DEFAULT NULL,
