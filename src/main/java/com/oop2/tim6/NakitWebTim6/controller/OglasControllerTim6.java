@@ -26,7 +26,7 @@ public class OglasControllerTim6 {
 		List<Ogla> oglasi = oST.getAllOglasiByIdKorisnika();
 		m.addAttribute("oglasi", oglasi);
 		List<Ponuda> list = pST.getAllPonudaByIDKorisnika();
-		list.stream().map(x->x.getKorisnik().getIdKorisnika()).distinct().collect(Collectors.toList());
+		
 		m.addAttribute("ponudeZaKorisnika", list);
 		return "sviOglasi";
 	}
