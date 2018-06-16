@@ -9,6 +9,7 @@ import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 
 @Repository
 public interface KorisnikJpaRepo extends JpaRepository<Korisnik, Integer> {
-	public List<Korisnik> findAll();
-	
+	List<Korisnik> findAll();
+	Korisnik findByKorisnickoIme(String korisnickoIme);
+	Korisnik findByIdKorisnika(int idKorisnika);
 }
