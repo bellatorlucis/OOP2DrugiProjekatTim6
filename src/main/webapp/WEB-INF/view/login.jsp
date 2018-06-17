@@ -1,5 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <html lang="en">
 
 <head>
@@ -9,24 +10,26 @@
 </head>
 
 <body>
-	<input type="text" name="_csrf" width="0">
   <img class="login-img" src="/nakitWeb/images/logoFullSize.png" height="200">
   <div class="login">
-    <h2 class="login-header">Dobrodošli ${k.ime}  ${k.prezime}</h2>
-     <spring:form class="login-container" name="f" action="/nakitWeb/login" method="post">
+    <h2 class="login-header">Dobrodošli</h2>
+    <form class="login-container" name="f" action="<c:url value="/login"/>" method="post">
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       <p>
-        <input type="text" id="username" placeholder="Korisničko ime">
+        <input type="text" id="korisnickoIme" name="korisnickoIme" placeholder="Korisničko ime">
       </p>
       <p>
-        <input type="password" id="password" placeholder="Lozinka">
+        <input type="password" id="lozinka" name="lozinka" placeholder="Lozinka">
       </p>
       <p>
+
         <input type="submit" value="Uloguj se">
+
       </p>
-      <div class="RegistracijaLink">
-          Nemaš nalog? <a href="https://www.w3schools.com">Registruj se!</a>
-      </div>
-    </spring:form>
+    </form>
+    <div class="RegistracijaLink">
+      Nemaš nalog? <a href="https://www.w3schools.com">Registruj se!</a>
+    </div>
   </div>
 </body>
 
