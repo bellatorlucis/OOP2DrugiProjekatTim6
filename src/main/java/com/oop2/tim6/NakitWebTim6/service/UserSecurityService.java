@@ -2,7 +2,7 @@ package com.oop2.tim6.NakitWebTim6.service;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
-import com.oop2.tim6.NakitWebTim6.repository.KorisnikCrudRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepo;
 import com.oop2.tim6.NakitWebTim6.repository.KorisnikJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +24,7 @@ public class UserSecurityService implements UserDetailsService {
 
     private KorisnikJpaRepo korisnikJpaRepo;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private KorisnikCrudRepo korisnikCrudRepo;
+    private IKorisnikCrudRepo korisnikCrudRepo;
     private String pass;
 
     @Override
@@ -58,7 +58,7 @@ public class UserSecurityService implements UserDetailsService {
    }
 
    @Autowired
-   public void setKorisnikCrudRepo(KorisnikCrudRepo korisnikCrudRepo) { this.korisnikCrudRepo = korisnikCrudRepo; }
+   public void setKorisnikCrudRepo(IKorisnikCrudRepo korisnikCrudRepo) { this.korisnikCrudRepo = korisnikCrudRepo; }
 
    @Autowired
    public void setKorisnikJpaRepo(KorisnikJpaRepo korisnikJpaRepo) { this.korisnikJpaRepo = korisnikJpaRepo; }

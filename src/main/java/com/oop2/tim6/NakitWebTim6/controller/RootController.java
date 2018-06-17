@@ -2,7 +2,7 @@ package com.oop2.tim6.NakitWebTim6.controller;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
-import com.oop2.tim6.NakitWebTim6.repository.KorisnikCrudRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepo;
 import com.oop2.tim6.NakitWebTim6.repository.KorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.repository.UlogaRepo;
 import com.oop2.tim6.NakitWebTim6.service.UserSecurityService;

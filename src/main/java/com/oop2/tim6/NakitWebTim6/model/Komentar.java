@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 /**
@@ -51,6 +52,7 @@ public class Komentar implements Serializable {
 	@JoinColumn(name="Ogla_id_ogla")
 	private Ogla ogla;
 	
+	@Transient
 	private List<Komentar> decaKomentara;
 
 	public Komentar() {

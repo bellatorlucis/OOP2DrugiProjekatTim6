@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
+import com.oop2.tim6.NakitWebTim6.repository.IKomentarCrudRepo;
 import com.oop2.tim6.NakitWebTim6.repository.IKomentarJpaRepository;
 
 public class KomentarServiceTim6 implements IKomentarServiceTim6{
 
 	private IKomentarJpaRepository komentarRepo;
+	private IKomentarCrudRepo komentarCrudRepo;
 	
 	@Override
 	public List<Komentar> getKomentariZaOglas(Ogla o) {
@@ -31,11 +33,16 @@ public class KomentarServiceTim6 implements IKomentarServiceTim6{
 
 	@Override
 	public Komentar dodajKomentar(Komentar k) {
-		return komentarRepo.dodajKomentar(k);
+		return komentarCrudRepo.save(k);
 	}
 	
 	@Autowired
 	public void setKomentarRepo(IKomentarJpaRepository komentarRepo) {
 		this.komentarRepo = komentarRepo;
+	}
+	
+	@Autowired
+	public void setKomentarRepo(IKomentarCrudRepo komentarCrudRepo) {
+		this.komentarCrudRepo = komentarCrudRepo;
 	}
 }

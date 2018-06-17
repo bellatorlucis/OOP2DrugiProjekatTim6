@@ -11,7 +11,7 @@ import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 
 @Repository
-public interface IKomentarJpaRepository extends JpaRepository<Komentar, Integer>, IKomentarSpecificRepository {
+public interface IKomentarJpaRepository extends JpaRepository<Komentar, Integer> {
 	@Query("SELECT k FROM Komentar k WHERE k.ogla.idOgla=:idOglas")
-	public List<Komentar> getKomentariZaOglasId(@Param("idk") Integer idOglas);
+	public List<Komentar> getKomentariZaOglasId(@Param("idOglas") Integer idOgla);
 }

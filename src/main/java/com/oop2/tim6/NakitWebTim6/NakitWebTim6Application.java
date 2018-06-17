@@ -9,5 +9,4 @@ public class NakitWebTim6Application  {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(NakitWebTim6Application.class, args);
     }
-
 }
