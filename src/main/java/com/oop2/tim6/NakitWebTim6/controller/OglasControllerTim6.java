@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.Ponuda;
@@ -21,14 +22,15 @@ public class OglasControllerTim6 {
 	private IOglasServiceTim6 oST;
 	private IPonudaServiceTim6 pST;
 	
-	@RequestMapping(value="/sviOglasiKorisnika")
+	@RequestMapping(value="/sviOglasiKorisnika", method=RequestMethod.GET)
 	public String getAllKorisniciById(Model m) {
 		List<Ogla> oglasi = oST.getAllOglasiByIdKorisnika();
 		m.addAttribute("oglasi", oglasi);
-		List<Ponuda> list = pST.getAllPonudaByIDKorisnika();
+		/*List<Ponuda> list = pST.getAllPonudaByIDKorisnika();
 		
-		m.addAttribute("ponudeZaKorisnika", list);
-		return "sviOglasi";
+		m.addAttribute("ponudeZaKorisnika", list);*/
+		return "pocetna/index";
+		//return "sviOglasi";
 	}
 	
 
