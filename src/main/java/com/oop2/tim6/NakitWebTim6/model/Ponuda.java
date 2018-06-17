@@ -1,6 +1,14 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.*;
 
 
@@ -86,5 +94,16 @@ public class Ponuda implements Serializable {
 	public void setKorisnik(Korisnik korisnik) {
 		this.korisnik = korisnik;
 	}
-
+	
+	public void setDateTime() {
+		LocalDateTime dateTime = LocalDateTime.now();
+		LocalDate danasnjiDatum = dateTime.toLocalDate();
+		LocalTime trenutnoVreme = dateTime.toLocalTime();
+		
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+		this.setDatum(danasnjiDatum.format(dateFormatter));
+		
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
+		this.setDatum(trenutnoVreme.format(timeFormatter));
+	}
 }

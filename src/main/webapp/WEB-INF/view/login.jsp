@@ -1,38 +1,31 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nemanja
-  Date: 6/12/18
-  Time: 9:01 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
 
-
-<html xmlns:th="http://www.thymeleaf.org">
+<head>
 <head th:include="layout :: head(title=~{::title},links=~{})">
-    <title>Please Login</title>
+  <title>Dobrodošli!</title>
+  <link rel="stylesheet" href="/nakitWeb/css/login.css">
 </head>
-<body th:include="layout :: body" th:with="content=~{::content}">
-<div th:fragment="content">
-    <form name="f" action="/login" method="post">
-        <fieldset>
-            <legend>Please Login</legend>
-            <div th:if="${param.error}" class="alert alert-error">
-                Invalid username and password.
-            </div>
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
-            </div>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
-            <div class="form-actions">
-                <button type="submit" class="btn">Log in</button>
-            </div>
-        </fieldset>
-    </form>
-</div>
-</body>
-</html>
 
+<body>
+  <img class="login-img" src="/nakitWeb/images/logoFullSize.png" height="200">
+  <div class="login">
+    <h2 class="login-header">Dobrodošli</h2>
+    <form class="login-container" name="f" action="/login" method="post">
+      <p>
+        <input type="text" id="username" placeholder="Korisničko ime">
+      </p>
+      <p>
+        <input type="password" id="password" placeholder="Lozinka">
+      </p>
+      <p>
+        <input type="submit" value="Uloguj se">
+      </p>
+      <div class="RegistracijaLink">
+          Nemaš nalog? <a href="https://www.w3schools.com">Registruj se!</a>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
