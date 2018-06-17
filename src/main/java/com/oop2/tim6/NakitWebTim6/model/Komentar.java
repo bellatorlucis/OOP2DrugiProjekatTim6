@@ -1,6 +1,8 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,8 +50,11 @@ public class Komentar implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="Ogla_id_ogla")
 	private Ogla ogla;
+	
+	private List<Komentar> decaKomentara;
 
 	public Komentar() {
+		decaKomentara = new ArrayList<Komentar>();
 	}
 
 	public int getIdKomentara() {
@@ -106,6 +111,14 @@ public class Komentar implements Serializable {
 
 	public void setOgla(Ogla ogla) {
 		this.ogla = ogla;
+	}
+	
+	public List<Komentar> getDecaKomentara(){
+		return decaKomentara;
+	}
+	
+	public void dodajDecuKomentara(List<Komentar> k) {
+		decaKomentara.addAll(k);
 	}
 
 }
