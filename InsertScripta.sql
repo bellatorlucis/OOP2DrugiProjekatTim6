@@ -319,7 +319,7 @@ INSERT INTO `ponuda`(`id_ponude`,`Ogla_id_ogla`,`Korisnik_id_korisnika`,`ponuda_
 VALUES(11,5,7, 5000, '2018-06-12 18:30');
 
 INSERT INTO `ponuda`(`id_ponude`,`Ogla_id_ogla`,`Korisnik_id_korisnika`,`ponuda_pare`,`datum_vreme`)
-VALUES(12,8,1, 6666,'2018-06-13 16:66');
+VALUES(12,8,1, 6666,'2018-06-13 16:54');
 
 INSERT INTO `ponuda`(`id_ponude`,`Ogla_id_ogla`,`Korisnik_id_korisnika`,`ponuda_pare`,`datum_vreme`)
 VALUES(13,10,9, 60000,'2018-06-07 18:54');
