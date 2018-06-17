@@ -1,15 +1,22 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -27,12 +34,12 @@ public class Ponuda implements Serializable {
 	@Column(name="id_ponude")
 	private int idPonude;
 
-	private String datum;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="datum_vreme")
+	private Date datumVreme;
 
 	@Column(name="ponuda_pare")
 	private double ponudaPare;
-
-	private String vreme;
 
 	//bi-directional many-to-one association to Ogla
 	@ManyToOne
@@ -55,12 +62,12 @@ public class Ponuda implements Serializable {
 		this.idPonude = idPonude;
 	}
 
-	public String getDatum() {
-		return this.datum;
+	public Date getDatumVreme() {
+		return this.datumVreme;
 	}
 
-	public void setDatum(String datum) {
-		this.datum = datum;
+	public void setDatumVreme(Date datumVreme) {
+		this.datumVreme = datumVreme;
 	}
 
 	public double getPonudaPare() {
@@ -69,14 +76,6 @@ public class Ponuda implements Serializable {
 
 	public void setPonudaPare(double ponudaPare) {
 		this.ponudaPare = ponudaPare;
-	}
-
-	public String getVreme() {
-		return this.vreme;
-	}
-
-	public void setVreme(String vreme) {
-		this.vreme = vreme;
 	}
 
 	public Ogla getOgla() {
@@ -95,15 +94,15 @@ public class Ponuda implements Serializable {
 		this.korisnik = korisnik;
 	}
 	
-	public void setDateTime() {
-		LocalDateTime dateTime = LocalDateTime.now();
-		LocalDate danasnjiDatum = dateTime.toLocalDate();
-		LocalTime trenutnoVreme = dateTime.toLocalTime();
+	/**public void setDateTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
-		this.setDatum(danasnjiDatum.format(dateFormatter));
+		LocalDateTime ldt = LocalDateTime.now();
 		
-		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
-		this.setDatum(trenutnoVreme.format(timeFormatter));
-	}
+		Date date = dateFormat.parse(ldt);
+		
+		
+		this.setDatumVreme(dateFormat.format(date));
+	}**/
+
 }

@@ -53,7 +53,7 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 		p.setPonudaPare(ponudaPare);;
 		p.setKorisnik(korisnik);
 		p.setOgla(oglas);
-		p.setDateTime();
+		//p.setDateTime();
 		return p;
 	}
 }

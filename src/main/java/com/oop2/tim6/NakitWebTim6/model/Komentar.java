@@ -1,19 +1,8 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -31,16 +20,14 @@ public class Komentar implements Serializable {
 	@Column(name="id_komentara")
 	private int idKomentara;
 
-	@Column(name="datum_k")
-	private String datumK;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="datum_vreme")
+	private Date datumVreme;
 
 	@Column(name="komentar_roditelj_id")
 	private int komentarRoditeljId;
 
 	private String sadrzaj;
-
-	@Column(name="vreme_k")
-	private String vremeK;
 
 	//bi-directional many-to-one association to Korisnik
 	@ManyToOne
@@ -51,12 +38,8 @@ public class Komentar implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="Ogla_id_ogla")
 	private Ogla ogla;
-	
-	@Transient
-	private List<Komentar> decaKomentara;
 
 	public Komentar() {
-		decaKomentara = new ArrayList<Komentar>();
 	}
 
 	public int getIdKomentara() {
@@ -67,12 +50,12 @@ public class Komentar implements Serializable {
 		this.idKomentara = idKomentara;
 	}
 
-	public String getDatumK() {
-		return this.datumK;
+	public Date getDatumVreme() {
+		return this.datumVreme;
 	}
 
-	public void setDatumK(String datumK) {
-		this.datumK = datumK;
+	public void setDatumVreme(Date datumVreme) {
+		this.datumVreme = datumVreme;
 	}
 
 	public int getKomentarRoditeljId() {
@@ -91,14 +74,6 @@ public class Komentar implements Serializable {
 		this.sadrzaj = sadrzaj;
 	}
 
-	public String getVremeK() {
-		return this.vremeK;
-	}
-
-	public void setVremeK(String vremeK) {
-		this.vremeK = vremeK;
-	}
-
 	public Korisnik getKorisnik() {
 		return this.korisnik;
 	}
@@ -113,14 +88,6 @@ public class Komentar implements Serializable {
 
 	public void setOgla(Ogla ogla) {
 		this.ogla = ogla;
-	}
-	
-	public List<Komentar> getDecaKomentara(){
-		return decaKomentara;
-	}
-	
-	public void dodajDecuKomentara(List<Komentar> k) {
-		decaKomentara.addAll(k);
 	}
 
 }
