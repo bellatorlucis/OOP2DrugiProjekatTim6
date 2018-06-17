@@ -1,13 +1,8 @@
 package com.oop2.tim6.NakitWebTim6.controller;
 
 import java.util.ArrayList;
-import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
-import java.util.stream.Collectors;
-import com.oop2.tim6.NakitWebTim6.model.Komentar;
-import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 
-import org.hibernate.criterion.Distinct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
-import com.oop2.tim6.NakitWebTim6.model.Ponuda;
+import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
+import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
 
 @Controller
 @RequestMapping(value="/profil")
-public class OglasControllerTim6 {
+public class ProfilControllerTim6 {
 	
 	private IOglasServiceTim6 oglasService;
 	private IPonudaServiceTim6 ponudaService;
@@ -45,4 +41,5 @@ public class OglasControllerTim6 {
 	public void setpST(IPonudaServiceTim6 ponudaService) {
 		this.ponudaService = ponudaService;
 	}
+	
 }

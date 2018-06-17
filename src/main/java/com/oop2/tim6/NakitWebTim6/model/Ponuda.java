@@ -1,8 +1,6 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -94,15 +92,9 @@ public class Ponuda implements Serializable {
 		this.korisnik = korisnik;
 	}
 	
-	/**public void setDateTime() {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		LocalDateTime ldt = LocalDateTime.now();
-		
-		Date date = dateFormat.parse(ldt);
-		
-		
-		this.setDatumVreme(dateFormat.format(date));
-	}**/
-
+	public void setDateTime() {
+		LocalDateTime ldt = LocalDateTime.now();		
+		this.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
+	}
+	
 }
