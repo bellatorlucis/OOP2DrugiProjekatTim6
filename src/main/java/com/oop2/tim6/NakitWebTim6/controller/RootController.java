@@ -11,12 +11,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 
 @Controller
@@ -37,8 +47,38 @@ public class RootController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLogin() {
-        System.out.println("STIGAO SI");
         return "login";
+    }
+    
+    @GetMapping(value = "/register")
+    public String getRegister() {
+        return "register";
+    }
+    
+    @PostMapping(value = "/saveKorisnik")
+    public String saveKorisnik(Model m, HttpServletRequest request) throws IOException, ServletException {
+    	Korisnik k = new Korisnik();
+    	k.setIme(request.getParameter("ime"));
+    	k.setPrezime(request.getParameter("prezime"));
+    	k.setKorisnickoIme(request.getParameter("kime"));
+    	k.setLozinka(request.getParameter("lozinka"));
+    	k.setKratakOpis(request.getParameter("opis"));
+    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+    	MultipartFile file = multipartRequest.getFile("slika");
+    	k.setSlika(file.getBytes());
+    	Uloga uloga = ulogaRepo.findByIdUloge(1);
+        k.setUloga(uloga);
+    	userSecurityService.saveNewKorisnik(k);
+    	request.getSession().setAttribute("k",k);
+        return "login";
+    }
+    
+    @PostMapping(value ="/attemptLogin")
+    public String AttemptLogin(HttpServletRequest request) {
+    	if(userSecurityService.isLoginValid(request.getParameter("username"),request.getParameter("password"))) {
+    		return "uspeh";
+    	}
+    	return "login";
     }
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
@@ -94,7 +134,7 @@ public class RootController {
         korisnik.setKratakOpis("KIDA KIDAM KIDAM");
         korisnik.setIme("Nemanja");
         korisnik.setPrezime("Masnikosa");
-        korisnik.setSlika("putanja/korisnici/slika12");
+       // korisnik.setSlika("putanja/korisnici/slika12");
 
 
         Korisnik novi = userSecurityService.saveNewKorisnik(korisnik);

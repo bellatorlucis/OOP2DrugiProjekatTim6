@@ -94,15 +94,8 @@ public class Ponuda implements Serializable {
 		this.korisnik = korisnik;
 	}
 	
-	/**public void setDateTime() {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		LocalDateTime ldt = LocalDateTime.now();
-		
-		Date date = dateFormat.parse(ldt);
-		
-		
-		this.setDatumVreme(dateFormat.format(date));
-	}**/
-
+	public void setDateTime() {
+		LocalDateTime ldt = LocalDateTime.now();		
+		this.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
+	}
 }

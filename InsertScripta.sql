@@ -1,6 +1,6 @@
 -- Skripta za OOP2 - projekat 2 
 -- PAZNJA: SKRIPTA DROPUJE TABELE IZ oop2Web baze!
-
+drop database oop2Web;
 CREATE DATABASE IF NOT EXISTS oop2Web;
 USE oop2Web;
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
   `Uloga_id_uloge` int(11) NOT NULL,
   `ime` varchar(50) DEFAULT NULL,
   `prezime` varchar(50) DEFAULT NULL,
-  `slika` varchar(200) DEFAULT NULL,
+  `slika` blob DEFAULT NULL,
   `korisnicko_ime` varchar(100) UNIQUE DEFAULT NULL,
   `lozinka` varchar(100) DEFAULT NULL,
   `kratak_opis` varchar(255) DEFAULT NULL,
@@ -188,35 +188,35 @@ VALUES (7,'Drugo');
 -- TIP END
 
 -- KORISNIK
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(1,1,'Marko','Knez','putanja/korisnici/slika1','mknez','mknez','Brza hrana, teretana');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(1,1,'Marko','Knez','mknez','mknez','Brza hrana, teretana');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(2,1,'Nadja','Svircev','putanja/korisnici/slika2','nsvircev','nsvircev','Volim duge setnje po plazi i casopis Svet');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(2,1,'Nadja','Svircev','nsvircev','nsvircev','Volim duge setnje po plazi i casopis Svet');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(3,1,'Mile','Savic','putanja/korisnici/slika3','msavic','msavic','Pozitivne misli pozitivna dela!');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(3,1,'Mile','Savic','msavic','msavic','Pozitivne misli pozitivna dela!');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(4,1,'Josip','Roncevic','putanja/korisnici/slika4','jroncevic','jroncevic','Zivote lutalico, drug mi nisi bio.');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(4,1,'Josip','Roncevic','jroncevic','jroncevic','Zivote lutalico, drug mi nisi bio.');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(5,1,'Natasa','Novak','putanja/korisnici/slika5','nnovak','nnovak','#PRAYFORPARIS');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(5,1,'Natasa','Novak','nnovak','nnovak','#PRAYFORPARIS');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(6,1,'Boris','Kovac','putanja/korisnici/slika6','bkovac','bkovac','Nije zivot jedna zena ;)');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(6,1,'Boris','Kovac','bkovac','bkovac','Nije zivot jedna zena ;)');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(7,1,'Dunja','Juric','putanja/korisnici/slika7','djuric','djuric','Beogradski Sindikat - Sistem te laze');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(7,1,'Dunja','Juric','djuric','djuric','Beogradski Sindikat - Sistem te laze');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(8,1,'Filip','Ovas','putanja/korisnici/slika8','fovas','fovas','Ja volim Niksicko tamno');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(8,1,'Filip','Ovas','fovas','fovas','Ja volim Niksicko tamno');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(9,1,'Saska','Zagorac','putanja/korisnici/slika9','szagorac','szagorac','Ko to tamo peva zasluzuje oskara');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(9,1,'Saska','Zagorac','szagorac','szagorac','Ko to tamo peva zasluzuje oskara');
 
-INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`slika`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(10,1,'Vanja','Vulic','putanja/korisnici/slika10','vvulic','vvulic','D A N K M E M E S A N D W A P O R W A V E');
+INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
+VALUES(10,1,'Vanja','Vulic','vvulic','vvulic','D A N K M E M E S A N D W A P O R W A V E');
 -- KORISNIK END
 
 -- NAKIT

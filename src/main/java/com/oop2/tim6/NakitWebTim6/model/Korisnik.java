@@ -2,6 +2,7 @@ package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -32,8 +33,9 @@ public class Korisnik implements Serializable {
 
 	private String prezime;
 
-	private String slika;
-
+	@Lob
+	private byte[] slika;
+	
 	//bi-directional many-to-one association to Komentar
 	@OneToMany(mappedBy="korisnik")
 	private List<Komentar> komentars;
@@ -102,11 +104,12 @@ public class Korisnik implements Serializable {
 		this.prezime = prezime;
 	}
 
-	public String getSlika() {
+
+	public byte[] getSlika() {
 		return this.slika;
 	}
 
-	public void setSlika(String slika) {
+	public void setSlika(byte[] slika) {
 		this.slika = slika;
 	}
 

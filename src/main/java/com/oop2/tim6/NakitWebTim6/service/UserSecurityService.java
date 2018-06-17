@@ -48,7 +48,7 @@ public class UserSecurityService implements UserDetailsService {
         //ovde privremeni korisnim private polje pass
        //da bi modifikovali korisnmika
        //kasnije ce ga on sam dobavljati iz korisnik.getLozinka() metoda
-        korisnik.setLozinka(bCryptPasswordEncoder.encode(pass));
+        korisnik.setLozinka(bCryptPasswordEncoder.encode(korisnik.getLozinka()));
 
         return  korisnikCrudRepo.save(korisnik);
    }
