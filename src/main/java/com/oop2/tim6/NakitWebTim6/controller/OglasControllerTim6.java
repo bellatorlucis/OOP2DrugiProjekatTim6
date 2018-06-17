@@ -32,6 +32,7 @@ public class OglasControllerTim6 {
 		searchCriterias.add(new SearchCriteria("idOgla", "1", true));
 		searchCriterias.add(new SearchCriteria("nakit.tip.idTipa", "1", true));
 		List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
+		m.addAttribute("oglasi", oglasi);
 		return "pocetna/index";
 	}
 	

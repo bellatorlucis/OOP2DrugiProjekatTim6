@@ -100,5 +100,13 @@ public class Nakit implements Serializable {
 
 		return ogla;
 	}
+	
+	public String opisNakitaToHTML() {
+		
+		String html = "<h2>"+tip.getNaziv()+"</h2>"
+				+ "<p>OPIS: <br> Boja: " + boja + " <br> Materijal: "+materijal+"</p>";
+		
+		return html;
+	}
 
 }
