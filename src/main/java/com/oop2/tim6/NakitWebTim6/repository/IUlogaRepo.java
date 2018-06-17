@@ -8,6 +8,6 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface UlogaRepo extends JpaRepository<Uloga, Integer> {
+public interface IUlogaRepo extends JpaRepository<Uloga, Integer> {
     Uloga findByIdUloge(int id);
 }

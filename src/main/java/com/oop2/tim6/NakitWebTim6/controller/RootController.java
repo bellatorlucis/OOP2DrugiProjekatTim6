@@ -2,9 +2,8 @@ package com.oop2.tim6.NakitWebTim6.controller;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepo;
-import com.oop2.tim6.NakitWebTim6.repository.KorisnikJpaRepo;
-import com.oop2.tim6.NakitWebTim6.repository.UlogaRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IUlogaRepo;
 import com.oop2.tim6.NakitWebTim6.service.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,7 +11,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RootController {
 
     @Autowired
-    KorisnikJpaRepo korisnikJpaRepo;
+    IKorisnikJpaRepo korisnikJpaRepo;
 
     @Autowired
     UserSecurityService userSecurityService;
@@ -34,7 +32,7 @@ public class RootController {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    UlogaRepo ulogaRepo;
+    IUlogaRepo ulogaRepo;
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

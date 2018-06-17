@@ -1,10 +1,14 @@
 package com.oop2.tim6.NakitWebTim6.service;
 
 import java.util.List;
-
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
+import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 
 public interface IOglasServiceTim6 {
 	
 	public List<Ogla> getAllOglasiByIdKorisnika();
+	
+	public List<Ogla> getAllOglasi();
+
+	public List<Ogla> getOglasByFilters(List<SearchCriteria> searchCriteria);
 }

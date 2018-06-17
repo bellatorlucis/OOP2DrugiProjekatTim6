@@ -3,7 +3,7 @@ package com.oop2.tim6.NakitWebTim6.service;
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepo;
-import com.oop2.tim6.NakitWebTim6.repository.KorisnikJpaRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserSecurityService implements UserDetailsService {
 
-    private KorisnikJpaRepo korisnikJpaRepo;
+    private IKorisnikJpaRepo korisnikJpaRepo;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private IKorisnikCrudRepo korisnikCrudRepo;
     private String pass;
@@ -61,7 +61,7 @@ public class UserSecurityService implements UserDetailsService {
    public void setKorisnikCrudRepo(IKorisnikCrudRepo korisnikCrudRepo) { this.korisnikCrudRepo = korisnikCrudRepo; }
 
    @Autowired
-   public void setKorisnikJpaRepo(KorisnikJpaRepo korisnikJpaRepo) { this.korisnikJpaRepo = korisnikJpaRepo; }
+   public void setKorisnikJpaRepo(IKorisnikJpaRepo korisnikJpaRepo) { this.korisnikJpaRepo = korisnikJpaRepo; }
 
    @Autowired
    public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) { this.bCryptPasswordEncoder = bCryptPasswordEncoder; }
