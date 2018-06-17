@@ -67,4 +67,12 @@ public class Tip implements Serializable {
 		return nakit;
 	}
 
+	@Override
+	public String toString() {
+		return getNaziv();
+	}
+	
+	
+	
+
 }
