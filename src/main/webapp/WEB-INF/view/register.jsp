@@ -12,7 +12,7 @@
 <body>
     <div class="login">
         <h2 class="login-header">Registracija</h2>
-       <spring:form class="login-container" name="f" action="/nakitWeb/saveKorisnik" method="post" enctype="multipart/form-data">
+       <spring:form class="login-container" name="f" action="/nakitWeb/saveKorisnik" method="post" enctype="multipart/form-data" modelAttribute="korisnik">
             <div class="registration-info">
                 <p>
                     <input type="text" placeholder="Ime" name="ime">
@@ -21,7 +21,7 @@
                     <input type="text" placeholder="Prezime" name="prezime">
                 </p>
                 <p>
-                    <input type="text" placeholder="Korisničko ime" name="kime">
+                    <input type="text" placeholder="Korisničko ime" name="korisnickoIme">
                 </p>
                 <p>
                     <input type="password" placeholder="Lozinka" name="lozinka">
@@ -32,10 +32,10 @@
             </div>
             <div class="extended-registration-info">
                 <p>
-                    <input type="text" placeholder="Opis" name="opis">
+                    <input type="text" placeholder="Opis" name="kratakOpis">
                 </p>
                 <p>
-                    <input type="file" placeholder="Opis" value="Izaberi sliku..." name="slika">
+                    <input type="file" placeholder="Opis" value="Izaberi sliku..." name="file">
                 </p>            
             </div>
             <input type="submit" value="Registruj se">

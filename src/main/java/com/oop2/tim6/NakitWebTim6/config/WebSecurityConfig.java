@@ -19,12 +19,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserSecurityService userService;
     private CustomAccessDeniedHandler customAccessDeniedHandler;
-
+    private CustomLoginSuccessfulHandler loginSuccessfulHandler;
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests().antMatchers(HttpMethod.POST, "/saveKorisnik").permitAll();
         http.authorizeRequests().antMatchers("/dashboard").access("hasRole('ROLE_USER')");
-
         http.authorizeRequests().antMatchers("/dashboardAdmin").access("hasRole('ROLE_ADMIN')")
                 .and().exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
 
@@ -33,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().and().formLogin()
                 //.loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .loginPage("/login")
-                .defaultSuccessUrl("/dashboard")
                 .failureUrl("/login?error=true")
                 .usernameParameter("korisnickoIme")
                 .passwordParameter("lozinka")
+                .successHandler(loginSuccessfulHandler)
                 .and().logout().logoutUrl("/logout");
 
         http
@@ -69,4 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void setCustomAccessDeniedHandler(CustomAccessDeniedHandler customAccessDeniedHandler) { this.customAccessDeniedHandler = customAccessDeniedHandler; }
+    
+    @Autowired
+    public void setCustomLoginSuccessfulHandler(CustomLoginSuccessfulHandler loginSuccessfulHandler) {this.loginSuccessfulHandler = loginSuccessfulHandler;}
 }

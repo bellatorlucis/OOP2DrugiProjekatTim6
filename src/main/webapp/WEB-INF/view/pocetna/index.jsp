@@ -23,10 +23,9 @@
 	</script>
 	<header> </header>
 	<div class="sidebar">
-		<img border="2" class="user-image" src="dalibor.jpg" height="150"
+		<img border="2" class="user-image" src="${korisnik.getSlika()}" height="150"
 			width="150">
-		<p class="user-description">kao Neki text tu stoji aaaaa aaaas
-			adsasdsa asd as da s sdaaaaaaaaaaa</p>
+		<p class="user-description">$korisnik.getKratakOpis()</p>
 		<hr>
 		<div class="meniii">
 			<br /> <a class="sidebar-active-button">Pocetna</a> <a

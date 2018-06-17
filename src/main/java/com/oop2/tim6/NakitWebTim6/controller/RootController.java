@@ -13,20 +13,17 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.io.File;
 import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -44,7 +41,6 @@ public class RootController {
     @Autowired
     IUlogaRepo ulogaRepo;
 
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLogin() {
         return "login";
@@ -56,34 +52,24 @@ public class RootController {
     }
     
     @PostMapping(value = "/saveKorisnik")
-    public String saveKorisnik(Model m, HttpServletRequest request) throws IOException, ServletException {
-    	Korisnik k = new Korisnik();
-    	k.setIme(request.getParameter("ime"));
-    	k.setPrezime(request.getParameter("prezime"));
-    	k.setKorisnickoIme(request.getParameter("kime"));
-    	k.setLozinka(request.getParameter("lozinka"));
-    	k.setKratakOpis(request.getParameter("opis"));
-    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-    	MultipartFile file = multipartRequest.getFile("slika");
-    	k.setSlika(file.getBytes());
-    	Uloga uloga = ulogaRepo.findByIdUloge(1);
-        k.setUloga(uloga);
-    	userSecurityService.saveNewKorisnik(k);
-    	request.getSession().setAttribute("k",k);
-        return "login";
-    }
-    
-    @PostMapping(value ="/attemptLogin")
-    public String AttemptLogin(HttpServletRequest request) {
-    	if(userSecurityService.isLoginValid(request.getParameter("username"),request.getParameter("password"))) {
-    		return "uspeh";
+    public String saveKorisnik(@ModelAttribute("korisnik") Korisnik korisnik, @RequestParam("file") MultipartFile file) throws IOException {
+    	if(file != null) {
+        	korisnik.setSlika(file.getBytes());
     	}
-    	return "login";
+    	
+    	Uloga uloga = ulogaRepo.findByIdUloge(1);
+    	korisnik.setUloga(uloga);
+    
+    	userSecurityService.saveNewKorisnik(korisnik);
+        return "login";
     }
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String getDashBoard() {
-        return "dashboard";
+    public String getDashBoard(Model m, HttpSession session) {
+    	String korisnickoIme = session.getAttribute("korisnik").toString();
+    	Korisnik korisnik = korisnikJpaRepo.findByKorisnickoIme(korisnickoIme);
+    	m.addAttribute("korisnik", korisnik);
+        return "pocetna/index";
     }
 
     @GetMapping(value = "/403")

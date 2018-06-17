@@ -22,7 +22,6 @@
         <input type="password" id="lozinka" name="lozinka" placeholder="Lozinka">
       </p>
       <p>
-
         <input type="submit" value="Uloguj se">
 
       </p>
