@@ -1,7 +1,11 @@
 package com.oop2.tim6.NakitWebTim6.controller;
 
+import java.util.ArrayList;
+import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.oop2.tim6.NakitWebTim6.model.Komentar;
+import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 
 import org.hibernate.criterion.Distinct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,35 +23,25 @@ import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
 @RequestMapping(value="/profil")
 public class OglasControllerTim6 {
 	
-	private IOglasServiceTim6 oST;
-	private IPonudaServiceTim6 pST;
+	private IOglasServiceTim6 oglasService;
+	private IPonudaServiceTim6 ponudaService;
 	
 	@RequestMapping(value="/sviOglasiKorisnika", method=RequestMethod.GET)
 	public String getAllKorisniciById(Model m) {
-		List<Ogla> oglasi = oST.getAllOglasiByIdKorisnika();
-		m.addAttribute("oglasi", oglasi);
-		/*List<Ponuda> list = pST.getAllPonudaByIDKorisnika();
-		
-		m.addAttribute("ponudeZaKorisnika", list);*/
+		List<SearchCriteria> searchCriterias = new ArrayList<SearchCriteria>();
+		searchCriterias.add(new SearchCriteria("idOgla", "1", true));
+		searchCriterias.add(new SearchCriteria("nakit.tip.idTipa", "1", true));
+		List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
 		return "pocetna/index";
-		//return "sviOglasi";
 	}
 	
-
-	
+	@Autowired
+	public void setoST(IOglasServiceTim6 oglasService) {
+		this.oglasService = oglasService;
+	}
 
 	@Autowired
-	public void setoST(IOglasServiceTim6 oST) {
-		this.oST = oST;
+	public void setpST(IPonudaServiceTim6 ponudaService) {
+		this.ponudaService = ponudaService;
 	}
-
-
-
-	@Autowired
-	public void setpST(IPonudaServiceTim6 pST) {
-		this.pST = pST;
-	}
-	
-	
-	
 }
