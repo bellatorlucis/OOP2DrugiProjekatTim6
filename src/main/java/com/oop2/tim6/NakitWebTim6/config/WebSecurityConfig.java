@@ -1,3 +1,4 @@
+
 package com.oop2.tim6.NakitWebTim6.config;
 
 import com.oop2.tim6.NakitWebTim6.error.CustomAccessDeniedHandler;
@@ -33,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().and().formLogin()//
                 // Submit URL of login page.
                 //.loginProcessingUrl("/j_spring_security_check") // Submit URL
-                //.loginPage("/login")//
+                .loginPage("/login")//
                 .defaultSuccessUrl("/dashboard")//
                 .failureUrl("/login?error=true")//
                 .usernameParameter("korisnickoIme")//

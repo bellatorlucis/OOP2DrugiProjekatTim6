@@ -22,6 +22,7 @@ public class KomentarServiceTim6 implements IKomentarServiceTim6{
 		List<Komentar> parentKomentari = komentariZaOglas.stream()
 				.filter(komentar -> komentar.getKomentarRoditeljId() == 0)
 				.collect(Collectors.toList());
+		
 		for(Komentar k: parentKomentari) {
 			komentariZaOglas.stream()
 				.filter(komentar -> komentar.getKomentarRoditeljId() ==k.getIdKomentara())

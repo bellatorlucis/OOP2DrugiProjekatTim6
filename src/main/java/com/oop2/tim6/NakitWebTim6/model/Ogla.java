@@ -149,5 +149,17 @@ public class Ogla implements Serializable {
 
 		return ponuda;
 	}
+	
+	public String printOglasToHTML() {
+		String html = "<div class=\"widget-box sample-widget\">\n" + 
+				"			<div class=\"widget-header\">\n" + 
+				"					<h2>OGLAS :D</h2>\n" + 
+				"					<i class=\"fa fa-cog\"></i>\n" + 
+				"				</div>\n" +
+				"				<p>"+ tekst +"</p>"+
+				"			<div class=\"widget-content\"></div>\n" + 
+				"		</div>";
+		return html;
+	}
 
 }

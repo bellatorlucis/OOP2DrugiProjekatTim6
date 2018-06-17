@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 
 @Repository
-public interface IOglasJpaRepo extends JpaRepository<Ogla, Integer> {
+public interface IOglasJpaRepo extends JpaRepository<Ogla, Integer>{
 	
 	@Query("SELECT o FROM Ogla o WHERE o.korisnik.idKorisnika = :idK")
 	public List<Ogla> MojfindById(@Param("idK") Integer idKorisnika);

@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Person;
-import com.oop2.tim6.NakitWebTim6.repository.KorisnikJpaRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 
 @Controller
 public class HelloController {
     
 	@Autowired
-	KorisnikJpaRepo kJP;
+	IKorisnikJpaRepo kJP;
 	
     @RequestMapping("/user/person")
     public String person(Model model){

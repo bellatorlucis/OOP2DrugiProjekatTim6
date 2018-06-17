@@ -11,7 +11,7 @@
   <img class="login-img" src="/nakitWeb/images/logoFullSize.png" height="200">
   <div class="login">
     <h2 class="login-header">Dobrodošli</h2>
-    <form class="login-container" name="f" action="/login" method="post">
+    <form class="login-container" name="f" action="/nakitWeb/login" method="post">
       <p>
         <input type="text" id="username" placeholder="Korisničko ime">
       </p>
