@@ -189,34 +189,34 @@ VALUES (7,'Drugo');
 
 -- KORISNIK
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(1,1,'Marko','Knez','mknez','mknez','Brza hrana, teretana');
+VALUES(1,1,'Marko','Knez','mknez','$2a$10$myQS6qm2Nl6jYb5/v0yiluXrP0UiIJzMg/d1GEVC/HIkqbLdbG5R2','Brza hrana, teretana');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(2,1,'Nadja','Svircev','nsvircev','nsvircev','Volim duge setnje po plazi i casopis Svet');
+VALUES(2,1,'Nadja','Svircev','nsvircev','$2a$10$Ep7GJjv85HJAyRENgT1DCOsNckKpWiTOhoDrvqS5UchGq.JljYHry','Volim duge setnje po plazi i casopis Svet');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(3,1,'Mile','Savic','msavic','msavic','Pozitivne misli pozitivna dela!');
+VALUES(3,1,'Mile','Savic','msavic','$2a$10$d5Mrl9fbxW5LMdAJKr8sgOCblrU8SGdInNJHYyx.Y4OOofrmtI7U.','Pozitivne misli pozitivna dela!');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(4,1,'Josip','Roncevic','jroncevic','jroncevic','Zivote lutalico, drug mi nisi bio.');
+VALUES(4,1,'Josip','Roncevic','jroncevic','$2a$10$qFSrw8gna0gqBGfcMRkcpu0ch5t5zw2THurO8i0Ay.81RPQuriDL2','Zivote lutalico, drug mi nisi bio.');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(5,1,'Natasa','Novak','nnovak','nnovak','#PRAYFORPARIS');
+VALUES(5,1,'Natasa','Novak','nnovak','$2a$10$6UxstqM8fH.x45djIDD6YuzF.hcAaqhAhr4tssv3ZkAiXGOT4pFbq','#PRAYFORPARIS');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(6,1,'Boris','Kovac','bkovac','bkovac','Nije zivot jedna zena ;)');
+VALUES(6,1,'Boris','Kovac','bkovac','$2a$10$q3AD7wPTH3Km1futiqzhIe55iNxS9dsk.fAXQNCVgfoLTG3BlsG/6','Nije zivot jedna zena ;)');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(7,1,'Dunja','Juric','djuric','djuric','Beogradski Sindikat - Sistem te laze');
+VALUES(7,1,'Dunja','Juric','djuric','$2a$10$ivah5acCmA4PpW1Ezdv6XuDQULxjBegGmxECiz71ROWHccOPFEqMG','Beogradski Sindikat - Sistem te laze');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(8,1,'Filip','Ovas','fovas','fovas','Ja volim Niksicko tamno');
+VALUES(8,1,'Filip','Ovas','fovas','$2a$10$A30RUUebldg1GZRrGTtpreTO0Bib91Y26UN.r3HeDhSopDowyIHsa','Ja volim Niksicko tamno');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(9,1,'Saska','Zagorac','szagorac','szagorac','Ko to tamo peva zasluzuje oskara');
+VALUES(9,1,'Sale','Zagorac','szagorac','$2a$10$/cW97Rg2Is9IUvCIHqqVSuXAzjdQnG6wQfotHqL6AEV/upUPgRehS','Ko to tamo peva zasluzuje oskara');
 
 INSERT INTO `korisnik`(`id_korisnika`,`Uloga_id_uloge`,`ime`,`prezime`,`korisnicko_ime`,`lozinka`,`kratak_opis`)
-VALUES(10,1,'Vanja','Vulic','vvulic','vvulic','D A N K M E M E S A N D W A P O R W A V E');
+VALUES(10,1,'Vanja','Vulic','vvulic','$2a$10$x6PISja5jA2jsG7MbWwJ5OUyBGHOALi0w9onpyxa5oHHkmJK/V6N6','D A N K M E M E S A N D W A P O R W A V E');
 -- KORISNIK END
 
 -- NAKIT
