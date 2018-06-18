@@ -54,10 +54,10 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
 CREATE TABLE IF NOT EXISTS `nakit` (
   `id_nakita` int(11) NOT NULL AUTO_INCREMENT,
   `Tip_id_tipa` int(11) NOT NULL,
-  `slika_nakita` varchar(200) DEFAULT NULL,
+  `slika_nakita` blob DEFAULT NULL,
   `materijal` varchar(20) DEFAULT NULL,
   `boja` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id_nakita`),
+   PRIMARY KEY (`id_nakita`),
    KEY `Nakit_Tip_FK` (`Tip_id_tipa`)        
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -220,35 +220,35 @@ VALUES(10,1,'Vanja','Vulic','vvulic','$2a$10$x6PISja5jA2jsG7MbWwJ5OUyBGHOALi0w9o
 -- KORISNIK END
 
 -- NAKIT
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(1,1,'putanja/nakit/slika1','Aluminijum','Smedja');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(1,1,'Aluminijum','Smedja');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(2,1,'putanja/nakit/slika2','Srebro','Srebrna');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(2,1,'Srebro','Srebrna');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(3,2,'putanja/nakit/slika3','Zlato','Zlatna');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(3,2,'Zlato','Zlatna');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(4,2,'putanja/nakit/slika4','Aluminijum','Smedja');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(4,2,'Aluminijum','Smedja');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(5,3,'putanja/nakit/slika5','Srebro','Srebrna');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(5,3,'Srebro','Srebrna');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(6,3,'putanja/nakit/slika6','Zlato','Zlatna');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(6,3,'Zlato','Zlatna');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(7,4,'putanja/nakit/slika7','Aluminijum','Smedja');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(7,4,'Aluminijum','Smedja');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(8,4,'putanja/nakit/slika8','Srebro','Srebrna');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(8,4,'Srebro','Srebrna');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(9,5,'putanja/nakit/slika9','Zlato','Zlatna');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(9,5,'Zlato','Zlatna');
 
-INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`slika_nakita`,`materijal`,`boja`)
-VALUES(10,7,'putanja/nakit/slika10','Aluminijum','Smedja');
+INSERT INTO `nakit`(`id_nakita` ,`Tip_id_tipa`,`materijal`,`boja`)
+VALUES(10,7,'Aluminijum','Smedja');
 -- NAKIT
 
 
