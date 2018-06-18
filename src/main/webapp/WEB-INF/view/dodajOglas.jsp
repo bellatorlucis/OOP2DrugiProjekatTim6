@@ -46,7 +46,7 @@
 								
 						Boja:<form:input type="text" name="boja" path="nakit.boja" /><br>			
 						Materijal:<form:input type="text" name="materijal" path="nakit.materijal" /><br>
-						<!--  Slika:<form:input type="file" name="slikaNakita" path="nakit.slikaNakita"/><br> -->
+						Slika:<input type="file" name="file"><br>
 				
 						Minimalna ponuda:<form:input type="text" name="minPonuda" path="minPonuda" /><br>			
 						Tekst:<form:input type="text" name="tekst" path="tekst" /><br>

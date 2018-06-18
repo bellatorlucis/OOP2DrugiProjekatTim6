@@ -43,16 +43,15 @@ public class DodajOglasControllerTim6 {
 	}
 	
 	@RequestMapping(value="/dodavanjeOglasa", method=RequestMethod.POST)
-	public String dodavanjeOglasa(@ModelAttribute("oglas") Ogla oglas, Model m) throws IOException { // @RequestParam("slikaNakita") MultipartFile file
+	public String dodavanjeOglasa(@ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file) throws IOException { 
 		Korisnik k = new Korisnik();
-		k.setIdKorisnika(2);
+		k.setIdKorisnika(2); //TO-DO
 		oglas.setKorisnik(k);
 		
-		/**if (file != null) 
-			oglas.getNakit().setSlikaNakita(file.getBytes());**/
+		if (file != null) 
+			oglas.getNakit().setSlikaNakita(file.getBytes());
 		
 		nakitService.dodajNoviNakit(oglas.getNakit());
-		//m.addAttribute("nakit", oglas.getNakit());
 		
 		oglas.setAktivan(1);
 		oglasService.dodajOglas(oglas);
