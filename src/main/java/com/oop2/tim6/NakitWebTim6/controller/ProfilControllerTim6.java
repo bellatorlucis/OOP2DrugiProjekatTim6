@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
+import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
@@ -31,6 +32,9 @@ public class ProfilControllerTim6 {
 		//List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
 		
 		String korisnickoIme = session.getAttribute("korisnik").toString();
+		
+		List<Ponuda> ponude = ponudaService.getAllPonudeByKorisnik(korisnickoIme);
+		m.addAttribute("ponude", ponude);
 		
 		List<Ogla> oglasi = oglasService.sviOglasiByKorisnickoIme(korisnickoIme);
 		m.addAttribute("oglasi", oglasi);

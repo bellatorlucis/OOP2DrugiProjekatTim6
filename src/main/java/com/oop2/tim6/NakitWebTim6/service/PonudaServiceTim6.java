@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service;
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.Ponuda;
-import com.oop2.tim6.NakitWebTim6.repository.IPonudaJpaRepo;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepo;
 import com.oop2.tim6.NakitWebTim6.repository.IPonudaCrudRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IPonudaJpaRepo;
 
 @Service
 public class PonudaServiceTim6 implements IPonudaServiceTim6{
@@ -28,9 +27,8 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 	public void setKorisnikCrudRepo(IPonudaCrudRepo ponudaCrudRepo) { this.ponudaCrudRepo = ponudaCrudRepo; }
 	
 	@Override
-	public List<Ponuda> getAllPonudaByIDKorisnika() {
-		int idKorisnika = 2;//TO DO NEMANJA :D
-		List<Ponuda> list = ponudaRepo.getAllPonudeByIDKorisnik(idKorisnika);
+	public List<Ponuda> getAllPonudeByKorisnik(String korisnickoIme) {
+		List<Ponuda> list = ponudaRepo.getAllPonudeByKorisnik(korisnickoIme);
 		//?
 		list.stream().map(x->x.getKorisnik().getIdKorisnika()).distinct().collect(Collectors.toList());
 		return list;

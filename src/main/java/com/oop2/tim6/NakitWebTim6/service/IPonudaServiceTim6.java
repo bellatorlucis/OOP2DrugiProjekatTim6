@@ -8,7 +8,7 @@ import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 
 public interface IPonudaServiceTim6 {
 	
-	public List<Ponuda> getAllPonudaByIDKorisnika();
+	public List<Ponuda> getAllPonudeByKorisnik(String korisnickoIme);
 	
 	public Ponuda getTrenutnuPonuduZaOglasId(int oglasId);
 	

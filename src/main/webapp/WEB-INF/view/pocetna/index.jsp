@@ -48,6 +48,27 @@
 			</c:if>	
 		</div>
 	</section>
+	
+	<!--  TO DOOOO -->
+	
+	<section id="content">
+		<div class="content-header">
+
+			<h1>Naziv oglasa</h1>
+			<p>Nesto...</p>
+		</div>
+		<br>
+		<div class="content" onscroll="customScroll()">
+			<c:if test="${!empty ponude }">
+				<c:forEach var="ponuda" items="${ponude }">
+			      		Datum postavljanja ponude:${ponuda.datumVreme }<br>
+			      		Pare:${ponuda.ponudaPare }<br>
+			      		Tekst oglasa:${ponuda.ogla.tekst }<br>
+			      		Naslov oglasa:${ponuda.ogla.naslov }<br>
+			</c:forEach>
+			</c:if>	
+		</div>
+	
 </body>
 
 </html>

@@ -18,7 +18,7 @@ public class PonudaCoontrollerTIm6 {
 
 	@RequestMapping (value="/getPonuda")
 	public String getAllPonudeByIDKorisnik(Model m) {
-		List<Ponuda> list = service.getAllPonudaByIDKorisnika();
+		List<Ponuda> list = service.getAllPonudeByKorisnik("");
 		m.addAttribute("ponudeZaKorisnika", list);
 		return "sviOglasi";
 	}

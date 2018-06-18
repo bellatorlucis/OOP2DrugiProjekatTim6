@@ -11,8 +11,8 @@ import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 
 @Repository
 public interface IPonudaJpaRepo extends JpaRepository<Ponuda, Integer> {																							
-	@Query("SELECT p FROM Ponuda p WHERE p.korisnik.idKorisnika=:idk")
-	public List<Ponuda> getAllPonudeByIDKorisnik(@Param("idk") Integer idKorisnika);
+	@Query("SELECT p FROM Ponuda p WHERE p.idPonude =(SELECT max(T.idPonude) FROM Ponuda T WHERE T.korisnik.korisnickoIme=p.korisnik.korisnickoIme AND T.ogla.idOgla=p.ogla.idOgla) AND p.korisnik.korisnickoIme=:kIme")
+	public List<Ponuda> getAllPonudeByKorisnik(@Param("kIme") String korisnickoIme);
 	
 	@Query("SELECT p FROM Ponuda p WHERE p.ogla.idOgla=:oglasId ORDER BY p.ponudaPare")
 	public List<Ponuda> getPonudeZaOglasId(@Param("oglasId")Integer IdOgla);
