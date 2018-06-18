@@ -13,5 +13,5 @@ import com.oop2.tim6.NakitWebTim6.model.Ogla;
 public interface IOglasJpaRepo extends JpaRepository<Ogla, Integer> {
 	
 	@Query("SELECT o FROM Ogla o WHERE o.korisnik.korisnickoIme = :ime")
-	public List<Ogla> MojfindById(@Param("ime") String korisnickoIme);
+	public List<Ogla> sviOglasiByKorisnickoIme(@Param("ime") String korisnickoIme);
 }

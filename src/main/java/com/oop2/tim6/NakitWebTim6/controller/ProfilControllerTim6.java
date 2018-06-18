@@ -32,7 +32,7 @@ public class ProfilControllerTim6 {
 		
 		String korisnickoIme = session.getAttribute("korisnik").toString();
 		
-		List<Ogla> oglasi = oglasService.getAllOglasiByIdKorisnika(korisnickoIme);
+		List<Ogla> oglasi = oglasService.sviOglasiByKorisnickoIme(korisnickoIme);
 		m.addAttribute("oglasi", oglasi);
 		
 		return "pocetna/index";

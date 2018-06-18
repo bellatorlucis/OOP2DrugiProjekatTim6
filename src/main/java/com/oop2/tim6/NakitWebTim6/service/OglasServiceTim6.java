@@ -19,8 +19,8 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 	private OglasFilterFindRepo oglasFilterRepo;
 
 	@Override
-	public List<Ogla> getAllOglasiByIdKorisnika(String korisnickoIme) {
-		List<Ogla> oglasi = oglasRepo.MojfindById(korisnickoIme);
+	public List<Ogla> sviOglasiByKorisnickoIme(String korisnickoIme) {
+		List<Ogla> oglasi = oglasRepo.sviOglasiByKorisnickoIme(korisnickoIme);
 		List<Ogla> noviOglas = oglasi.stream().sorted(Comparator.comparing(Ogla::getAktivan).thenComparing(Ogla::getIdOgla).reversed())
 				.collect(Collectors.toList());
 
