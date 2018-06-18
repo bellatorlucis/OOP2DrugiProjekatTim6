@@ -3,6 +3,8 @@ package com.oop2.tim6.NakitWebTim6.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +24,17 @@ public class ProfilControllerTim6 {
 	private IPonudaServiceTim6 ponudaService;
 	
 	@RequestMapping(value="/sviOglasiKorisnika", method=RequestMethod.GET)
-	public String getAllKorisniciById(Model m) {
+	public String getAllKorisniciById(Model m, HttpSession session) {
 		List<SearchCriteria> searchCriterias = new ArrayList<SearchCriteria>();
 		searchCriterias.add(new SearchCriteria("idOgla", "1", true));
 		searchCriterias.add(new SearchCriteria("nakit.tip.idTipa", "1", true));
-		List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
+		//List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
+		
+		String korisnickoIme = session.getAttribute("korisnik").toString();
+		
+		List<Ogla> oglasi = oglasService.getAllOglasiByIdKorisnika(korisnickoIme);
 		m.addAttribute("oglasi", oglasi);
+		
 		return "pocetna/index";
 	}
 	

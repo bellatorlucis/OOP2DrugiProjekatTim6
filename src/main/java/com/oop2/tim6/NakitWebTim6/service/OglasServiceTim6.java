@@ -16,18 +16,15 @@ import com.oop2.tim6.NakitWebTim6.repository.OglasFilterFindRepo;
 public class OglasServiceTim6 implements IOglasServiceTim6 {
 
 	private IOglasJpaRepo oglasRepo;
-
 	private OglasFilterFindRepo oglasFilterRepo;
 
 	@Override
-	public List<Ogla> getAllOglasiByIdKorisnika() {
-		int idKorisnika = 1; // treba implementirati, idKorisnika ulogovanog
-		List<Ogla> oglasi = oglasRepo.MojfindById(idKorisnika);
-		List<Ogla> noviOglas = oglasi.stream().sorted(Comparator.comparing(Ogla::getAktivan).reversed())
+	public List<Ogla> getAllOglasiByIdKorisnika(String korisnickoIme) {
+		List<Ogla> oglasi = oglasRepo.MojfindById(korisnickoIme);
+		List<Ogla> noviOglas = oglasi.stream().sorted(Comparator.comparing(Ogla::getAktivan).thenComparing(Ogla::getIdOgla).reversed())
 				.collect(Collectors.toList());
 
 		return noviOglas;
-
 	}
 
 	@Override

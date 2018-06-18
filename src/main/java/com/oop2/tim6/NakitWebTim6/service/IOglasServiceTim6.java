@@ -7,7 +7,7 @@ import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 
 public interface IOglasServiceTim6 {
 	
-	public List<Ogla> getAllOglasiByIdKorisnika();
+	public List<Ogla> getAllOglasiByIdKorisnika(String korisnickoIme);
 	
 	public List<Ogla> getAllOglasi();
 

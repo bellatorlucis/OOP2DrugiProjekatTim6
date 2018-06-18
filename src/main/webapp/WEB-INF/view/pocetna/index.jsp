@@ -23,7 +23,7 @@
 	</script>
 	<header> </header>
 	<div class="sidebar">
-		<img border="2" class="user-image" src="${korisnik.getSlika()}" height="150"
+		<img border="2" class="user-image" src="" height="150"
 			width="150">
 		<p class="user-description">$korisnik.getKratakOpis()</p>
 		<hr>
@@ -38,7 +38,7 @@
 		<div class="content-header">
 
 			<h1>Naziv oglasa</h1>
-			<p>Lep nakit, jos lepse cene, a Jelena najlepsa</p>
+			<p>Nesto...</p>
 		</div>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty oglasi }">
