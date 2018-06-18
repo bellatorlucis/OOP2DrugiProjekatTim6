@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
   `Uloga_id_uloge` int(11) NOT NULL,
   `ime` varchar(50) DEFAULT NULL,
   `prezime` varchar(50) DEFAULT NULL,
-  `slika` blob DEFAULT NULL,
+  `slika` mediumblob DEFAULT NULL,
   `korisnicko_ime` varchar(100) UNIQUE DEFAULT NULL,
   `lozinka` varchar(100) DEFAULT NULL,
   `kratak_opis` varchar(255) DEFAULT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
 CREATE TABLE IF NOT EXISTS `nakit` (
   `id_nakita` int(11) NOT NULL AUTO_INCREMENT,
   `Tip_id_tipa` int(11) NOT NULL,
-  `slika_nakita` blob DEFAULT NULL,
+  `slika_nakita` mediumblob DEFAULT NULL,
   `materijal` varchar(20) DEFAULT NULL,
   `boja` varchar(100) DEFAULT NULL,
    PRIMARY KEY (`id_nakita`),
