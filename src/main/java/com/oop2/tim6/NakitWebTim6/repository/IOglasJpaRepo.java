@@ -14,4 +14,6 @@ public interface IOglasJpaRepo extends JpaRepository<Ogla, Integer> {
 	
 	@Query("SELECT o FROM Ogla o WHERE o.korisnik.korisnickoIme = :ime")
 	public List<Ogla> sviOglasiByKorisnickoIme(@Param("ime") String korisnickoIme);
+
+	Ogla findByIdOgla(int id);
 }

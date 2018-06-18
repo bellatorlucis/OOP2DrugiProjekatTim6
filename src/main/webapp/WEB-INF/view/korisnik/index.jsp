@@ -23,15 +23,16 @@
 	</script>
 	<header> </header>
 	<div class="sidebar">
-		<img border="2" class="user-image" src="" height="150"
-			width="150">
-		<p class="user-description">$korisnik.getKratakOpis()</p>
+		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/> " height="150" width="150">
+		<p class="user-description">${korisnik.getKratakOpis()}</p>
 		<hr>
 		<div class="meniii">
-			<br /> <a class="sidebar-active-button">Pocetna</a> <a
-				href="index2.html" class="sidebar-button">Pretraga</a> <a
-				class="sidebar-button">Dodaj oglas</a> <a class="sidebar-button">Izloguj
-				se</a>
+			<br />
+			<a class="sidebar-active-button">Pocetna</a>
+			<a	href="index2.html" class="sidebar-button">Pretraga</a>
+			<a class="sidebar-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
+            <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
+			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>
 		</div>
 	</div>
 	<section id="content">

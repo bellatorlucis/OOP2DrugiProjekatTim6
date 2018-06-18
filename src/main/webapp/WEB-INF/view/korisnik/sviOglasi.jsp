@@ -9,6 +9,8 @@
 		<c:forEach var="oglas" items="${oglasi }">
 			      Tekst: ${oglas.tekst }<br>
 			      Minimalna ponuda: ${oglas.minPonuda }<br>
+			Slika :
+			<img src="<c:url value="/oglas/oglasSlika/${oglas.idOgla}"/> "/>
 		</c:forEach>
 	</c:if>
 	

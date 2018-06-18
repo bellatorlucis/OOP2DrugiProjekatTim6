@@ -20,7 +20,7 @@ public class PonudaCoontrollerTIm6 {
 	public String getAllPonudeByIDKorisnik(Model m) {
 		List<Ponuda> list = service.getAllPonudeByKorisnik("");
 		m.addAttribute("ponudeZaKorisnika", list);
-		return "sviOglasi";
+		return "korisnik/sviOglasi";
 	}
 	
 	

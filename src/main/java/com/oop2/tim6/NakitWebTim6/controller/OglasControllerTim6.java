@@ -6,13 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
@@ -25,23 +23,23 @@ import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
 
 @Controller
 @RequestMapping(value="/oglas")
-public class DodajOglasControllerTim6 {
+public class OglasControllerTim6 {
 	
 	private ITipServiceTim6 tipService;
 	private INakitServiceTim6 nakitService;
 	private IOglasServiceTim6 oglasService;
 	private IKorisnikJpaRepo korisnikRepo;
 	
-	@RequestMapping(value="/sviTipoviNakita", method=RequestMethod.GET)
+	@RequestMapping(value= "/dodajNovi", method=RequestMethod.GET)
 	public String getAllTipovi(Model m, HttpServletRequest request) {
 		List<Tip> tipoviNakita = tipService.getAllTipoviNakita();
 		request.getSession().setAttribute("tipovi", tipoviNakita);
 		m.addAttribute("tipovi", tipoviNakita);
 		
-		return "dodajOglas";
+		return "korisnik/dodajOglas";
 	}
 	
-	@RequestMapping(value="/dodavanjeOglasa", method=RequestMethod.POST)
+	@RequestMapping(value= "/dodajNovi", method=RequestMethod.POST)
 	public String dodavanjeOglasa(@ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException { 
 		String korisnickoIme = session.getAttribute("korisnik").toString();
 		Korisnik korisnik = korisnikRepo.findByKorisnickoIme(korisnickoIme);
@@ -63,12 +61,30 @@ public class DodajOglasControllerTim6 {
 		oglas.setNaslov("");
 		oglas.setMinPonuda(0.0);
 		
-		return "dodajOglas";
+		return "korisnik/dodajOglas";
 	}
+
+	@RequestMapping(value = "/svi", method = RequestMethod.GET)
+	public String sviOglasi(Model model) {
+
+	    List<Ogla> oglasi = oglasService.getAllOglasi();
+	    model.addAttribute("oglasi", oglasi);
+
+        return "korisnik/sviOglasi";
+    }
+
+    @RequestMapping(value = "/oglasSlika/{id_oglas}")
+    @ResponseBody
+    public byte[] getImageKorisnika(@PathVariable int id_oglas)  {
+
+	    Ogla oglas = oglasService.getOglasWithId(id_oglas);
+        Nakit nakit = oglas.getNakit();
+
+        return nakit.getSlikaNakita();
+    }
 	
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
-		System.out.println("OVOOO JE OGLAS");
 		return new Ogla();
 	}
 	

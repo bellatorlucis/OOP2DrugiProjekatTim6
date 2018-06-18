@@ -69,7 +69,7 @@ public class RootController {
     	String korisnickoIme = session.getAttribute("korisnik").toString();
     	Korisnik korisnik = korisnikJpaRepo.findByKorisnickoIme(korisnickoIme);
     	m.addAttribute("korisnik", korisnik);
-        return "pocetna/index";
+        return "korisnik/index";
     }
 
     @GetMapping(value = "/403")

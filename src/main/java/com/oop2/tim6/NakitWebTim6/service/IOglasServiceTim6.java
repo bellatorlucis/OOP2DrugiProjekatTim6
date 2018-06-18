@@ -14,5 +14,7 @@ public interface IOglasServiceTim6 {
 	public List<Ogla> getOglasByFilters(List<SearchCriteria> searchCriteria);
 	
 	public Ogla dodajOglas(Ogla oglas);
+
+	public Ogla getOglasWithId(int id);
 	
 }

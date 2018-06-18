@@ -54,7 +54,12 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 		
 		return noviOglas;
 	}
-	
+
+	@Override
+	public Ogla getOglasWithId(int id) {
+		return oglasRepo.findByIdOgla(id);
+	}
+
 	@Autowired
 	public void setoJP(IOglasJpaRepo oglasRepo) {
 		this.oglasRepo = oglasRepo;

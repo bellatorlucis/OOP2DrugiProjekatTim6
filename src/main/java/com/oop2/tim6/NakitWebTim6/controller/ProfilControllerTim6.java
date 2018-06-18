@@ -39,7 +39,7 @@ public class ProfilControllerTim6 {
 		List<Ogla> oglasi = oglasService.sviOglasiByKorisnickoIme(korisnickoIme);
 		m.addAttribute("oglasi", oglasi);
 		
-		return "pocetna/index";
+		return "korisnik/index";
 	}
 	
 	@Autowired
