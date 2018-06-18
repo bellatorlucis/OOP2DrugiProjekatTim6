@@ -27,7 +27,7 @@
       </p>
     </form>
     <div class="RegistracijaLink">
-      Nemaš nalog? <a href="https://www.w3schools.com">Registruj se!</a>
+      Nemaš nalog? <a href="/nakitWeb/register">Registruj se!</a>
     </div>
   </div>
 </body>

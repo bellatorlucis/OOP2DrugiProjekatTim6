@@ -20,7 +20,8 @@ public class Korisnik implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_korisnika")
 	private int idKorisnika;
-
+	
+	@Column(name="ime")
 	private String ime;
 
 	@Column(name="korisnicko_ime")
@@ -28,12 +29,15 @@ public class Korisnik implements Serializable {
 
 	@Column(name="kratak_opis")
 	private String kratakOpis;
-
+	
+	@Column(name="lozinka")
 	private String lozinka;
 
+	@Column(name="prezime")
 	private String prezime;
 
 	@Lob
+	@Column(name="slika")
 	private byte[] slika;
 	
 	//bi-directional many-to-one association to Komentar

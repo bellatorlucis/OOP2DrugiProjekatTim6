@@ -1,8 +1,19 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -19,13 +30,16 @@ public class Nakit implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_nakita")
 	private int idNakita;
-
+	
+	@Column(name="boja")
 	private String boja;
-
+	
+	@Column(name="materijal")
 	private String materijal;
-
+	
+	@Lob
 	@Column(name="slika_nakita")
-	private String slikaNakita;
+	private byte[] slikaNakita;
 
 	//bi-directional many-to-one association to Tip
 	@ManyToOne
@@ -63,11 +77,11 @@ public class Nakit implements Serializable {
 		this.materijal = materijal;
 	}
 
-	public String getSlikaNakita() {
+	public byte[] getSlikaNakita() {
 		return this.slikaNakita;
 	}
 
-	public void setSlikaNakita(String slikaNakita) {
+	public void setSlikaNakita(byte[] slikaNakita) {
 		this.slikaNakita = slikaNakita;
 	}
 

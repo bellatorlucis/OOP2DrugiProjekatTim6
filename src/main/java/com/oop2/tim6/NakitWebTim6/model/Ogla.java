@@ -19,14 +19,17 @@ public class Ogla implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_ogla")
 	private int idOgla;
-
+	
+	@Column(name="aktivan")
 	private int aktivan;
 
 	@Column(name="min_ponuda")
 	private double minPonuda;
-
+	
+	@Column(name="naslov")
 	private String naslov;
 
+	@Column(name="tekst")
 	private String tekst;
 
 	//bi-directional many-to-one association to Komentar

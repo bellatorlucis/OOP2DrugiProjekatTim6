@@ -26,7 +26,8 @@ public class Komentar implements Serializable {
 
 	@Column(name="komentar_roditelj_id")
 	private int komentarRoditeljId;
-
+	
+	@Column(name="sadrzaj")
 	private String sadrzaj;
 
 	//bi-directional many-to-one association to Korisnik

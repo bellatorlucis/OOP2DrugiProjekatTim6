@@ -19,7 +19,8 @@ public class Tip implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_tipa")
 	private int idTipa;
-
+	
+	@Column(name="naziv")
 	private String naziv;
 
 	//bi-directional many-to-one association to Nakit
