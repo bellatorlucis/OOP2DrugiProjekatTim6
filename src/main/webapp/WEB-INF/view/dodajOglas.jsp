@@ -1,5 +1,7 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 
 <head>
@@ -37,26 +39,24 @@
 				</div>
 
 				<div class="widget-content">
-					<form action="" method="get">
-						TIP: <select>
-							<c:if test="${!empty tipovi }">
-								<c:forEach var="tip" items="${tipovi }">
-			      					<option value="${ tip.getNaziv()}">${ tip.getNaziv()}</option>
-							</c:forEach>
-							</c:if>
-						</select> <br>
-						Boja: <input type="text" name="boja"> <br>
-						Materijal: <input type="text" name="materijal"><br>
-						Ponuda: <input type="text" name="punuda"><br>
-						Naziv Oglasa: <input type="text" name="nazivOglasa"><br>
-						Kratak opis: <input type="text" name="kratakOpis"><br>
-						<img src="/nakitWeb/images/NoImage.png" height="200" width="200"> <br>
-						<input type="submit" value="Dodaj">
-					</form>
+				
+					<form:form action="/nakitWeb/oglas/dodavanjeOglasa" method="post" enctype="multipart/form-data" modelAttribute="oglas">
+					
+						<form:select path="nakit.tip" items="${tipovi }" itemValue="idTipa" itemLabel="naziv"/> <br><br>
+								
+						Boja:<form:input type="text" name="boja" path="nakit.boja" /><br>			
+						Materijal:<form:input type="text" name="materijal" path="nakit.materijal" /><br>
+						<!--  Slika:<form:input type="file" name="slikaNakita" path="nakit.slikaNakita"/><br> -->
+				
+						Minimalna ponuda:<form:input type="text" name="minPonuda" path="minPonuda" /><br>			
+						Tekst:<form:input type="text" name="tekst" path="tekst" /><br>
+						Naslov:<form:input type="text" name="naslov" path="naslov" /><br>
+		
+						<input type="submit" name="prvi" value="DODAJ"/>
+					</form:form>
 
 				</div>
 			</div>
-
 
 		</div>
 	</section>

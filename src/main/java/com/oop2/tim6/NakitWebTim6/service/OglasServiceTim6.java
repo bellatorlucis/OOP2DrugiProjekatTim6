@@ -17,7 +17,6 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 
 	private IOglasJpaRepo oglasRepo;
 
-	@Autowired
 	private OglasFilterFindRepo oglasFilterRepo;
 
 	@Override
@@ -29,11 +28,6 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 
 		return noviOglas;
 
-	}
-
-	@Autowired
-	public void setoJP(IOglasJpaRepo oglasRepo) {
-		this.oglasRepo = oglasRepo;
 	}
 
 	@Override
@@ -56,4 +50,22 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 	public List<Ogla> getAllOglasi() {
 		return oglasRepo.findAll();
 	}
+	
+	@Override
+	public Ogla dodajOglas(Ogla oglas) {
+		Ogla noviOglas = oglasRepo.save(oglas);
+		
+		return noviOglas;
+	}
+	
+	@Autowired
+	public void setoJP(IOglasJpaRepo oglasRepo) {
+		this.oglasRepo = oglasRepo;
+	}
+	
+	@Autowired
+	public void setOglasFilterRepo(OglasFilterFindRepo oglasFilterRepo) {
+		this.oglasFilterRepo = oglasFilterRepo;
+	}
+	
 }

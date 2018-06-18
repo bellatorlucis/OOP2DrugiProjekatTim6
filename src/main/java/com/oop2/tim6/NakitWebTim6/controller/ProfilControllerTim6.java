@@ -13,7 +13,6 @@ import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
-import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
 
 @Controller
 @RequestMapping(value="/profil")

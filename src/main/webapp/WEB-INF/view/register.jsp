@@ -41,7 +41,7 @@
             <input type="submit" value="Registruj se">
             <div class="j">
                 Već imaš nalog?
-                <a href="https://www.w3schools.com">Prijavi se!</a>
+                <a href="/nakitWeb/login">Prijavi se!</a>
             </div>
         </spring:form>
     </div>
