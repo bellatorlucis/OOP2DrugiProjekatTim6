@@ -27,8 +27,8 @@
 		<hr>
 		<div class="meniii">
 			<br />
-			<a class="sidebar-button" href="<c:url value="/profil/sviOglasiKorisnika"/> ">Pocetna</a>
-			<a href="index2.html" class="sidebar-button">Pretraga</a>
+			<a class="sidebar-button" href="<c:url value="/dashboard"/> ">Pocetna</a>
+			<a class="sidebar-button" href="<c:url value="/testSearch"/> ">Pretraga</a>
 			<a class="sidebar-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
             <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
 			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>
@@ -41,7 +41,7 @@
 			<p>Nesto...</p>
 		</div>
 		<div class="content" onscroll="customScroll()">
-			<c:if test="${!empty oglasi }">
+			<c:if test="${!empty oglas }">
 			     ${oglas.printOglasToHTML() }
 			</c:if>	
 		</div>
@@ -55,7 +55,7 @@
 		</div>
 		<br>
 		<div class="content" onscroll="customScroll()">
-			<c:if test="${!empty ponude }">
+			<c:if test="${!empty ponuda }">
 			      	${ponuda.printPonudaToHTML() }
 			</c:if>	
 		</div>

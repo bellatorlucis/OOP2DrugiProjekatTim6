@@ -29,7 +29,7 @@
 		<div class="meniii">
 			<br />
 			<a class="sidebar-active-button" href="<c:url value="/dashboard"/> ">Pocetna</a>
-			<a href="index2.html" class="sidebar-button">Pretraga</a>
+			<a class="sidebar-button" href="<c:url value="/testSearch"/> ">Pretraga</a>
 			<a class="sidebar-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
             <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
 			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>

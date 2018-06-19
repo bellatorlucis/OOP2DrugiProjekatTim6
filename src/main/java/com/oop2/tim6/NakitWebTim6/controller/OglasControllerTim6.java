@@ -2,7 +2,6 @@ package com.oop2.tim6.NakitWebTim6.controller;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +23,8 @@ import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.OglasSearchDto;
+import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
@@ -36,9 +36,7 @@ public class OglasControllerTim6 {
 	
 	private ITipServiceTim6 tipService;
 	private INakitServiceTim6 nakitService;
-	
 	private IOglasServiceTim6 oglasService;
-	private IKorisnikJpaRepo korisnikRepo;
 	private IPonudaServiceTim6 ponudaService;
 	
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.GET)
@@ -102,6 +100,16 @@ public class OglasControllerTim6 {
 
         return nakit.getSlikaNakita();
     }
+    
+    @GetMapping (value = "/detaljiOglasa/{id_oglas}")
+    public String getOglasByID(@PathVariable int id_oglas ,Model m) {
+		Ogla oglas = oglasService.getOglasWithId(id_oglas);
+		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
+		m.addAttribute("oglas",oglas);
+		m.addAttribute("ponuda",ponuda);
+		
+		return "korisnik/detaljiOglasa";
+    }
 	
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
@@ -123,10 +131,6 @@ public class OglasControllerTim6 {
 		this.oglasService = oglasService;
 	}
 
-	@Autowired
-	public void setKorisnikRepo(IKorisnikJpaRepo korisnikRepo) {
-		this.korisnikRepo = korisnikRepo;
-	}
 	@Autowired
 	public void setPonudaService(IPonudaServiceTim6 ponudaService) {
 		this.ponudaService = ponudaService;
