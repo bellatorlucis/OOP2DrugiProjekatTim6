@@ -6,14 +6,19 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
+import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
@@ -41,8 +46,7 @@ public class OglasControllerTim6 {
 	
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.POST)
 	public String dodavanjeOglasa(@ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException { 
-		String korisnickoIme = session.getAttribute("korisnik").toString();
-		Korisnik korisnik = korisnikRepo.findByKorisnickoIme(korisnickoIme);
+		Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 		
 		if (file != null) 
 			oglas.getNakit().setSlikaNakita(file.getBytes());

@@ -40,7 +40,7 @@
 
 				<div class="widget-content">
 				
-					<form:form action="/nakitWeb/oglas/dodavanjeOglasa" method="post" enctype="multipart/form-data" modelAttribute="oglas">
+					<form:form action="/nakitWeb/oglas/dodajNovi" method="post" enctype="multipart/form-data" modelAttribute="oglas">
 					
 						<form:select path="nakit.tip" items="${tipovi }" itemValue="idTipa" itemLabel="naziv"/> <br><br>
 								

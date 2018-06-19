@@ -45,7 +45,10 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 
 	@Override
 	public List<Ogla> getAllOglasi() {
-		return oglasRepo.findAll();
+		List<Ogla> oglasi = oglasRepo.findSviAktivniOglasi();
+		List<Ogla> sortiraniOglasi = oglasi.stream().sorted(Comparator.comparing(Ogla::getIdOgla).reversed()).collect(Collectors.toList());
+		
+		return sortiraniOglasi;
 	}
 	
 	@Override

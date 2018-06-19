@@ -278,7 +278,7 @@ INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,
 VALUES (8,8,8,'Narukvica magicna daje letenje i +2 na agility','Narukvica magicna daje letenje i +2 na agility',6660,1,'2018-06-13 16:54');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (9,9,9,'Burma, jedna nosena, razvod bio brz','Burma, jedna nosena, razvod bio brz',1000,1),'2018-06-06 14:54';
+VALUES (9,9,9,'Burma, jedna nosena, razvod bio brz','Burma, jedna nosena, razvod bio brz',1000,1,'2018-06-06 14:54');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (10,10,10 ,'Kruna kralja Henrija V','Kruna kralja Henrija V',42000,1,'2018-06-07 18:54');
