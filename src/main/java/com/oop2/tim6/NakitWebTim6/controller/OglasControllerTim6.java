@@ -77,8 +77,8 @@ public class OglasControllerTim6 {
 	}
 
 	
-	@RequestMapping(value ="/rezultatiPretrage")
-    public String getOglasiBy(@ModelAttribute("searchConfiguration") OglasSearchDto searchConfiguration, Model model) {
+	@RequestMapping(value ="/rezultatiPretrage", method=RequestMethod.POST)
+    public String getOglasiBy(@ModelAttribute("oglasSearchDto") OglasSearchDto searchConfiguration, Model model) {
 		List<Ogla> oglasi = oglasService.getOglasByFilters(searchConfiguration.generateQueryExtensionForOglas());
 		model.addAttribute("oglasi", oglasi);
     	return "rezultatiPretrage";

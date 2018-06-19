@@ -33,16 +33,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
+import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.repository.IUlogaRepo;
+import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.UserSecurityService;
 
 
 @Controller
 public class RootController {
-	private static final String USER_IMAGES_PATH ="userImages/{0}.png";
+	private static final String USER_IMAGES_PATH ="userImages/%d.png";
 	
+	@Autowired
+	ITipServiceTim6 tipService;
 	
     @Autowired
     IKorisnikJpaRepo korisnikJpaRepo;
@@ -94,6 +98,17 @@ public class RootController {
         }
         return "login";
     }
+    
+    @GetMapping(value = "/testSearch")
+    public String testSearch(Model model) {
+    	List<Tip> tipovi = tipService.getAllTipoviNakita();
+    	Tip svi = new Tip();
+    	svi.setIdTipa(0);
+    	svi.setNaziv("Svi");
+    	tipovi.add(svi);
+    	model.addAttribute("tipovi", tipovi);
+    	return "search";
+    }
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String getDashBoard(Model m, HttpSession session) {
@@ -141,7 +156,7 @@ public class RootController {
         return new Korisnik();
     }
 
-    public void executeSqlScript(Connection connection, byte[] encoded)throws SQLException, IOException{
+    private void executeSqlScript(Connection connection, byte[] encoded)throws SQLException, IOException{
         try {
             connection.setAutoCommit(false);
             ScriptUtils.executeSqlScript(connection, new ByteArrayResource(encoded));

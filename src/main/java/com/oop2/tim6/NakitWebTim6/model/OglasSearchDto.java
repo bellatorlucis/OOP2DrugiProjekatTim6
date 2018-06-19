@@ -6,23 +6,23 @@ import java.util.List;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
 
 public class OglasSearchDto {
-	private Tip izabranTip;
+	private int izabranTip;
 	private String boja;
 	private String materijal;
 	private String naslov;
 
-	public OglasSearchDto(Tip izabranTip, String boja, String materijal, String naslov) {
+	public OglasSearchDto(int izabranTip, String boja, String materijal, String naslov) {
 		this.izabranTip = izabranTip;
 		this.boja = boja;
 		this.materijal = materijal;
 		this.naslov = naslov;
 	}
 
-	public Tip getIzabranTip() {
+	public int getIzabranTip() {
 		return izabranTip;
 	}
 
-	public void setIzabranTip(Tip izabranTip) {
+	public void setIzabranTip(int izabranTip) {
 		this.izabranTip = izabranTip;
 	}
 
@@ -79,8 +79,8 @@ public class OglasSearchDto {
 			searchCriteria.add(new SearchCriteria(SearchOption.MATERIJAL, materijal));
 		}
 
-		if (this.izabranTip != null) {
-			searchCriteria.add(new SearchCriteria(SearchOption.BOJA, "" + izabranTip.getIdTipa()));
+		if (this.izabranTip != 0) {
+			searchCriteria.add(new SearchCriteria(SearchOption.ID_TIPA, "" + izabranTip));
 		}
 
 		return searchCriteria;
