@@ -28,8 +28,8 @@
 		<hr>
 		<div class="meniii">
 			<br />
-			<a class="sidebar-active-button">Pocetna</a>
-			<a	href="index2.html" class="sidebar-button">Pretraga</a>
+			<a class="sidebar-active-button" href="<c:url value="/dashboard"/> ">Pocetna</a>
+			<a href="index2.html" class="sidebar-button">Pretraga</a>
 			<a class="sidebar-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
             <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
 			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>
@@ -38,8 +38,7 @@
 	<section id="content">
 		<div class="content-header">
 
-			<h1>Naziv oglasa</h1>
-			<p>Nesto...</p>
+			<h1>Oglasna tabla</h1>
 		</div>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty oglasi }">
@@ -62,13 +61,11 @@
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty ponude }">
 				<c:forEach var="ponuda" items="${ponude }">
-			      		Datum postavljanja ponude:${ponuda.datumVreme }<br>
-			      		Pare:${ponuda.ponudaPare }<br>
-			      		Tekst oglasa:${ponuda.ogla.tekst }<br>
-			      		Naslov oglasa:${ponuda.ogla.naslov }<br>
+			      	${ponuda.printPonudaToHTML() }
 			</c:forEach>
 			</c:if>	
 		</div>
+	</section>
 	
 </body>
 

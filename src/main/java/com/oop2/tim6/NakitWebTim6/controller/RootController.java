@@ -1,4 +1,4 @@
-package com.oop2.tim6.NakitWebTim6.controller;
+	package com.oop2.tim6.NakitWebTim6.controller;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,12 +109,6 @@ public class RootController {
     	return "search";
     }
 
-    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String getDashBoard(Model m, HttpSession session) {
-
-        return "korisnik/index";
-    }
-
     @GetMapping(value = "/403")
     public String error403() {
         return "error/403";
@@ -167,7 +160,5 @@ public class RootController {
            connection.close();
        }
     }
+    
 }
-
-
-

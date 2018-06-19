@@ -14,22 +14,22 @@
 <body>
 	<header> </header>
 	<div class="sidebar">
-		<img border="2" class="user-image" src="dalibor.jpg" height="150"
-			width="150">
-		<p class="user-description">kao Neki text tu stoji aaaaa aaaas
-			adsasdsa asd as da s sdaaaaaaaaaaa</p>
+		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/>" height="150" width="150">
+		<p class="user-description">${korisnik.kratakOpis}</p>
 		<hr>
 		<div class="meniii">
-			<br /> <a class="sidebar-button">Pocetna</a> <a href="index2.html"
-				class="sidebar-button">Pretraga</a> <a class="sidebar-active-button">Dodaj
-				oglas</a> <a class="sidebar-button">Izloguj se</a>
+			<br />
+			<a class="sidebar-button" href="<c:url value="/profil/sviOglasiKorisnika"/> ">Pocetna</a>
+			<a href="index2.html" class="sidebar-button">Pretraga</a>
+			<a class="sidebar-active-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
+            <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
+			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>
 		</div>
 	</div>
 	<section id="content">
 		<div class="content-header">
-
-			<h1>r oglasa</h1>
-			<p>Lep nakit, jos lepse cene, a Jelena najlepsa</p>
+		
+			<h1>Dodaj oglas</h1>
 		</div>
 		<div class="content">
 			<div class="widget-boxsample-widget">

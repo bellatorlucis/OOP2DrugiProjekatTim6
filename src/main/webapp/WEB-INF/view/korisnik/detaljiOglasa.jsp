@@ -7,7 +7,6 @@
 <title>Detalji Oglasa</title>
 <link rel="stylesheet" href="/nakitWeb/css/pocetnaStyle.css" type="text/css" />
 </head>
-
 <body>
 	<script>
 		function customScroll() {
@@ -23,15 +22,13 @@
 	</script>
 	<header> </header>
 	<div class="sidebar">
-	<!--  
-		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/> " height="150" width="150">
-		<p class="user-description">${korisnik.getKratakOpis()}</p> 
-	-->
+		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/>" height="150" width="150">
+		<p class="user-description">${korisnik.kratakOpis}</p>
 		<hr>
 		<div class="meniii">
 			<br />
-			<a class="sidebar-active-button">Pocetna</a>
-			<a	href="index2.html" class="sidebar-button">Pretraga</a>
+			<a class="sidebar-button" href="<c:url value="/profil/sviOglasiKorisnika"/> ">Pocetna</a>
+			<a href="index2.html" class="sidebar-button">Pretraga</a>
 			<a class="sidebar-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
             <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
 			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>
@@ -45,9 +42,7 @@
 		</div>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty oglasi }">
-			      <c:forEach var="oglas" items="${oglasi }">
-			     	${oglas.printOglasToHTML() }
-			      </c:forEach>
+			     ${oglas.printOglasToHTML() }
 			</c:if>	
 		</div>
 	</section>
@@ -61,12 +56,10 @@
 		<br>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty ponude }">
-				<c:forEach var="ponuda" items="${ponude }">
-			      		${ponuda.printPonudaToHTML()}
-			</c:forEach>
+			      	${ponuda.printPonudaToHTML() }
 			</c:if>	
 		</div>
+	</section>
 	
 </body>
-
 </html>
