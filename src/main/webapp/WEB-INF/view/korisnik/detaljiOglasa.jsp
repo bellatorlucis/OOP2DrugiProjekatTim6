@@ -44,8 +44,10 @@
 			<p>Nesto...</p>
 		</div>
 		<div class="content" onscroll="customScroll()">
-			<c:if test="${!empty oglas }">
-			      	${oglas.printOglasToHTML()}
+			<c:if test="${!empty oglasi }">
+			      <c:forEach var="oglas" items="${oglasi }">
+			     	${oglas.printOglasToHTML() }
+			      </c:forEach>
 			</c:if>	
 		</div>
 	</section>

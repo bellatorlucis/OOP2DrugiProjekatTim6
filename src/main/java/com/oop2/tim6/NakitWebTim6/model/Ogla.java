@@ -1,6 +1,8 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -149,6 +151,16 @@ public class Ogla implements Serializable {
 		ponuda.setOgla(this);
 
 		return ponuda;
+	}
+	
+	
+
+	public Date getDatumVreme() {
+		return datumVreme;
+	}
+
+	public void setDatumVreme(Date datumVreme) {
+		this.datumVreme = datumVreme;
 	}
 
 	public Ponuda removePonuda(Ponuda ponuda) {

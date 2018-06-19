@@ -35,17 +35,15 @@ public class ProfilControllerTim6 {
 		searchCriterias.add(new SearchCriteria("nakit.tip.idTipa", "1", true));
 		//List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
 		
-		String korisnickoIme = session.getAttribute("korisnik").toString();
-		Korisnik korisnik = korisnikRepo.findByKorisnickoIme(korisnickoIme);
-		request.setAttribute("korisnik", korisnik);
+		Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 		
-		List<Ponuda> ponude = ponudaService.getAllPonudeByKorisnik(korisnickoIme);
+		List<Ponuda> ponude = ponudaService.getAllPonudeByKorisnik(korisnik.getKorisnickoIme());
 		m.addAttribute("ponude", ponude);
 		
-		List<Ogla> oglasi = oglasService.sviOglasiByKorisnickoIme(korisnickoIme);
+		List<Ogla> oglasi = oglasService.sviOglasiByKorisnickoIme(korisnik.getKorisnickoIme());
 		m.addAttribute("oglasi", oglasi);
 		
-		return "korisnik/index";
+		return "korisnik/detaljiOglasa";
 	}
 	
 	@Autowired

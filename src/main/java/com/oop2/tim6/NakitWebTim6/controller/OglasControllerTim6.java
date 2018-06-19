@@ -1,6 +1,7 @@
 package com.oop2.tim6.NakitWebTim6.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,6 +60,8 @@ public class OglasControllerTim6 {
 		
 		oglas.setAktivan(1);
 		oglas.setKorisnik(korisnik);
+		LocalDateTime ldt = LocalDateTime.now();	
+		oglas.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
 		oglasService.dodajOglas(oglas);
 		m.addAttribute("oglas", oglas);
 		
