@@ -41,7 +41,9 @@ import com.oop2.tim6.NakitWebTim6.service.UserSecurityService;
 
 @Controller
 public class RootController {
-
+	private static final String USER_IMAGES_PATH ="userImages/{0}.png";
+	
+	
     @Autowired
     IKorisnikJpaRepo korisnikJpaRepo;
 
@@ -127,7 +129,7 @@ public class RootController {
       	executeSqlScript(con, insertEncoded);
     	java.util.List<Korisnik> korisnici = korisnikJpaRepo.findAll();
     	for(Korisnik korisnik: korisnici) {
-    		korisnik.setSlika(Files.readAllBytes(Paths.get("userImages/" +korisnik.getIdKorisnika()+".png")));
+    		korisnik.setSlika(Files.readAllBytes(Paths.get(String.format(USER_IMAGES_PATH, korisnik.getIdKorisnika()))));
     	}
 
     	korisnikJpaRepo.saveAll(korisnici);

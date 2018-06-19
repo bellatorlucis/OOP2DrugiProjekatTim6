@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.Ponuda;
-import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
@@ -30,11 +29,6 @@ public class ProfilControllerTim6 {
 	
 	@RequestMapping(value="/sviOglasiKorisnika", method=RequestMethod.GET)
 	public String getAllKorisniciById(Model m, HttpSession session, HttpServletRequest request) {
-		List<SearchCriteria> searchCriterias = new ArrayList<SearchCriteria>();
-		searchCriterias.add(new SearchCriteria("idOgla", "1", true));
-		searchCriterias.add(new SearchCriteria("nakit.tip.idTipa", "1", true));
-		//List<Ogla> oglasi = oglasService.getOglasByFilters(searchCriterias);
-		
 		Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 		
 		List<Ponuda> ponude = ponudaService.getAllPonudeByKorisnik(korisnik.getKorisnickoIme());

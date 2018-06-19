@@ -2,6 +2,7 @@ package com.oop2.tim6.NakitWebTim6.controller;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
+import com.oop2.tim6.NakitWebTim6.model.OglasSearchDto;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
@@ -35,7 +37,6 @@ public class OglasControllerTim6 {
 	private ITipServiceTim6 tipService;
 	private INakitServiceTim6 nakitService;
 	
-
 	private IOglasServiceTim6 oglasService;
 	private IKorisnikJpaRepo korisnikRepo;
 	private IPonudaServiceTim6 ponudaService;
@@ -75,6 +76,14 @@ public class OglasControllerTim6 {
 		return "korisnik/dodajOglas";
 	}
 
+	
+	@RequestMapping(value ="/rezultatiPretrage")
+    public String getOglasiBy(@ModelAttribute("searchConfiguration") OglasSearchDto searchConfiguration, Model model) {
+		List<Ogla> oglasi = oglasService.getOglasByFilters(searchConfiguration.generateQueryExtensionForOglas());
+		model.addAttribute("oglasi", oglasi);
+    	return "rezultatiPretrage";
+    }
+    
 	@RequestMapping(value = "/svi", method = RequestMethod.GET)
 	public String sviOglasi(Model model) {
 

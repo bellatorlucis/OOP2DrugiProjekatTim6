@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
-import com.oop2.tim6.NakitWebTim6.model.SearchCriteria;
 import com.oop2.tim6.NakitWebTim6.repository.IOglasJpaRepo;
 import com.oop2.tim6.NakitWebTim6.repository.OglasFilterFindRepo;
 
@@ -28,19 +27,8 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 	}
 
 	@Override
-	public List<Ogla> getOglasByFilters(List<SearchCriteria> searchCriterias) {
-		String query = generateQueryFromSearchCriteria(searchCriterias);
-		return oglasFilterRepo.getOglasiBy(query);
-	}
-
-	private String generateQueryFromSearchCriteria(List<SearchCriteria> searchCriterias) {
-		SearchCriteria lastSearchCriteria = searchCriterias.remove(searchCriterias.size() - 1);
-		String query = "";
-		for (SearchCriteria sc : searchCriterias) {
-			query += "o." + sc.toString() + " and ";
-		}
-
-		return query + lastSearchCriteria.toString();
+	public List<Ogla> getOglasByFilters(String extensionQuery) {
+		return oglasFilterRepo.getOglasiBy(extensionQuery);
 	}
 
 	@Override
