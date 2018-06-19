@@ -23,10 +23,10 @@
 	</script>
 	<header> </header>
 	<div class="sidebar">
-	<!--  
+ 
 		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/> " height="150" width="150">
 		<p class="user-description">${korisnik.getKratakOpis()}</p> 
-	-->
+
 		<hr>
 		<div class="meniii">
 			<br />
@@ -44,10 +44,9 @@
 			<p>Nesto...</p>
 		</div>
 		<div class="content" onscroll="customScroll()">
-			<c:if test="${!empty oglasi }">
-			      <c:forEach var="oglas" items="${oglasi }">
+			<c:if test="${!empty oglas }">
 			     	${oglas.printOglasToHTML() }
-			      </c:forEach>
+			      
 			</c:if>	
 		</div>
 	</section>
@@ -60,10 +59,10 @@
 		</div>
 		<br>
 		<div class="content" onscroll="customScroll()">
-			<c:if test="${!empty ponude }">
-				<c:forEach var="ponuda" items="${ponude }">
+			<c:if test="${!empty ponuda }">
+				
 			      		${ponuda.printPonudaToHTML()}
-			</c:forEach>
+			
 			</c:if>	
 		</div>
 	

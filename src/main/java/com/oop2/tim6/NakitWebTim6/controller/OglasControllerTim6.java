@@ -2,7 +2,6 @@ package com.oop2.tim6.NakitWebTim6.controller;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +23,7 @@ import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.OglasSearchDto;
+import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
@@ -106,6 +107,15 @@ public class OglasControllerTim6 {
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
 		return new Ogla();
+	}
+	
+	@GetMapping (value = "/detaljiOglasa/{id_oglas}")
+	public String getOglasByID(@PathVariable int id_oglas ,Model m) {
+		Ogla oglas = oglasService.getOglasWithId(id_oglas);
+		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
+		m.addAttribute("oglas",oglas);
+		m.addAttribute("ponuda",ponuda);
+		return "korisnik/detaljiOglasa";
 	}
 	
 	@Autowired

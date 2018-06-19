@@ -173,7 +173,7 @@ public class Ogla implements Serializable {
 	public String printOglasToHTML() {
 		String html = "<div class=\"widget-box sample-widget\">\n" + 
 				"			<div class=\"widget-header\">\n" + 
-				"				<h2><a style=\"color:white; \" href=\"https://www.w3schools.com\">"+naslov+"</a></h2>"  + 
+				"				<h2><a style=\"color:white; \" href=\"/nakitWeb/oglas/detaljiOglasa/"+ idOgla + "\">"+naslov+"</a></h2>"  + 
 				"					<i class=\"fa fa-cog\"></i>\n" + 
 				"				</div>\n" +
 				"				<p>"+ nakit.opisNakitaToHTML() +"</p><br>"+

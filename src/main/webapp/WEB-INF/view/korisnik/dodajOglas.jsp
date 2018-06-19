@@ -20,9 +20,11 @@
 			adsasdsa asd as da s sdaaaaaaaaaaa</p>
 		<hr>
 		<div class="meniii">
-			<br /> <a class="sidebar-button">Pocetna</a> <a href="index2.html"
-				class="sidebar-button">Pretraga</a> <a class="sidebar-active-button">Dodaj
-				oglas</a> <a class="sidebar-button">Izloguj se</a>
+			<br /> 
+			<a href= "<c:url value="/profil/sviOglasiKorisnika "/>" class="sidebar-button"> Pocetna</a> 
+			<a href= "index2.html" class="sidebar-button"> Pretraga </a> 
+			<a href= "<c:url value="/oglas/dodajNovi" />"  class="sidebar-active-button"> Dodaj oglas </a>
+			<a href="<c:url value="/logout"/>" class="sidebar-button"> Izloguj se </a>
 		</div>
 	</div>
 	<section id="content">
