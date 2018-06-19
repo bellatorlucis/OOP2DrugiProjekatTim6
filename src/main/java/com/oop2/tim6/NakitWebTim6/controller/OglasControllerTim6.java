@@ -24,6 +24,7 @@ import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
+import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
 
 @Controller
@@ -32,8 +33,11 @@ public class OglasControllerTim6 {
 	
 	private ITipServiceTim6 tipService;
 	private INakitServiceTim6 nakitService;
+	
+
 	private IOglasServiceTim6 oglasService;
 	private IKorisnikJpaRepo korisnikRepo;
+	private IPonudaServiceTim6 ponudaService;
 	
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.GET)
 	public String getAllTipovi(Model m, HttpServletRequest request) {
@@ -110,6 +114,10 @@ public class OglasControllerTim6 {
 	@Autowired
 	public void setKorisnikRepo(IKorisnikJpaRepo korisnikRepo) {
 		this.korisnikRepo = korisnikRepo;
+	}
+	@Autowired
+	public void setPonudaService(IPonudaServiceTim6 ponudaService) {
+		this.ponudaService = ponudaService;
 	}
 	
 }

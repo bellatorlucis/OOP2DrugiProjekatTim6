@@ -21,7 +21,7 @@ public class CustomLoginSuccessfulHandler implements AuthenticationSuccessHandle
   public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
       throws IOException, ServletException {
 	  request.getSession().setAttribute("korisnik",korisnikService.getKorisnikWithUsername(authentication.getName()));
-	  response.sendRedirect("/nakitWeb/dashboard");
+	  response.sendRedirect("/nakitWeb/profil/sviOglasiKorisnika");
   }
 
   @Autowired
