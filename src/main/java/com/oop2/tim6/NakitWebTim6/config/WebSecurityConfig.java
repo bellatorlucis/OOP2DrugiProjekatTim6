@@ -12,6 +12,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -20,6 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserSecurityService userService;
     private CustomAccessDeniedHandler customAccessDeniedHandler;
     private CustomLoginSuccessfulHandler loginSuccessfulHandler;
+    private DataSource dataSource;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,13 +36,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests().and().formLogin()
-                //.loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .loginPage("/login")
-                .failureUrl("/login?error=true")
-                .usernameParameter("korisnickoIme")
-                .passwordParameter("lozinka")
-                .successHandler(loginSuccessfulHandler)
-                .and().logout().logoutUrl("/logout");
+                    .loginPage("/login")
+                    .failureUrl("/login?error=true")
+                    .usernameParameter("korisnickoIme")
+                    .passwordParameter("lozinka")
+                    .successHandler(loginSuccessfulHandler)
+               /* .and()
+                    .rememberMe()
+                    .rememberMeCookieName("nakitWeb-remember-me")
+                    .tokenValiditySeconds(24 * 60 * 60) // expired time = 1 day
+                    .tokenRepository(persistentTokenRepository())*/
+                .and()
+                    .logout()
+                    .logoutUrl("/logout");
 
         http
                 .authorizeRequests()
@@ -59,6 +70,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return auth;
     }
 
+   /* @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+        tokenRepository.setDataSource(dataSource);
+        return tokenRepository;
+    }*/
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception { auth.authenticationProvider(authenticationProvider()); }
 
@@ -72,4 +90,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Autowired
     public void setCustomLoginSuccessfulHandler(CustomLoginSuccessfulHandler loginSuccessfulHandler) {this.loginSuccessfulHandler = loginSuccessfulHandler;}
+
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 }

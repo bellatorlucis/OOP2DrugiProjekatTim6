@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 
 @Controller
@@ -41,6 +43,11 @@ public class RootController {
     @Autowired
     IUlogaRepo ulogaRepo;
 
+    @GetMapping("/")
+    public String indexPage(){
+        return "index";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLogin() {
         return "login";
@@ -51,16 +58,24 @@ public class RootController {
         return "register";
     }
     
-    @PostMapping(value = "/saveKorisnik")
-    public String saveKorisnik(@ModelAttribute("korisnik") Korisnik korisnik, @RequestParam("file") MultipartFile file) throws IOException {
+    @PostMapping(value = "/register")
+    public String saveKorisnik(@Valid @ModelAttribute("korisnik") Korisnik korisnik, BindingResult bindingResult, @RequestParam("file") MultipartFile file, Model model) throws IOException {
     	if(file != null) {
         	korisnik.setSlika(file.getBytes());
     	}
+
+    	if(bindingResult.hasErrors())
+    	    return "register";
     	
     	Uloga uloga = ulogaRepo.findByIdUloge(1);
     	korisnik.setUloga(uloga);
-    
-    	userSecurityService.saveNewKorisnik(korisnik);
+
+    	Korisnik noviKorisnik = userSecurityService.saveNewKorisnik(korisnik);
+
+    	if(noviKorisnik == null){
+    	    model.addAttribute("usernameExists",true);
+    	    return "register";
+        }
         return "login";
     }
 
@@ -92,41 +107,11 @@ public class RootController {
         return "redirect:/login?logout";
     }
 
-    //Ovo je samo pomocni kontroler dok ne unesemo sve nove korisnike
-    //Posle ce se napraviti novi kontrolor ya registraciju
-    @GetMapping("/noviKorisnik")
-    public String noviKorisnik(){
-        //Videti u bazi koji je ID korisnika
-        Korisnik korisnik = korisnikJpaRepo.findByIdKorisnika(1);
-        //Uneti username korisnika koji ce biti password
-        //
-        userSecurityService.pomocniMetodZaKreiranjeHasha("mknez");
-        Korisnik novi  = userSecurityService.saveNewKorisnik(korisnik);
-        System.out.println("Novi hash" + novi.getLozinka());
-
-        return "uspeh";
-    }
-
-    @GetMapping("/user/kreiraj")
-    public String kreiraj(){
-
-        //PRavi novog korisnika u bazi
-        //koristio da bi dobio dobre hashove pasvorda
-        Korisnik korisnik = new Korisnik();
-        Uloga uloga = ulogaRepo.findByIdUloge(1);
-        korisnik.setUloga(uloga);
-        korisnik.setKorisnickoIme("nmasnikosa");
-        korisnik.setLozinka("nmasnikosa");
-        korisnik.setKratakOpis("KIDA KIDAM KIDAM");
-        korisnik.setIme("Nemanja");
-        korisnik.setPrezime("Masnikosa");
-       // korisnik.setSlika("putanja/korisnici/slika12");
-
-
-        Korisnik novi = userSecurityService.saveNewKorisnik(korisnik);
-        System.out.println(novi.getLozinka());
-
-        return "uspeh";
+    @ModelAttribute("korisnik")
+    public Korisnik getKorisnik(){
+        return new Korisnik();
     }
 }
+
+
 

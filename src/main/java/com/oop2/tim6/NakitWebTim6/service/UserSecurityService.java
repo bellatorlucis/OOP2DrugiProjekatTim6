@@ -25,7 +25,6 @@ public class UserSecurityService implements UserDetailsService {
     private IKorisnikJpaRepo korisnikJpaRepo;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private IKorisnikCrudRepo korisnikCrudRepo;
-    private String pass;
 
     @Override
     public UserDetails loadUserByUsername(String korisnickoIme) throws UsernameNotFoundException {
@@ -45,17 +44,16 @@ public class UserSecurityService implements UserDetailsService {
 
     //Koristiti ovaj metod za cuvanje novih korisnika, ili za update vec postojecih
    public Korisnik saveNewKorisnik(Korisnik korisnik){
-        //ovde privremeni korisnim private polje pass
-       //da bi modifikovali korisnmika
-       //kasnije ce ga on sam dobavljati iz korisnik.getLozinka() metoda
+
+        Korisnik rez = korisnikJpaRepo.findByKorisnickoIme(korisnik.getKorisnickoIme());
+        if(rez != null)
+            return null;
+
         korisnik.setLozinka(bCryptPasswordEncoder.encode(korisnik.getLozinka()));
 
         return  korisnikCrudRepo.save(korisnik);
    }
 
-   public void pomocniMetodZaKreiranjeHasha(String pass){
-        this.pass = pass;
-   }
 
    @Autowired
    public void setKorisnikCrudRepo(IKorisnikCrudRepo korisnikCrudRepo) { this.korisnikCrudRepo = korisnikCrudRepo; }
