@@ -55,13 +55,17 @@ public class OglasSearchDto {
 	}
 
 	private String generateQueryFromSearchCriteria(List<SearchCriteria> searchCriterias) {
+		if(searchCriterias.isEmpty()) {
+			return "";
+		}
+		
 		SearchCriteria lastSearchCriteria = searchCriterias.remove(searchCriterias.size() - 1);
-		String query = "";
+		String query = " and ";
 		for (SearchCriteria sc : searchCriterias) {
 			query += "o." + sc.toString() + " and ";
 		}
 
-		query += lastSearchCriteria.toString() + ";";
+		query += lastSearchCriteria.toString();
 		return query;
 	}
 
@@ -109,7 +113,7 @@ public class OglasSearchDto {
 	}
 	
 	private enum SearchOption {
-		ID_TIPA("nakit.tip.idTipa", true), BOJA("boja", false), MATERIJAL("materijal", false), NASLOV("naslov", false);
+		ID_TIPA("nakit.tip.idTipa", true), BOJA("nakit.boja", false), MATERIJAL("nakit.materijal", false), NASLOV("naslov", false);
 
 		private String column;
 		private boolean isId;

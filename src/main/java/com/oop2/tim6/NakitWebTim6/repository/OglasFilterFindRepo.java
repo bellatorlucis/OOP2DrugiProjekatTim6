@@ -14,13 +14,13 @@ import com.oop2.tim6.NakitWebTim6.model.Ogla;
 @Repository
 @Transactional
 public class OglasFilterFindRepo {
-	private static final String GET_OGLASI_QUERY_START ="select o from Ogla o where o.aktivan = 1 {0}";
+	private static final String GET_OGLASI_QUERY_START ="select o from Ogla o where o.aktivan = 1";
 	
     @PersistenceContext
     EntityManager entityManager;
 	
 	public List<Ogla> getOglasiBy(String query){
-    	Query q = entityManager.createQuery(String.format(GET_OGLASI_QUERY_START, query));
+    	Query q = entityManager.createQuery(GET_OGLASI_QUERY_START + query);
     	List<Ogla> oglasi = q.getResultList();
     	return oglasi;
     }

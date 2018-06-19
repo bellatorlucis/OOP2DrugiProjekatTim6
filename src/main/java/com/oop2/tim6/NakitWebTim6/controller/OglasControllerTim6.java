@@ -81,7 +81,7 @@ public class OglasControllerTim6 {
     public String getOglasiBy(@ModelAttribute("oglasSearchDto") OglasSearchDto searchConfiguration, Model model) {
 		List<Ogla> oglasi = oglasService.getOglasByFilters(searchConfiguration.generateQueryExtensionForOglas());
 		model.addAttribute("oglasi", oglasi);
-    	return "rezultatiPretrage";
+    	return "korisnik/sviOglasi";
     }
     
 	@RequestMapping(value = "/svi", method = RequestMethod.GET)

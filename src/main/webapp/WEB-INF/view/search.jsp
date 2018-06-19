@@ -18,9 +18,9 @@
 		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<p>
 				<input type="text" id="naslov" name="naslov" placeholder="Naslov">
-				<select name="tipovi">
+				<select name="izabranTip">
 						<c:forEach var="tip" items="${tipovi}">
-							<option name="izabranTip" value="${tip.idTipa}"> ${tip.idTipa} ${tip.naziv}</option>
+							<option value="${tip.idTipa}"> ${tip.idTipa} ${tip.naziv}</option>
 						</c:forEach>
 				</select>
 			</p>
