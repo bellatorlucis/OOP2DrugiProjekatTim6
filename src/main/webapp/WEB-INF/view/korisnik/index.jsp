@@ -23,8 +23,8 @@
 	</script>
 	<header> </header>
 	<div class="sidebar">
-		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/> " height="150" width="150">
-		<p class="user-description">${korisnik.getKratakOpis()}</p>
+		<img border="2" class="user-image" src="<c:url value="/korisnikSlika/${korisnik.korisnickoIme}"/>" height="150" width="150">
+		<p class="user-description">${korisnik.kratakOpis}</p>
 		<hr>
 		<div class="meniii">
 			<br />

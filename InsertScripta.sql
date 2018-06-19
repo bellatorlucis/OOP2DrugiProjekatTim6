@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `ogla` (
   `tekst` varchar(1000) DEFAULT NULL,
   `min_ponuda` double DEFAULT NULL,
   `aktivan` int(1) DEFAULT NULL,
+  `datum_vreme` datetime DEFAULT NULL,
   PRIMARY KEY (`id_ogla`),
   UNIQUE KEY `Ogla__IDX` (`Nakit_id_nakita`),
   KEY `Ogla_Korisnik_FK` (`Korisnik_id_korisnika`)
@@ -253,34 +254,34 @@ VALUES(10,7,'Aluminijum','Smedja');
 
 
 -- OGLAS
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
-VALUES (1,1,1,'Bros jeftino!!!','Bros jeftino!!!',1100,1);
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
+VALUES (1,1,1,'Bros jeftino!!!','Bros jeftino!!!',1100,1,'2018-06-09 11:45');
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
-VALUES (2,2,2,'Prelep vintage bros must have za sezonu 18/19','Prelep vintage bros must have za sezonu 18/19',2300,1);
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
+VALUES (2,2,2,'Prelep vintage bros must have za sezonu 18/19','Prelep vintage bros must have za sezonu 18/19',2300,1,'2018-06-05 16:20');
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (3,3,3,'Zlato nasledjeno od dede!','Zlato nasledjeno od dede!',5200,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (4,4,4,'Minimalistic ogrlica fashion yes yes','Minimalistic ogrlica fashion yes yes',3306,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (5,5,5,'Verenicki prsten','Verenicki prsten',4000,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (6,6,6,'Bakin prsten (sa titanika ga ukrala)','Bakin prsten (sa titanika ga ukrala)',12000,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (7,7,7,'Prelepa narukvica','Prelepa narukvica',7000,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (8,8,8,'Narukvica magicna daje letenje i +2 na agility','Narukvica magicna daje letenje i +2 na agility',6660,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (9,9,9,'Burma, jedna nosena, razvod bio brz','Burma, jedna nosena, razvod bio brz',1000,1);
 
-INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`)
+INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
 VALUES (10,10,10 ,'Kruna kralja Henrija V','Kruna kralja Henrija V',42000,1);
 -- OGLAS
 

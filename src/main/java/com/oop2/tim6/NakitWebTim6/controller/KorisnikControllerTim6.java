@@ -13,15 +13,13 @@ import java.awt.*;
 @Controller
 public class KorisnikControllerTim6 {
 
-    IKorisnikService korisnikService;
-
-
+    private IKorisnikService korisnikService;
 
     @RequestMapping(value = "/korisnikSlika/{username}")
     @ResponseBody
-    public byte[] getImageKorisnika(@PathVariable String korisnikUsername)  {
+    public byte[] getImageKorisnika(@PathVariable String username)  {
 
-        Korisnik korisnik = korisnikService.getKorisnikWithUsername(korisnikUsername);
+        Korisnik korisnik = korisnikService.getKorisnikWithUsername(username);
 
         return korisnik.getSlika();
     }

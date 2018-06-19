@@ -45,7 +45,7 @@ public class RootController {
 
     @GetMapping("/")
     public String indexPage(){
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -111,6 +111,8 @@ public class RootController {
     public Korisnik getKorisnik(){
         return new Korisnik();
     }
+
+
 }
 
 

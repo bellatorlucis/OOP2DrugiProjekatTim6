@@ -13,6 +13,9 @@
   <img class="login-img" src="/nakitWeb/images/logoFullSize.png" height="200">
   <div class="login">
     <h2 class="login-header">Dobrodošli</h2>
+    <c:if test="${param.error}">
+
+    </c:if>
     <form class="login-container" name="f" action="<c:url value="/login"/>" method="post">
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       <p>
