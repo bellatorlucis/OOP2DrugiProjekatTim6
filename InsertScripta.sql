@@ -1,6 +1,5 @@
 -- Skripta za OOP2 - projekat 2 
 -- PAZNJA: SKRIPTA DROPUJE TABELE IZ oop2Web baze!
-drop database oop2Web;
 CREATE DATABASE IF NOT EXISTS oop2Web;
 USE oop2Web;
 
@@ -261,28 +260,28 @@ INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,
 VALUES (2,2,2,'Prelep vintage bros must have za sezonu 18/19','Prelep vintage bros must have za sezonu 18/19',2300,1,'2018-06-05 16:20');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (3,3,3,'Zlato nasledjeno od dede!','Zlato nasledjeno od dede!',5200,1);
+VALUES (3,3,3,'Zlato nasledjeno od dede!','Zlato nasledjeno od dede!',5200,1,'2018-06-05 06:00');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (4,4,4,'Minimalistic ogrlica fashion yes yes','Minimalistic ogrlica fashion yes yes',3306,1);
+VALUES (4,4,4,'Minimalistic ogrlica fashion yes yes','Minimalistic ogrlica fashion yes yes',3306,1,'2018-06-12 10:45');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (5,5,5,'Verenicki prsten','Verenicki prsten',4000,1);
+VALUES (5,5,5,'Verenicki prsten','Verenicki prsten',4000,1,'2018-06-08 17:22');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (6,6,6,'Bakin prsten (sa titanika ga ukrala)','Bakin prsten (sa titanika ga ukrala)',12000,1);
+VALUES (6,6,6,'Bakin prsten (sa titanika ga ukrala)','Bakin prsten (sa titanika ga ukrala)',12000,1,'2018-06-09 11:11');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (7,7,7,'Prelepa narukvica','Prelepa narukvica',7000,1);
+VALUES (7,7,7,'Prelepa narukvica','Prelepa narukvica',7000,1,'2018-06-12 12:12');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (8,8,8,'Narukvica magicna daje letenje i +2 na agility','Narukvica magicna daje letenje i +2 na agility',6660,1);
+VALUES (8,8,8,'Narukvica magicna daje letenje i +2 na agility','Narukvica magicna daje letenje i +2 na agility',6660,1,'2018-06-13 16:54');
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (9,9,9,'Burma, jedna nosena, razvod bio brz','Burma, jedna nosena, razvod bio brz',1000,1);
+VALUES (9,9,9,'Burma, jedna nosena, razvod bio brz','Burma, jedna nosena, razvod bio brz',1000,1),'2018-06-06 14:54';
 
 INSERT INTO `ogla`(`id_ogla`,`Korisnik_id_korisnika`,`Nakit_id_nakita`,`naslov`,`tekst`,`min_ponuda`, `aktivan`,`datum_vreme`)
-VALUES (10,10,10 ,'Kruna kralja Henrija V','Kruna kralja Henrija V',42000,1);
+VALUES (10,10,10 ,'Kruna kralja Henrija V','Kruna kralja Henrija V',42000,1,'2018-06-07 18:54');
 -- OGLAS
 
 -- PONUDA

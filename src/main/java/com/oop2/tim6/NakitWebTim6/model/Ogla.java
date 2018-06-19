@@ -2,6 +2,7 @@ package com.oop2.tim6.NakitWebTim6.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,6 +32,10 @@ public class Ogla implements Serializable {
 
 	@Column(name="tekst")
 	private String tekst;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="datum_vreme")
+	private Date datumVreme;
 
 	//bi-directional many-to-one association to Komentar
 	@OneToMany(mappedBy="ogla")
