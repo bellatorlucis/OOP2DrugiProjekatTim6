@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 import com.oop2.tim6.NakitWebTim6.model.Nakit;
 
 public interface INakitCrudRepoTim6 extends CrudRepository<Nakit, Integer> {
-	@Query("SELECT n FROM Nakit n WHERE n.oglas.idOgla=:idO")
+	@Query("SELECT n FROM Nakit n JOIN FETCH n.oglas AS og WHERE og.idOgla =:idO ")
 	public Nakit findByIdOglasa(@Param("idO") int idOglasa);
 }
