@@ -133,10 +133,7 @@
         </div>
     </div>
 
-                               <c:if test="${korisnik.idKorisnika == oglas.korisnik.idKorisnika && (oglas.aktivan gt 0)}">
-
-											<a href="<c:url value="/oglas/prihvatiPonudu/${oglas.idOgla}"/>"><button>Prihvati ponudu</button></a>
-                               </c:if>
+                             
 
 
 
