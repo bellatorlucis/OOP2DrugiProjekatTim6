@@ -29,7 +29,7 @@
 	<section id="content">
 		<div class="content-header">
 		
-			<h1>Dodaj oglas </h1>
+			<h1>Dodaj oglas</h1>
 		</div>
 		<div class="content">
 			<div class="widget-boxsample-widget">
