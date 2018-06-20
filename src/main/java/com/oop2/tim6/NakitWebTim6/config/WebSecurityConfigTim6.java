@@ -48,7 +48,7 @@ public class WebSecurityConfigTim6 extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                    .antMatchers("/","/resources/**").permitAll();
+                    .antMatchers("/", "/fillData","/resources/**").permitAll();
 
 
     }
