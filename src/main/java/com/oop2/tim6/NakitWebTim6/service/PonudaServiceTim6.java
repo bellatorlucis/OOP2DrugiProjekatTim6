@@ -44,16 +44,20 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 		return null;
 	}
 
-
-	/*public Ponuda dodajNovuPonudu(Ogla oglas, Korisnik korisnik, double ponudaPare) {
-		Ponuda p = kreirajNovuPonudu(oglas, korisnik, ponudaPare);
-		return ponudaCrudRepo.save(p);
-	}*/
 	@Override
-	public Ponuda dodajNovuPonudu(Ponuda ponuda){
-		ponuda.setDateTime();
+	public boolean dodajNovuPonudu(Ponuda ponuda){
+		List<Ponuda> prethodnaL = ponudaRepo.getPonudeZaOglasId(ponuda.getOgla().getIdOgla());
 
-		return ponudaCrudRepo.save(ponuda);
+		if(prethodnaL.size() >= 1){
+			Ponuda prethodna = prethodnaL.get(prethodnaL.size() - 1);
+			if(prethodna.getPonudaPare() > ponuda.getPonudaPare())
+				return false;
+
+		}
+		ponuda.setDateTime();
+		ponudaCrudRepo.save(ponuda);
+
+		return true;
 	}
 
 	private Ponuda kreirajNovuPonudu(Ogla oglas, Korisnik korisnik, double ponudaPare) {

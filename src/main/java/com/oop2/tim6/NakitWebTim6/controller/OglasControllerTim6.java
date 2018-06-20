@@ -12,6 +12,7 @@ import com.oop2.tim6.NakitWebTim6.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,11 +51,15 @@ public class OglasControllerTim6 {
 	}
 	
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.POST)
-	public String dodavanjeOglasa(@Valid @ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
+	public String dodavanjeOglasa(@Valid @ModelAttribute("oglas") Ogla oglas,BindingResult bindingResult, Model m, @RequestParam("file") MultipartFile file,  HttpSession session) throws IOException {
 		Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
+
+		if(bindingResult.hasErrors())
+		    return "korisnik/dodajOglas";
 		
 		if (file != null) 
 			oglas.getNakit().setSlikaNakita(file.getBytes());
+
 		
 		nakitService.dodajNoviNakit(oglas.getNakit());
 		
@@ -163,8 +168,13 @@ public class OglasControllerTim6 {
     }
 
     @PostMapping(value = "/dodajPonudu")
-	public RedirectView dodajPonuduZaOglas(@ModelAttribute("ponuda")Ponuda ponuda, RedirectAttributes redirectAttributes ){
-		ponudaService.dodajNovuPonudu(ponuda);
+	public RedirectView dodajPonuduZaOglas(@ModelAttribute("ponuda")Ponuda ponuda, RedirectAttributes redirectAttributes){
+		boolean dodata = ponudaService.dodajNovuPonudu(ponuda);
+
+
+		redirectAttributes.addFlashAttribute("ponudaDodata", dodata);
+
+
 		redirectAttributes.addAttribute("id_oglas",ponuda.getOgla().getIdOgla());
 		return new RedirectView("/oglas/detaljiOglasa",true);
 	}

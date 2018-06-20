@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 
@@ -27,7 +27,7 @@
 	</div>
 	<section id="content">
 		<div class="content-header">
-		
+
 			<h1>Dodaj oglas</h1>
 		</div>
 		<div class="content">
@@ -36,7 +36,7 @@
 					<h2>Dodaj Oglas</h2>
 					<i class="fafa-cog"></i>
 				</div>
-<!-- 
+<!--
 
 				<div class="dodavanje_oglasa">
 
@@ -72,20 +72,23 @@
 
  -->
 				<div class="widget-content">
-				
+
 					<form:form action="/nakitWeb/oglas/dodajNovi" method="post" enctype="multipart/form-data" modelAttribute="oglas">
-						
+
 						Izaberi tip:<form:select path="nakit.tip" items="${tipovi }" itemValue="idTipa" itemLabel="naziv"/> <br><br>
-								
-						Boja:<form:input type="text" name="boja" path="nakit.boja" /><br>			
+
+						Boja:<form:input type="text" name="boja" path="nakit.boja" /><br>
+
 						Materijal:<form:input type="text" name="materijal" path="nakit.materijal" /><br>
+
 						Slika:<input type="file" name="file"><br>
-				
+
 						Minimalna ponuda:<form:input type="text" name="minPonuda" path="minPonuda" /><br>
-						<form:errors path="minPonuda" /><br/>			
 						Tekst:<form:input type="text" name="tekst" path="tekst" /><br>
+						<form:errors path="tekst" /><br/>
 						Naslov:<form:input type="text" name="naslov" path="naslov" /><br>
-		
+						<form:errors path="naslov" /><br/>
+
 						<br/><input type="submit" name="prvi" value="DODAJ"/>
 					</form:form>
 

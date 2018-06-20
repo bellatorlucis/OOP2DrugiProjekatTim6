@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 
 /**
@@ -29,9 +30,11 @@ public class Ogla implements Serializable {
 	private double minPonuda;
 	
 	@Column(name="naslov")
+	@NotEmpty(message = "Polje ne sme biti prazno")
 	private String naslov;
 
 	@Column(name="tekst")
+	@NotEmpty(message = "Polje ne sme biti prazno")
 	private String tekst;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -168,16 +171,16 @@ public class Ogla implements Serializable {
 
 		return ponuda;
 	}
-	
+
 	public String printOglasToHTML() {
-		String html = "<div class=\"widget-box sample-widget\">\n" + 
-				"			<div class=\"widget-header\">\n" + 
+		String html = "<div class=\"widget-box sample-widget\">\n" +
+				"			<div class=\"widget-header\">\n" +
 				"				<h2><a style=\"color:white; \" href=\"/nakitWeb/oglas/detaljiOglasa?id_oglas="+ idOgla + "\">"+naslov+"</a></h2>"  +
-				"					<i class=\"fa fa-cog\"></i>\n" + 
+				"					<i class=\"fa fa-cog\"></i>\n" +
 				"				</div>\n" +
 				"				<p>"+ nakit.opisNakitaToHTML() +"</p><br>"+
 				"               <h3>	Minimalna Ponuda: "+minPonuda+"</h3>"+
-				"			<div class=\"widget-content\"></div>\n" + 
+				"			<div class=\"widget-content\"></div>\n" +
 				"		</div>";
 		return html;
 	}

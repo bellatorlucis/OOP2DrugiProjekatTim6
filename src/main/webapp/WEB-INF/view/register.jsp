@@ -20,17 +20,21 @@
             <div class="registration-info">
                 <p>
 
-                    <spring:input path="ime" />
+                    <spring:input type="text" path="ime" placeholder="Ime" />
                     <spring:errors path="ime" />
                 </p>
                 <p>
-                    <input type="text" placeholder="Prezime" name="prezime">
+                    <spring:input path="prezime" placeholder="Prezime" />
+                    <spring:errors path="prezime" />
+
                 </p>
                 <p>
-                    <input type="text" placeholder="Korisničko ime" name="korisnickoIme">
+                    <spring:input type="text" path="korisnickoIme" placeholder="Korisnicko ime" />
+                    <spring:errors path="korisnickoIme" />
                 </p>
                 <p>
-                    <input type="password" placeholder="Lozinka" name="lozinka">
+                    <spring:input type="password" path="lozinka" placeholder="Lozinka" />
+                    <spring:errors path="lozinka" />
                 </p>
                 <p>
                     <input type="password" placeholder="Ponovljena lozinka" name="lozinka2">
@@ -38,7 +42,8 @@
             </div>
             <div class="extended-registration-info">
                 <p>
-                    <input type="text" placeholder="Opis" name="kratakOpis">
+                    <spring:input type="text" path="kratakOpis" placeholder="Kratak opis" />
+                    <spring:errors path="kratakOpis" />
                 </p>
                 <p>
                     <input type="file" placeholder="Opis" value="Izaberi sliku..." name="file">

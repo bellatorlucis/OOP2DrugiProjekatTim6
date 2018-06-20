@@ -68,12 +68,9 @@ public class RootControllerTim6 {
     @Autowired
     private Environment env;
 
-    @GetMapping("/")
-    public String indexPage(){
-        return "index";
-    }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+
+    @RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
     public String getLogin() {
         return "login";
     }

@@ -96,22 +96,5 @@ public class Ponuda implements Serializable {
 		LocalDateTime ldt = LocalDateTime.now();		
 		this.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
 	}
-	/*public String printPonudaToHTML() {
-
-		
-		String html = "<div class=\"widget-box sample-widget\">\n" + 
-				"			<div class=\"widget-header\">\n" + 
-				"					<h2><a style=\"color:white; \" href=\" /nakitWeb/oglas/detaljiOglasa?id_oglas=" + ogla.getIdOgla() + "\">"+ogla.getNaslov()+"</a></h2>\n" +
-				"					<i class=\"fa fa-cog\"></i>\n" + 
-				"				</div>\n" +
-				"               <p>" + datumVreme + "</p>"+
-				"				<p>"+ ogla.getTekst() +"</p><br>"+
-				"               <h3>  Ponuda: "+ ponudaPare +"</h3>"+
-				"               <a href=\"https://www.w3schools.com\"></a>"+
-				"			<div class=\"widget-content\"></div>\n" + 
-				"		</div>";
-		return html;
-	}*/
-	
 	
 }

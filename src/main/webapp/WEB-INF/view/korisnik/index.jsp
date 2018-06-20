@@ -57,7 +57,7 @@
 				<c:forEach var="ponuda" items="${ponude }">
 				<div class="widget-box sample-widget">
 				<div class="widget-header">
-					<h2><a style="color:white" href="nakitWeb/oglas/detaljiOglasa?id_oglas=${oglas.idOgla}">${ponuda.ogla.naslov}</a></h2>
+					<h2><a style="color:white" href="<c:url value="/oglas/detaljiOglasa?id_oglas=${ponuda.ogla.idOgla}"/> ">${ponuda.ogla.naslov}</a></h2>
 					<i class="fa fa-cog"></i>
 				</div>
 				<p></p>

@@ -28,7 +28,7 @@ public class WebSecurityConfigTim6 extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests().antMatchers(HttpMethod.POST, "/saveKorisnik").permitAll();
 
-        http.authorizeRequests().antMatchers("/dashboard","/korisnik/**","**/oglas/**").access("hasRole('ROLE_USER')");
+        http.authorizeRequests().antMatchers("/dashboard","/korisnik/**","/oglas/**").access("hasRole('ROLE_USER')");
 
         http.authorizeRequests().antMatchers("/dashboardAdmin").access("hasRole('ROLE_ADMIN')")
                 .and().exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
@@ -41,19 +41,15 @@ public class WebSecurityConfigTim6 extends WebSecurityConfigurerAdapter {
                     .usernameParameter("korisnickoIme")
                     .passwordParameter("lozinka")
                     .successHandler(loginSuccessfulHandler)
-               /* .and()
-                    .rememberMe()
-                    .rememberMeCookieName("nakitWeb-remember-me")
-                    .tokenValiditySeconds(24 * 60 * 60) // expired time = 1 day
-                    .tokenRepository(persistentTokenRepository())*/
+
                 .and()
                     .logout()
                     .logoutUrl("/logout");
 
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/user/**", "/admin/**","/resources/**").permitAll();
-                    //.anyRequest()//.authenticated()
+                    .antMatchers("/","/resources/**").permitAll();
+
 
     }
 
