@@ -44,7 +44,7 @@
 
 			<h1>Svi oglasi</h1>
 		</div>
-		<div class="widget-content">
+		<div class="widget-content" style="text-align: center;">
 			<spring:form class="login-container" name="search"
 				action="/nakitWeb/oglas/rezultatiPretrage" method="post"
 				modelAttribute="oglasSearchDto">
@@ -62,7 +62,7 @@
 						placeholder="Materijal">
 				</p>
 				<p>
-					<input type="submit" value="Pretrazi">
+					<input class="search-button" type="submit" value="Pretrazi">
 				</p>
 			</spring:form>
 

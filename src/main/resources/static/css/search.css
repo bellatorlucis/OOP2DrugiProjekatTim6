@@ -177,7 +177,24 @@ a{
   
 }
 
-input[type=text]{
+.search-button {
+  background: #FFB6C1;
+  border-color: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background: #FF69B4;
+}
+
+/* Buttons' focus effect */
+
+.search-button:focus {
+  border-color: #FF69B4;
+}
+
+.widget-content input[type=text]{
 	width: 500px;
 	border-radius:10px;
 }
