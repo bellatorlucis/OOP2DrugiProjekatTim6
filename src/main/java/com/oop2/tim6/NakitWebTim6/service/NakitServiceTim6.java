@@ -18,6 +18,12 @@ public class NakitServiceTim6 implements INakitServiceTim6 {
 		return noviNakit;
 	}
 
+	@Override
+	public Nakit getNakitByIdOglasa(int idOglasa) {
+		Nakit nakit = nCR.findByIdOglasa(idOglasa);
+		return nakit;
+	}
+	
 	@Autowired
 	public void setnCR(INakitCrudRepoTim6 nCR) {
 		this.nCR = nCR;

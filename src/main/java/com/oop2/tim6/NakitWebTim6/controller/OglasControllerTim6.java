@@ -125,7 +125,9 @@ public class OglasControllerTim6 {
     public String addKomentar(@ModelAttribute("komentar") Komentar komentar,@PathVariable int id_oglas, HttpSession session) {
     	Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
     	Ogla oglas = oglasService.getOglasWithId(id_oglas);
+    	Nakit nakit = nakitService.getNakitByIdOglasa(id_oglas);
     	
+    	oglas.setNakit(nakit);
     	komentar.setKorisnik(korisnik);
 		komentar.setOgla(oglas);
 		
