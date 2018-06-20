@@ -18,3 +18,6 @@ pa ručno dodati web aplikaciju
   <li> <a href=""> Spring Security</a> </li>
 </ul>
 <br>
+
+<h4> Podešavanje  </h4>
+Pre pokretanja aplikacije otići na <a href="localhost:8080/nakitWeb/fillData">/nakitWeb/fillData</a> da pi se popunili podaci u bazi. <strong>Context root aplikacije na Jboss server i na Tomcatu je (localhost)nakitWeb/ </strong>
