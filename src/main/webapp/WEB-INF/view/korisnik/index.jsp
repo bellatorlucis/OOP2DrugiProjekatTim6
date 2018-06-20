@@ -39,23 +39,18 @@
 		<div class="content-header">
 
 			<h1>Oglasna tabla</h1>
+			<h2>Oglasi</h2>
 		</div>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty oglasi }">
 				<c:forEach var="oglas" items="${oglasi }">
-			      		${oglas.printOglasToHTML()}
+			      	${oglas.printOglasToHTML()}
 			</c:forEach>
 			</c:if>	
 		</div>
-	</section>
-	
-	<!--  TO DOOOO -->
-	
-	<section id="content">
 		<div class="content-header">
 
-			<h1>Naziv oglasa</h1>
-			<p>Nesto...</p>
+			<h1>Ponude</h1>
 		</div>
 		<br>
 		<div class="content" onscroll="customScroll()">

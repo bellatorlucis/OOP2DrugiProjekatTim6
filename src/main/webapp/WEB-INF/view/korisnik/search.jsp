@@ -29,12 +29,11 @@
 	<section id="content">
 		<div class="content-header">
 		
-			<h1>Dodaj oglas</h1>
+			<h1>Pretraga</h1>
 		</div>
 		<div class="content">
 			<div class="widget-boxsample-widget">
 				<div class="widget-header">
-					<h2>Dodaj Oglas</h2>
 					<i class="fafa-cog"></i>
 				</div>
 
