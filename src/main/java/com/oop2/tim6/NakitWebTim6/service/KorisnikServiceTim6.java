@@ -17,6 +17,11 @@ public class KorisnikServiceTim6 implements IKorisnikServiceTim6 {
        return  korisnikJpaRepo.findByKorisnickoIme(username);
     }
 
+    @Override
+    public Korisnik getKorisnikWithId(int id) {
+       return korisnikJpaRepo.findByIdKorisnika(id);
+    }
+
     @Autowired
     public void setKorisnikRepo(IKorisnikJpaRepoTim6 korisnikJpaRepo) {
         this.korisnikJpaRepo = korisnikJpaRepo;

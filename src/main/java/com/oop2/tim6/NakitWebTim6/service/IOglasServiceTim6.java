@@ -15,6 +15,7 @@ public interface IOglasServiceTim6 {
 	public Ogla dodajOglas(Ogla oglas);
 
 	public Ogla getOglasWithId(int id);
+
 	public void prihvatiPonuduZaOglas(int id_oglas);
 	
 }

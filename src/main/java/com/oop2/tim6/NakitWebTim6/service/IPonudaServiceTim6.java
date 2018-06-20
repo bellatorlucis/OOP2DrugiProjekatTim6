@@ -12,5 +12,5 @@ public interface IPonudaServiceTim6 {
 	
 	public Ponuda getTrenutnuPonuduZaOglasId(int oglasId);
 	
-	public Ponuda dodajNovuPonudu(Ogla oglas, Korisnik korisnik, int ponudaPare);
+	public Ponuda dodajNovuPonudu(Ponuda ponuda);
 }
