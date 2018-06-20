@@ -32,9 +32,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
+import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
 import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepoTim6;
+import com.oop2.tim6.NakitWebTim6.repository.INakitCrudRepoTim6;
 import com.oop2.tim6.NakitWebTim6.repository.IUlogaRepoTim6;
 import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.UserSecurityServiceTim6;
@@ -42,7 +44,8 @@ import com.oop2.tim6.NakitWebTim6.service.UserSecurityServiceTim6;
 
 @Controller
 public class RootControllerTim6 {
-	private static final String USER_IMAGES_PATH ="userImages/%d.png";
+	private static final String USER_IMAGES_PATH ="databaseImages/userImages/%d.png";
+	private static final String NAKIT_IMAGES_PATH ="databaseImages/nakitImages/%d.png";
 	
 	@Autowired
 	ITipServiceTim6 tipService;
@@ -53,6 +56,9 @@ public class RootControllerTim6 {
     @Autowired
     UserSecurityServiceTim6 userSecurityService;
 
+    @Autowired
+    INakitCrudRepoTim6 nakitJpa;
+    
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -139,7 +145,13 @@ public class RootControllerTim6 {
     	for(Korisnik korisnik: korisnici) {
     		korisnik.setSlika(Files.readAllBytes(Paths.get(String.format(USER_IMAGES_PATH, korisnik.getIdKorisnika()))));
     	}
+    	
+    	Iterable<Nakit> nakiti = nakitJpa.findAll();
+    	for(Nakit nakit: nakiti) {
+    		nakit.setSlikaNakita(Files.readAllBytes(Paths.get(String.format(NAKIT_IMAGES_PATH, nakit.getIdNakita()))));
+    	}
 
+    	nakitJpa.saveAll(nakiti);
     	korisnikJpaRepo.saveAll(korisnici);
     	return "login";
     }
@@ -160,5 +172,4 @@ public class RootControllerTim6 {
            connection.close();
        }
     }
-    
 }

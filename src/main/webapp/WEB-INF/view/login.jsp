@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <img class="login-img" src="/nakitWeb/static/images/logoFullSize.png"/> " height="200">
+  <img class="login-img" src="/nakitWeb/images/logoFullSize.png" height="200">
   <div class="login">
     <h2 class="login-header">Dobrodošli</h2>
     <c:if test="${param.error}">

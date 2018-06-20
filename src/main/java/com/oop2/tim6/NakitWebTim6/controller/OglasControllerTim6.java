@@ -74,8 +74,13 @@ public class OglasControllerTim6 {
 	@RequestMapping(value ="/rezultatiPretrage", method=RequestMethod.POST)
     public String getOglasiBy(@ModelAttribute("oglasSearchDto") OglasSearchDto searchConfiguration, Model model) {
 		List<Ogla> oglasi = oglasService.getOglasByFilters(searchConfiguration.generateQueryExtensionForOglas());
+		List<Tip> tipovi = tipService.getAllTipoviNakita();
+    	Tip svi = new Tip();
+    	svi.setIdTipa(0);
+    	svi.setNaziv("Svi");
+    	tipovi.add(svi);
+    	model.addAttribute("tipovi", tipovi);
 		model.addAttribute("oglasi", oglasi);
-		
     	return "korisnik/sviOglasi";
     }
     
@@ -83,6 +88,12 @@ public class OglasControllerTim6 {
 	public String sviOglasi(Model model) {
 
 	    List<Ogla> oglasi = oglasService.getAllOglasi();
+	    List<Tip> tipovi = tipService.getAllTipoviNakita();
+    	Tip svi = new Tip();
+    	svi.setIdTipa(0);
+    	svi.setNaziv("Svi");
+    	tipovi.add(svi);
+    	model.addAttribute("tipovi", tipovi);
 	    model.addAttribute("oglasi", oglasi);
 
         return "korisnik/sviOglasi";
