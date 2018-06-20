@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomLoginSuccessfulHandler implements AuthenticationSuccessHandler {
+public class CustomLoginSuccessfulHandlerTim6 implements AuthenticationSuccessHandler {
 
     KorisnikServiceTim6 korisnikService;
 

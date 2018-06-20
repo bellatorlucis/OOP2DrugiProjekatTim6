@@ -1,12 +1,8 @@
 package com.oop2.tim6.NakitWebTim6.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.util.List;

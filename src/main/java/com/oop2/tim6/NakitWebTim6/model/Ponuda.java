@@ -107,7 +107,7 @@ public class Ponuda implements Serializable {
 		
 		String html = "<div class=\"widget-box sample-widget\">\n" + 
 				"			<div class=\"widget-header\">\n" + 
-				"					<h2><a style=\"color:white; \" href=\" /nakitWeb/oglas/detaljiOglasa/" + ogla.getIdOgla() + "\">"+ogla.getNaslov()+"</a></h2>\n" + 
+				"					<h2><a style=\"color:white; \" href=\" /nakitWeb/oglas/detaljiOglasa?id_oglas=" + ogla.getIdOgla() + "\">"+ogla.getNaslov()+"</a></h2>\n" +
 				"					<i class=\"fa fa-cog\"></i>\n" + 
 				"				</div>\n" +
 				"               <p>" + datumVreme + "</p>"+

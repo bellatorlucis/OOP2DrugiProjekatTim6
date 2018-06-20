@@ -1,7 +1,7 @@
 package com.oop2.tim6.NakitWebTim6.config;
 
-import com.oop2.tim6.NakitWebTim6.error.CustomAccessDeniedHandler;
-import com.oop2.tim6.NakitWebTim6.service.UserSecurityService;
+import com.oop2.tim6.NakitWebTim6.error.CustomAccessDeniedHandlerTim6;
+import com.oop2.tim6.NakitWebTim6.service.UserSecurityServiceTim6;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,18 +12,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfigTim6 extends WebSecurityConfigurerAdapter {
 
-    private UserSecurityService userService;
-    private CustomAccessDeniedHandler customAccessDeniedHandler;
-    private CustomLoginSuccessfulHandler loginSuccessfulHandler;
+    private UserSecurityServiceTim6 userService;
+    private CustomAccessDeniedHandlerTim6 customAccessDeniedHandler;
+    private CustomLoginSuccessfulHandlerTim6 loginSuccessfulHandler;
     private DataSource dataSource;
     
     @Override
@@ -83,15 +81,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception { auth.authenticationProvider(authenticationProvider()); }
 
     @Autowired
-    public void setUserService(UserSecurityService userService) {
+    public void setUserService(UserSecurityServiceTim6 userService) {
         this.userService = userService;
     }
 
     @Autowired
-    public void setCustomAccessDeniedHandler(CustomAccessDeniedHandler customAccessDeniedHandler) { this.customAccessDeniedHandler = customAccessDeniedHandler; }
+    public void setCustomAccessDeniedHandler(CustomAccessDeniedHandlerTim6 customAccessDeniedHandler) { this.customAccessDeniedHandler = customAccessDeniedHandler; }
     
     @Autowired
-    public void setCustomLoginSuccessfulHandler(CustomLoginSuccessfulHandler loginSuccessfulHandler) {this.loginSuccessfulHandler = loginSuccessfulHandler;}
+    public void setCustomLoginSuccessfulHandler(CustomLoginSuccessfulHandlerTim6 loginSuccessfulHandler) {this.loginSuccessfulHandler = loginSuccessfulHandler;}
 
     @Autowired
     public void setDataSource(DataSource dataSource) {

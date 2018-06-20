@@ -13,7 +13,7 @@ import com.oop2.tim6.NakitWebTim6.model.Ogla;
 
 @Repository
 @Transactional
-public class OglasFilterFindRepo {
+public class OglasFilterFindRepoTim6 {
 	private static final String GET_OGLASI_QUERY_START ="select o from Ogla o where o.aktivan = 1";
 	
     @PersistenceContext

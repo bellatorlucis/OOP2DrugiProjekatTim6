@@ -1,16 +1,15 @@
 package com.oop2.tim6.NakitWebTim6.service;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
-import com.oop2.tim6.NakitWebTim6.repository.KorisnikRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepoTim6;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class KorisnikServiceTim6 implements IKorisnikService {
+public class KorisnikServiceTim6 implements IKorisnikServiceTim6 {
 
 
-    private IKorisnikJpaRepo korisnikJpaRepo;
+    private IKorisnikJpaRepoTim6 korisnikJpaRepo;
 
 
     @Override
@@ -19,7 +18,7 @@ public class KorisnikServiceTim6 implements IKorisnikService {
     }
 
     @Autowired
-    public void setKorisnikRepo(IKorisnikJpaRepo korisnikJpaRepo) {
+    public void setKorisnikRepo(IKorisnikJpaRepoTim6 korisnikJpaRepo) {
         this.korisnikJpaRepo = korisnikJpaRepo;
     }
 }

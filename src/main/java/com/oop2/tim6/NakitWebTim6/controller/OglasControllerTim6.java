@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.oop2.tim6.NakitWebTim6.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,17 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oop2.tim6.NakitWebTim6.model.Komentar;
-import com.oop2.tim6.NakitWebTim6.model.Korisnik;
-import com.oop2.tim6.NakitWebTim6.model.Nakit;
-import com.oop2.tim6.NakitWebTim6.model.Ogla;
-import com.oop2.tim6.NakitWebTim6.model.OglasSearchDto;
-import com.oop2.tim6.NakitWebTim6.model.Ponuda;
-import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.service.IKomentarServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping(value="/oglas")
@@ -54,7 +51,7 @@ public class OglasControllerTim6 {
 	}
 	
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.POST)
-	public String dodavanjeOglasa(@Valid @ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException { 
+	public String dodavanjeOglasa(@Valid @ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
 		Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 		
 		if (file != null) 
@@ -67,15 +64,10 @@ public class OglasControllerTim6 {
 		LocalDateTime ldt = LocalDateTime.now();	
 		oglas.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
 		oglasService.dodajOglas(oglas);
-		m.addAttribute("oglas", oglas);
-		
-		oglas.getNakit().setBoja("");
-		oglas.getNakit().setMaterijal("");
-		oglas.getNakit().setSlikaNakita(null);
-		oglas.setTekst("");
-		oglas.setNaslov("");
-		oglas.setMinPonuda(0.0);
-		
+
+		m.addAttribute("oglas", new Ogla());
+
+
 		return "korisnik/dodajOglas";
 	}
 
@@ -107,8 +99,8 @@ public class OglasControllerTim6 {
         return nakit.getSlikaNakita();
     }
     
-    @GetMapping (value = "/detaljiOglasa/{id_oglas}")
-    public String getOglasByID(@ModelAttribute("komentar") Komentar komentar, HttpSession session, @PathVariable int id_oglas,  Model m) {
+    @GetMapping (value = "/detaljiOglasa")
+    public String getOglasByID(@RequestParam(value = "id_oglas") int id_oglas,  Model m) {
 		Ogla oglas = oglasService.getOglasWithId(id_oglas);
 		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
 
@@ -126,20 +118,18 @@ public class OglasControllerTim6 {
     }
 
     @GetMapping(value = "/prihvatiPonudu/{id_oglas}")
-	public String prihvatiPonudu(@PathVariable("id_oglas")int id_oglas, Model model){
+	public RedirectView prihvatiPonudu(@PathVariable("id_oglas")int id_oglas, Model model, RedirectAttributes redirectAttributes){
 		oglasService.prihvatiPonuduZaOglas(id_oglas);
-		Ogla oglas = oglasService.getOglasWithId(id_oglas);
-		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
 
-		model.addAttribute("oglas",oglas);
-		model.addAttribute("ponuda", ponuda);
 		model.addAttribute("uspesnoPrihvacenaPonuda","Prihvatili ste ponudu za vas oglas");
 
-		return "korisnik/detaljiOglasa";
+		redirectAttributes.addAttribute("id_oglas",id_oglas);
+
+		return new RedirectView("/oglas/detaljiOglasa", true);
     }
 
     @PostMapping (value = "/dodajKomentar/{id_oglas}")
-    public String addKomentar(@ModelAttribute("komentar") Komentar komentar,@PathVariable int id_oglas, HttpSession session) {
+    public RedirectView addKomentar(@ModelAttribute("komentar") Komentar komentar, @PathVariable int id_oglas, HttpSession session, RedirectAttributes redirectAttributes) {
     	Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
     	Ogla oglas = oglasService.getOglasWithId(id_oglas);
     	Nakit nakit = nakitService.getNakitByIdOglasa(id_oglas);
@@ -151,9 +141,12 @@ public class OglasControllerTim6 {
 		LocalDateTime ldt = LocalDateTime.now();
 		komentar.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
 
-		komentarService.dodajKomentar(komentar);
 
-		return "korisnik/detaljiOglasa";
+
+		komentarService.dodajKomentar(komentar);
+		redirectAttributes.addAttribute("id_oglas",id_oglas);
+
+		return new RedirectView("/oglas/detaljiOglasa", true);
     }
 	
 	@ModelAttribute("oglas")

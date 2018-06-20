@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 
 @Repository
-public interface IPonudaJpaRepo extends JpaRepository<Ponuda, Integer> {																							
+public interface IPonudaJpaRepoTim6 extends JpaRepository<Ponuda, Integer> {
 	@Query("SELECT p FROM Ponuda p WHERE p.idPonude =(SELECT max(T.idPonude) FROM Ponuda T WHERE T.korisnik.korisnickoIme=p.korisnik.korisnickoIme AND T.ogla.idOgla=p.ogla.idOgla) AND p.korisnik.korisnickoIme=:kIme ORDER BY p.datumVreme DESC")
 	public List<Ponuda> getAllPonudeByKorisnik(@Param("kIme") String korisnickoIme);
 	

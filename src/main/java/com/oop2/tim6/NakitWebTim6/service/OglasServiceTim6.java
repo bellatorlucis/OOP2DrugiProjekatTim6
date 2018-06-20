@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
-import com.oop2.tim6.NakitWebTim6.repository.IOglasJpaRepo;
-import com.oop2.tim6.NakitWebTim6.repository.OglasFilterFindRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IOglasJpaRepoTim6;
+import com.oop2.tim6.NakitWebTim6.repository.OglasFilterFindRepoTim6;
 
 @Service
 public class OglasServiceTim6 implements IOglasServiceTim6 {
 
-	private IOglasJpaRepo oglasRepo;
-	private OglasFilterFindRepo oglasFilterRepo;
+	private IOglasJpaRepoTim6 oglasRepo;
+	private OglasFilterFindRepoTim6 oglasFilterRepo;
 
 	@Override
 	public List<Ogla> sviOglasiByKorisnickoIme(String korisnickoIme) {
@@ -61,12 +61,12 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 	}
 
 	@Autowired
-	public void setoJP(IOglasJpaRepo oglasRepo) {
+	public void setoJP(IOglasJpaRepoTim6 oglasRepo) {
 		this.oglasRepo = oglasRepo;
 	}
 	
 	@Autowired
-	public void setOglasFilterRepo(OglasFilterFindRepo oglasFilterRepo) {
+	public void setOglasFilterRepo(OglasFilterFindRepoTim6 oglasFilterRepo) {
 		this.oglasFilterRepo = oglasFilterRepo;
 	}
 	

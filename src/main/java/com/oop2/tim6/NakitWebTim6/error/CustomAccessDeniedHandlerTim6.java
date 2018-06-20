@@ -1,6 +1,5 @@
 package com.oop2.tim6.NakitWebTim6.error;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
@@ -14,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+public class CustomAccessDeniedHandlerTim6 implements AccessDeniedHandler {
 
-    private static Logger logger = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
+    private static Logger logger = LoggerFactory.getLogger(CustomAccessDeniedHandlerTim6.class);
 
     @Override
     public void handle(javax.servlet.http.HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {

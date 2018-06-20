@@ -1,11 +1,9 @@
 package com.oop2.tim6.NakitWebTim6.service;
 
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
-import com.oop2.tim6.NakitWebTim6.model.Uloga;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepo;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikCrudRepoTim6;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepoTim6;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,17 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class UserSecurityService implements UserDetailsService {
+public class UserSecurityServiceTim6 implements UserDetailsService {
 
-    private IKorisnikJpaRepo korisnikJpaRepo;
+    private IKorisnikJpaRepoTim6 korisnikJpaRepo;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private IKorisnikCrudRepo korisnikCrudRepo;
+    private IKorisnikCrudRepoTim6 korisnikCrudRepo;
 
     @Override
     public UserDetails loadUserByUsername(String korisnickoIme) throws UsernameNotFoundException {
@@ -56,10 +51,10 @@ public class UserSecurityService implements UserDetailsService {
 
 
    @Autowired
-   public void setKorisnikCrudRepo(IKorisnikCrudRepo korisnikCrudRepo) { this.korisnikCrudRepo = korisnikCrudRepo; }
+   public void setKorisnikCrudRepo(IKorisnikCrudRepoTim6 korisnikCrudRepo) { this.korisnikCrudRepo = korisnikCrudRepo; }
 
    @Autowired
-   public void setKorisnikJpaRepo(IKorisnikJpaRepo korisnikJpaRepo) { this.korisnikJpaRepo = korisnikJpaRepo; }
+   public void setKorisnikJpaRepo(IKorisnikJpaRepoTim6 korisnikJpaRepo) { this.korisnikJpaRepo = korisnikJpaRepo; }
 
    @Autowired
    public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) { this.bCryptPasswordEncoder = bCryptPasswordEncoder; }

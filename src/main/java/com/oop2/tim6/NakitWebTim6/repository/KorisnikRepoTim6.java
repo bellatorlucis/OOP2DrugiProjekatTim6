@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class KorisnikRepo {
+public class KorisnikRepoTim6 {
 
     @PersistenceContext
     EntityManager entityManager;

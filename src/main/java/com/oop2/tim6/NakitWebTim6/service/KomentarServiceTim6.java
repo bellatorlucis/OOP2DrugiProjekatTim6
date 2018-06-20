@@ -3,19 +3,19 @@ package com.oop2.tim6.NakitWebTim6.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
-import com.oop2.tim6.NakitWebTim6.repository.IKomentarCrudRepo;
-import com.oop2.tim6.NakitWebTim6.repository.IKomentarJpaRepository;
+import com.oop2.tim6.NakitWebTim6.repository.IKomentarCrudRepoTim6;
+import com.oop2.tim6.NakitWebTim6.repository.IKomentarJpaRepositoryTim6;
 
 @Service
 public class KomentarServiceTim6 implements IKomentarServiceTim6{
 
-	private IKomentarJpaRepository komentarRepo;
-	private IKomentarCrudRepo komentarCrudRepo;
+	private IKomentarJpaRepositoryTim6 komentarRepo;
+	private IKomentarCrudRepoTim6 komentarCrudRepo;
 	
 	@Override
 	public List<Komentar> getKomentariZaOglas(Ogla o) {
@@ -38,12 +38,12 @@ public class KomentarServiceTim6 implements IKomentarServiceTim6{
 	}
 	
 	@Autowired
-	public void setKomentarRepo(IKomentarJpaRepository komentarRepo) {
+	public void setKomentarRepo(IKomentarJpaRepositoryTim6 komentarRepo) {
 		this.komentarRepo = komentarRepo;
 	}
 	
 	@Autowired
-	public void setKomentarRepo(IKomentarCrudRepo komentarCrudRepo) {
+	public void setKomentarRepo(IKomentarCrudRepoTim6 komentarCrudRepo) {
 		this.komentarCrudRepo = komentarCrudRepo;
 	}
 }

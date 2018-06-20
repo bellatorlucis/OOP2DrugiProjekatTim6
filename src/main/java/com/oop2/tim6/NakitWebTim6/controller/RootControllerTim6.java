@@ -34,30 +34,30 @@ import org.springframework.web.multipart.MultipartFile;
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
 import com.oop2.tim6.NakitWebTim6.model.Uloga;
-import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepo;
-import com.oop2.tim6.NakitWebTim6.repository.IUlogaRepo;
+import com.oop2.tim6.NakitWebTim6.repository.IKorisnikJpaRepoTim6;
+import com.oop2.tim6.NakitWebTim6.repository.IUlogaRepoTim6;
 import com.oop2.tim6.NakitWebTim6.service.ITipServiceTim6;
-import com.oop2.tim6.NakitWebTim6.service.UserSecurityService;
+import com.oop2.tim6.NakitWebTim6.service.UserSecurityServiceTim6;
 
 
 @Controller
-public class RootController {
+public class RootControllerTim6 {
 	private static final String USER_IMAGES_PATH ="userImages/%d.png";
 	
 	@Autowired
 	ITipServiceTim6 tipService;
 	
     @Autowired
-    IKorisnikJpaRepo korisnikJpaRepo;
+    IKorisnikJpaRepoTim6 korisnikJpaRepo;
 
     @Autowired
-    UserSecurityService userSecurityService;
+    UserSecurityServiceTim6 userSecurityService;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    IUlogaRepo ulogaRepo;
+    IUlogaRepoTim6 ulogaRepo;
 
     @Autowired
     private Environment env;
