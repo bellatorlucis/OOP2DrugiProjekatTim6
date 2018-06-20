@@ -118,7 +118,7 @@
                                 </tr>
                             </c:if>
                         </c:if>
-                        <c:if test="${ponudaDodata}">
+                        <c:if test="${!empty ponudaDodata && !ponudaDodata}">
                             <tr><td> <p style="color:red"> Morate dodati ponudu vecu od postojece</p></td></tr>
 
                         </c:if>
