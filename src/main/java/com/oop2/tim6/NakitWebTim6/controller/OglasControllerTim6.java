@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import com.oop2.tim6.NakitWebTim6.service.IKomentarServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
@@ -75,8 +74,13 @@ public class OglasControllerTim6 {
 	@RequestMapping(value ="/rezultatiPretrage", method=RequestMethod.POST)
     public String getOglasiBy(@ModelAttribute("oglasSearchDto") OglasSearchDto searchConfiguration, Model model) {
 		List<Ogla> oglasi = oglasService.getOglasByFilters(searchConfiguration.generateQueryExtensionForOglas());
+		List<Tip> tipovi = tipService.getAllTipoviNakita();
+    	Tip svi = new Tip();
+    	svi.setIdTipa(0);
+    	svi.setNaziv("Svi");
+    	tipovi.add(svi);
+    	model.addAttribute("tipovi", tipovi);
 		model.addAttribute("oglasi", oglasi);
-		
     	return "korisnik/sviOglasi";
     }
     
@@ -84,6 +88,12 @@ public class OglasControllerTim6 {
 	public String sviOglasi(Model model) {
 
 	    List<Ogla> oglasi = oglasService.getAllOglasi();
+	    List<Tip> tipovi = tipService.getAllTipoviNakita();
+    	Tip svi = new Tip();
+    	svi.setIdTipa(0);
+    	svi.setNaziv("Svi");
+    	tipovi.add(svi);
+    	model.addAttribute("tipovi", tipovi);
 	    model.addAttribute("oglasi", oglasi);
 
         return "korisnik/sviOglasi";
