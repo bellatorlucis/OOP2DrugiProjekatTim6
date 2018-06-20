@@ -7,7 +7,7 @@
 	<groupId>com.oop2.tim6</groupId>
 	<artifactId>NakitWebTim6</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>NakitWebTim6</name>
 	<description>Demo project for Spring Boot</description>
@@ -33,8 +33,8 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<!-- <exclusions> <exclusion> <groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-tomcat</artifactId> </exclusion> </exclusions> -->
+			<exclusions> <exclusion> <groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-tomcat</artifactId> </exclusion> </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
