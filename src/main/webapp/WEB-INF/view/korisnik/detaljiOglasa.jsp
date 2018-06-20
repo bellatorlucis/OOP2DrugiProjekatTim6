@@ -37,8 +37,7 @@
 	<section id="content">
 		<div class="content-header">
 
-			<h1>Oglasi</h1>
-			<p>Nesto...</p>
+			<h1>${oglas.naslov }</h1>
 		</div>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty oglas }">

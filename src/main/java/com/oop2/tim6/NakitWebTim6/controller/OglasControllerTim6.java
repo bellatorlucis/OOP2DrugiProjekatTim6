@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,7 @@ public class OglasControllerTim6 {
 	}
 	
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.POST)
-	public String dodavanjeOglasa(@ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException { 
+	public String dodavanjeOglasa(@Valid @ModelAttribute("oglas") Ogla oglas, Model m, @RequestParam("file") MultipartFile file, HttpSession session) throws IOException { 
 		Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 		
 		if (file != null) 
@@ -71,7 +72,7 @@ public class OglasControllerTim6 {
 		oglas.setNaslov("");
 		oglas.setMinPonuda(0.0);
 		
-		return "korisnik/dodajOglas";
+		return "korisnik/dodajNovi";
 	}
 
 	
@@ -79,6 +80,7 @@ public class OglasControllerTim6 {
     public String getOglasiBy(@ModelAttribute("oglasSearchDto") OglasSearchDto searchConfiguration, Model model) {
 		List<Ogla> oglasi = oglasService.getOglasByFilters(searchConfiguration.generateQueryExtensionForOglas());
 		model.addAttribute("oglasi", oglasi);
+		
     	return "korisnik/sviOglasi";
     }
     
@@ -114,6 +116,11 @@ public class OglasControllerTim6 {
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
 		return new Ogla();
+	}
+	
+	@ModelAttribute("oglasSearchDto")
+	public OglasSearchDto getOglasSearchDto(){
+		return new OglasSearchDto();
 	}
 	
 	@Autowired

@@ -11,6 +11,10 @@ public class OglasSearchDto {
 	private String materijal;
 	private String naslov;
 
+	public OglasSearchDto() {
+		
+	}
+	
 	public OglasSearchDto(int izabranTip, String boja, String materijal, String naslov) {
 		this.izabranTip = izabranTip;
 		this.boja = boja;

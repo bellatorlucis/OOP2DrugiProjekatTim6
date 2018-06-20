@@ -98,7 +98,7 @@ public class RootController {
         return "login";
     }
     
-    @GetMapping(value = "/testSearch")
+    @RequestMapping(value = "/testSearch", method = RequestMethod.GET)
     public String testSearch(Model model) {
     	List<Tip> tipovi = tipService.getAllTipoviNakita();
     	Tip svi = new Tip();
@@ -106,7 +106,7 @@ public class RootController {
     	svi.setNaziv("Svi");
     	tipovi.add(svi);
     	model.addAttribute("tipovi", tipovi);
-    	return "search";
+    	return "korisnik/search";
     }
 
     @GetMapping(value = "/403")

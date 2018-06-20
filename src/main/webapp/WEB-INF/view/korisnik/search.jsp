@@ -6,7 +6,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>DODAJ OGLAS</title>
+<title>Pretraga</title>
 <link rel="stylesheet" href="/nakitWeb/css/pocetnaStyle.css"
 	type="text/css" />
 </head>
@@ -20,8 +20,8 @@
 		<div class="meniii">
 			<br />
 			<a class="sidebar-button" href="<c:url value="/dashboard"/> ">Pocetna</a>
-			<a class="sidebar-button" href="<c:url value="/testSearch"/> ">Pretraga</a>
-			<a class="sidebar-active-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
+			<a class="sidebar-active-button" href="<c:url value="/testSearch"/> ">Pretraga</a>
+			<a class="sidebar-button" href="<c:url value="/oglas/dodajNovi"/> ">Dodaj oglas</a>
             <a class="sidebar-button" href="<c:url value="/oglas/svi"/> ">Svi oglasi</a>
 			<a href="<c:url value="/logout"/> " class="sidebar-button">Izloguj se</a>
 		</div>
@@ -40,20 +40,23 @@
 
 				<div class="widget-content">
 				
-					<form:form action="/nakitWeb/oglas/dodajNovi" method="post" enctype="multipart/form-data" modelAttribute="oglas">
-					
-						<form:select path="nakit.tip" items="${tipovi }" itemValue="idTipa" itemLabel="naziv"/> <br><br>
-								
-						Boja:<form:input type="text" name="boja" path="nakit.boja" /><br>			
-						Materijal:<form:input type="text" name="materijal" path="nakit.materijal" /><br>
-						Slika:<input type="file" name="file"><br>
-				
-						Minimalna ponuda:<form:input type="text" name="minPonuda" path="minPonuda" /><br>
-						<form:errors path="minPonuda" /><br/>			
-						Tekst:<form:input type="text" name="tekst" path="tekst" /><br>
-						Naslov:<form:input type="text" name="naslov" path="naslov" /><br>
-		
-						<input type="submit" name="prvi" value="DODAJ"/>
+					<form:form class="login-container" name="f" action="/nakitWeb/oglas/rezultatiPretrage" method="post" modelAttribute="oglasSearchDto">
+						 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+							<p>
+								<input type="text" id="naslov" name="naslov" placeholder="Naslov">
+								<select name="izabranTip">
+										<c:forEach var="tip" items="${tipovi}">
+											<option value="${tip.idTipa}"> ${tip.idTipa} ${tip.naziv}</option>
+										</c:forEach>
+								</select>
+							</p>
+							<p>
+								<input type="text" id="boja" name="boja" placeholder="Boja" />
+								<input type="text" id="materijal" name="materijal" placeholder="Materijal">
+							</p>
+							<p>
+								<input type="submit" value="Pretrazi">
+							</p>
 					</form:form>
 
 				</div>
