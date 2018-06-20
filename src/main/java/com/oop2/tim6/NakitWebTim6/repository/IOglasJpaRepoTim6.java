@@ -19,4 +19,5 @@ public interface IOglasJpaRepoTim6 extends JpaRepository<Ogla, Integer> {
 	
 	@Query("SELECT o FROM Ogla o WHERE o.aktivan=1")
 	public List<Ogla> findSviAktivniOglasi();
+
 }

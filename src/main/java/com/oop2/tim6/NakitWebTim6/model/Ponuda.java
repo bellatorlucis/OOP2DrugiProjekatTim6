@@ -96,14 +96,8 @@ public class Ponuda implements Serializable {
 		LocalDateTime ldt = LocalDateTime.now();		
 		this.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
 	}
-	public String printPonudaToHTML() {
-		/*
-		 * Datum postavljanja ponude:${ponuda.datumVreme }<br>
-			      		Pare:${ponuda.ponudaPare }<br>
-			      		Tekst oglasa:${ponuda.ogla.tekst }<br>
-			      		Naslov oglasa:${ponuda.ogla.naslov }<br>
-		 * 
-		 * */
+	/*public String printPonudaToHTML() {
+
 		
 		String html = "<div class=\"widget-box sample-widget\">\n" + 
 				"			<div class=\"widget-header\">\n" + 
@@ -117,7 +111,7 @@ public class Ponuda implements Serializable {
 				"			<div class=\"widget-content\"></div>\n" + 
 				"		</div>";
 		return html;
-	}
+	}*/
 	
 	
 }

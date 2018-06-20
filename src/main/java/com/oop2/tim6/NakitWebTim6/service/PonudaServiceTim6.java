@@ -1,5 +1,7 @@
 package com.oop2.tim6.NakitWebTim6.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +44,19 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 		return null;
 	}
 
-	@Override
-	public Ponuda dodajNovuPonudu(Ogla oglas, Korisnik korisnik, int ponudaPare) {
+
+	/*public Ponuda dodajNovuPonudu(Ogla oglas, Korisnik korisnik, double ponudaPare) {
 		Ponuda p = kreirajNovuPonudu(oglas, korisnik, ponudaPare);
 		return ponudaCrudRepo.save(p);
+	}*/
+	@Override
+	public Ponuda dodajNovuPonudu(Ponuda ponuda){
+		ponuda.setDateTime();
+
+		return ponudaCrudRepo.save(ponuda);
 	}
-	
-	private Ponuda kreirajNovuPonudu(Ogla oglas, Korisnik korisnik, int ponudaPare) {
+
+	private Ponuda kreirajNovuPonudu(Ogla oglas, Korisnik korisnik, double ponudaPare) {
 		Ponuda p = new Ponuda();
 		p.setPonudaPare(ponudaPare);;
 		p.setKorisnik(korisnik);

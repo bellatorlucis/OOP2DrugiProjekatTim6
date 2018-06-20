@@ -119,10 +119,13 @@ public class OglasControllerTim6 {
 
 		m.addAttribute("oglas",oglas);
 
-		if(ponuda != null)
+		if(ponuda != null){
 			m.addAttribute("ponuda",ponuda);
-		else
-			m.addAttribute("nemaPonuda", "Za oglas trenutno ne postoje ponude.");
+		}
+		else{
+			m.addAttribute("ponuda", new Ponuda());
+			m.addAttribute("nemaPonuda", "Za oglas trenutno ne postoje ponude.");}
+
 		
 		return "korisnik/detaljiOglasa";
     }
@@ -158,6 +161,13 @@ public class OglasControllerTim6 {
 
 		return new RedirectView("/oglas/detaljiOglasa", true);
     }
+
+    @PostMapping(value = "/dodajPonudu")
+	public RedirectView dodajPonuduZaOglas(@ModelAttribute("ponuda")Ponuda ponuda, RedirectAttributes redirectAttributes ){
+		ponudaService.dodajNovuPonudu(ponuda);
+		redirectAttributes.addAttribute("id_oglas",ponuda.getOgla().getIdOgla());
+		return new RedirectView("/oglas/detaljiOglasa",true);
+	}
 	
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
@@ -173,6 +183,9 @@ public class OglasControllerTim6 {
 	public OglasSearchDto getOglasSearchDto(){
 		return new OglasSearchDto();
 	}
+
+	@ModelAttribute("ponuda")
+	public Ponuda getPonuda(){return  new Ponuda();}
 	
 	@Autowired
 	public void setTipService(ITipServiceTim6 tipService) {

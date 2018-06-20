@@ -55,7 +55,17 @@
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty ponude }">
 				<c:forEach var="ponuda" items="${ponude }">
-			      	${ponuda.printPonudaToHTML() }
+				<div class="widget-box sample-widget">
+				<div class="widget-header">
+					<h2><a style="color:white" href="nakitWeb/oglas/detaljiOglasa?id_oglas=${oglas.idOgla}">${ponuda.ogla.naslov}</a></h2>
+					<i class="fa fa-cog"></i>
+				</div>
+				<p></p>
+				<p>${ponuda.idPonude}</p><br>
+				<h3>  Ponuda: ${ponuda.ponudaPare} </h3>
+
+				<div class="widget-content"></div>
+		</div>
 			</c:forEach>
 			</c:if>	
 		</div>

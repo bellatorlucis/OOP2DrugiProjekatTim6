@@ -62,12 +62,34 @@
 					<h2>Trenutna najbolja ponuda</h2>
 					<i class="fa fa-cog"></i>
 				</div>
-				<div class="widget-content"></div>
-					${ponuda.printPonudaToHTML() }
+				<div class="widget-content">
+				<div class="widget-box sample-widget">
+							<div class="widget-header">
+								<h2><a style="color:white" href="/nakitWeb/oglas/detaljiOglasa?id_oglas=${oglas.idOgla}"></a></h2>
+								<i class="fa fa-cog"></i>
+								</div>
+				               <p></p>
+								<p>${ponuda.idPonude}</p><br>
+				               <h3>  Ponuda: ${ponuda.ponudaPare} </h3>
+
+							<div class="widget-content\"></div>
+					</div>
+			</div>
 
 					<c:if test="${korisnik.idKorisnika == oglas.korisnik.idKorisnika && oglas.aktivan gt 0}">
 						<a href="<c:url value="/oglas/prihvatiPonudu/${oglas.idOgla}"/>"><button>Prihvati ponudu</button></a>
 					</c:if>
+                    <c:if test="${korisnik.idKorisnika != oglas.korisnik.idKorisnika && oglas.aktivan gt 0}">
+                        <tr>
+                            <form:form action="/nakitWeb/oglas/dodajPonudu" method="post" modelAttribute="ponuda">
+                                <td><form:input type="hidden" path="korisnik" value="${korisnik.idKorisnika}"/></td>
+                                <td><form:input type="hidden" path="ogla" value="${oglas.idOgla}"/></td>
+                            <td> <form:input type="number" name="ponudaPare" path="ponudaPare" /></td>
+                            <td><input type="submit" value="Dodaj ponudu"></td>
+
+                            </form:form>
+                        </tr>
+                    </c:if>
 
 			</div>
 			</c:if>
