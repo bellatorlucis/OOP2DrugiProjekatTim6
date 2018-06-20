@@ -72,7 +72,7 @@ public class OglasControllerTim6 {
 		oglas.setNaslov("");
 		oglas.setMinPonuda(0.0);
 		
-		return "korisnik/dodajNovi";
+		return "korisnik/dodajOglas";
 	}
 
 	

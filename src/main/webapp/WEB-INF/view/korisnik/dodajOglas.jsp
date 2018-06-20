@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>DODAJ OGLAS</title>
-<link rel="stylesheet" href="/nakitWeb/css/pocetnaStyle.css"
+<link rel="stylesheet" href="/nakitWeb/css/dodajOglas.css"
 	type="text/css" />
 </head>
 
@@ -37,12 +37,46 @@
 					<h2>Dodaj Oglas</h2>
 					<i class="fafa-cog"></i>
 				</div>
+<!-- 
 
+				<div class="dodavanje_oglasa">
+
+					<form action="/nakitWeb/oglas/dodavanjeOglasa" method="post">
+
+						<select>
+							<option>Jelena</option>
+							<option>Jelena</option>
+							<option>Jelena</option>
+							<option>Jelena</option>
+							<option>Jelena</option>
+							<option>Jelena</option>
+						</select>
+
+						<p>Boja:</p>
+						<input type="text" name="boja" path="nakit.boja" />
+						<p>Materijal:</p>
+						<input type="text" name="materijal" path="nakit.materijal" />
+						<p>Slika:</p>
+						<input type="file" name="file"><br>
+
+						<p>Minimalna ponuda:</p>
+						<input type="text" name="minPonuda" path="minPonuda" />
+						<p>Tekst:</p>
+						<input type="text" name="tekst" path="tekst" />
+						<p>Naslov:</p>
+						<input type="text" name="naslov" path="naslov" /><br /><br/> <input
+							type="submit" name="prvi" value="DODAJ" />
+
+					</form>
+				</div>
+
+
+ -->
 				<div class="widget-content">
 				
 					<form:form action="/nakitWeb/oglas/dodajNovi" method="post" enctype="multipart/form-data" modelAttribute="oglas">
-					
-						<form:select path="nakit.tip" items="${tipovi }" itemValue="idTipa" itemLabel="naziv"/> <br><br>
+						
+						Izaberi tip:<form:select path="nakit.tip" items="${tipovi }" itemValue="idTipa" itemLabel="naziv"/> <br><br>
 								
 						Boja:<form:input type="text" name="boja" path="nakit.boja" /><br>			
 						Materijal:<form:input type="text" name="materijal" path="nakit.materijal" /><br>
@@ -53,7 +87,7 @@
 						Tekst:<form:input type="text" name="tekst" path="tekst" /><br>
 						Naslov:<form:input type="text" name="naslov" path="naslov" /><br>
 		
-						<input type="submit" name="prvi" value="DODAJ"/>
+						<br/><input type="submit" name="prvi" value="DODAJ"/>
 					</form:form>
 
 				</div>
