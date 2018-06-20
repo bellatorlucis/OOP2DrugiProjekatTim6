@@ -14,18 +14,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import com.oop2.tim6.NakitWebTim6.model.Korisnik;
 import com.oop2.tim6.NakitWebTim6.model.Nakit;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.model.OglasSearchDto;
 import com.oop2.tim6.NakitWebTim6.model.Ponuda;
 import com.oop2.tim6.NakitWebTim6.model.Tip;
+import com.oop2.tim6.NakitWebTim6.service.IKomentarServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.INakitServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IOglasServiceTim6;
 import com.oop2.tim6.NakitWebTim6.service.IPonudaServiceTim6;
@@ -39,7 +42,8 @@ public class OglasControllerTim6 {
 	private INakitServiceTim6 nakitService;
 	private IOglasServiceTim6 oglasService;
 	private IPonudaServiceTim6 ponudaService;
-	
+	private IKomentarServiceTim6 komentarService;
+
 	@RequestMapping(value= "/dodajNovi", method=RequestMethod.GET)
 	public String getAllTipovi(Model m, HttpServletRequest request) {
 		List<Tip> tipoviNakita = tipService.getAllTipoviNakita();
@@ -104,9 +108,13 @@ public class OglasControllerTim6 {
     }
     
     @GetMapping (value = "/detaljiOglasa/{id_oglas}")
-    public String getOglasByID(@PathVariable int id_oglas ,Model m) {
+    public String getOglasByID(@ModelAttribute("komentar") Komentar komentar, HttpSession session, @PathVariable int id_oglas,  Model m) {
 		Ogla oglas = oglasService.getOglasWithId(id_oglas);
 		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
+
+		List<Komentar> komentariZaOglas = komentarService.getKomentariZaOglas(oglas);
+		m.addAttribute("komentari", komentariZaOglas);
+
 		m.addAttribute("oglas",oglas);
 
 		if(ponuda != null)
@@ -128,13 +136,36 @@ public class OglasControllerTim6 {
 		model.addAttribute("uspesnoPrihvacenaPonuda","Prihvatili ste ponudu za vas oglas");
 
 		return "korisnik/detaljiOglasa";
-	}
+    }
+
+    @PostMapping (value = "/dodajKomentar/{id_oglas}")
+    public String addKomentar(@ModelAttribute("komentar") Komentar komentar,@PathVariable int id_oglas, HttpSession session) {
+    	Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
+    	Ogla oglas = oglasService.getOglasWithId(id_oglas);
+    	Nakit nakit = nakitService.getNakitByIdOglasa(id_oglas);
+
+    	oglas.setNakit(nakit);
+    	komentar.setKorisnik(korisnik);
+		komentar.setOgla(oglas);
+
+		LocalDateTime ldt = LocalDateTime.now();
+		komentar.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
+
+		komentarService.dodajKomentar(komentar);
+
+		return "korisnik/detaljiOglasa";
+    }
 	
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
 		return new Ogla();
 	}
 	
+	@ModelAttribute("komentar")
+	public Komentar getKomentar() {
+		return new Komentar();
+	}
+
 	@ModelAttribute("oglasSearchDto")
 	public OglasSearchDto getOglasSearchDto(){
 		return new OglasSearchDto();
@@ -160,4 +191,9 @@ public class OglasControllerTim6 {
 		this.ponudaService = ponudaService;
 	}
 	
+	@Autowired
+	public void setKomentarService(IKomentarServiceTim6 komentarService) {
+		this.komentarService = komentarService;
+	}
+
 }

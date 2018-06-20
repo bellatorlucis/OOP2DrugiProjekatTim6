@@ -1,16 +1,17 @@
 package com.oop2.tim6.NakitWebTim6.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.oop2.tim6.NakitWebTim6.model.Komentar;
 import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import com.oop2.tim6.NakitWebTim6.repository.IKomentarCrudRepo;
 import com.oop2.tim6.NakitWebTim6.repository.IKomentarJpaRepository;
 
+@Service
 public class KomentarServiceTim6 implements IKomentarServiceTim6{
 
 	private IKomentarJpaRepository komentarRepo;
