@@ -14,6 +14,9 @@
   <div class="login">
     <h2 class="login-header">Dobrodošli</h2>
     <c:if test="${param.error}">
+      <div>
+        <p>Pogresno korisnicko ime i/ili lozinka</p>
+      </div>
 
     </c:if>
     <form class="login-container" name="f" action="<c:url value="/login"/>" method="post">
