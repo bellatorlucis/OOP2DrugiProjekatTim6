@@ -47,6 +47,15 @@ public class OglasServiceTim6 implements IOglasServiceTim6 {
 	}
 
 	@Override
+	public void prihvatiPonuduZaOglas(int id_oglas){
+		Ogla ogla = oglasRepo.findByIdOgla(id_oglas);
+		ogla.setAktivan(0);
+		oglasRepo.save(ogla);
+		System.out.println("SACUVAN OGLAS !!!!!! ! ! ! !  !!!");
+
+	}
+
+	@Override
 	public Ogla getOglasWithId(int id) {
 		return oglasRepo.findByIdOgla(id);
 	}

@@ -2,6 +2,7 @@ package com.oop2.tim6.NakitWebTim6.service;
 
 import java.util.List;
 
+import com.oop2.tim6.NakitWebTim6.repository.IOglasJpaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 
 	IPonudaJpaRepo ponudaRepo;
 	IPonudaCrudRepo ponudaCrudRepo;
+
 	
 	@Autowired
 	public void setPonudaRepo(IPonudaJpaRepo ponudaRepo) {
@@ -24,7 +26,7 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 	
 	@Autowired
 	public void setKorisnikCrudRepo(IPonudaCrudRepo ponudaCrudRepo) { this.ponudaCrudRepo = ponudaCrudRepo; }
-	
+
 	@Override
 	public List<Ponuda> getAllPonudeByKorisnik(String korisnickoIme) {
 		List<Ponuda> list = ponudaRepo.getAllPonudeByKorisnik(korisnickoIme);
@@ -34,7 +36,11 @@ public class PonudaServiceTim6 implements IPonudaServiceTim6{
 	@Override
 	public Ponuda getTrenutnuPonuduZaOglasId(int oglasId) {
 		List<Ponuda> p = ponudaRepo.getPonudeZaOglasId(oglasId);
-		return p.get(0);
+
+		if(p.size() >= 1)
+			return p.get(p.size() - 1);
+
+		return null;
 	}
 
 	@Override

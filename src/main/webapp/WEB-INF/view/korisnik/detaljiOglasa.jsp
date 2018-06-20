@@ -38,10 +38,13 @@
 		<div class="content-header">
 
 			<h1>${oglas.naslov }</h1>
+			<c:if test="${ !empty uspesnoPrihvacenaPonuda}">
+				<h2>${uspesnoPrihvacenaPonuda}</h2>
+			</c:if>
 		</div>
 		<div class="content" onscroll="customScroll()">
 			<c:if test="${!empty oglas }">
-			     ${oglas.printOglasToHTML() }
+			     ${oglas.printOglasToHTML()}
 			</c:if>	
 		</div>
 	</section>
@@ -54,8 +57,16 @@
 		</div>
 		<br>
 		<div class="content" onscroll="customScroll()">
+			<c:if test="${! empty nemaPonuda}">
+				${nemaPonuda}
+			</c:if>
 			<c:if test="${!empty ponuda }">
 			      	${ponuda.printPonudaToHTML() }
+				<c:if test="${korisnik.idKorisnika == oglas.korisnik.idKorisnika}">
+					<c:if test="${oglas.aktivan gt 0}">
+						<a href="<c:url value="/oglas/prihvatiPonudu/${oglas.idOgla}"/>"><button>Prihvati ponudu</button></a>
+					</c:if>
+				</c:if>
 			</c:if>	
 		</div>
 	</section>

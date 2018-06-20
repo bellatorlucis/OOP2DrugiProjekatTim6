@@ -108,10 +108,27 @@ public class OglasControllerTim6 {
 		Ogla oglas = oglasService.getOglasWithId(id_oglas);
 		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
 		m.addAttribute("oglas",oglas);
-		m.addAttribute("ponuda",ponuda);
+
+		if(ponuda != null)
+			m.addAttribute("ponuda",ponuda);
+		else
+			m.addAttribute("nemaPonuda", "Za oglas trenutno ne postoje ponude.");
 		
 		return "korisnik/detaljiOglasa";
     }
+
+    @GetMapping(value = "/prihvatiPonudu/{id_oglas}")
+	public String prihvatiPonudu(@PathVariable("id_oglas")int id_oglas, Model model){
+		oglasService.prihvatiPonuduZaOglas(id_oglas);
+		Ogla oglas = oglasService.getOglasWithId(id_oglas);
+		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
+
+		model.addAttribute("oglas",oglas);
+		model.addAttribute("ponuda", ponuda);
+		model.addAttribute("uspesnoPrihvacenaPonuda","Prihvatili ste ponudu za vas oglas");
+
+		return "korisnik/detaljiOglasa";
+	}
 	
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){

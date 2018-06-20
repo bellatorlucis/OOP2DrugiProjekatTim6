@@ -2,6 +2,7 @@ package com.oop2.tim6.NakitWebTim6.repository;
 
 import java.util.List;
 
+import com.oop2.tim6.NakitWebTim6.model.Ogla;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,4 +17,5 @@ public interface IPonudaJpaRepo extends JpaRepository<Ponuda, Integer> {
 	
 	@Query("SELECT p FROM Ponuda p WHERE p.ogla.idOgla=:oglasId ORDER BY p.ponudaPare")
 	public List<Ponuda> getPonudeZaOglasId(@Param("oglasId")Integer IdOgla);
+
 }

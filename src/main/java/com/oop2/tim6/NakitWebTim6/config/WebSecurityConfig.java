@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests().antMatchers(HttpMethod.POST, "/saveKorisnik").permitAll();
 
-        http.authorizeRequests().antMatchers("/dashboard","/korisnik/**").access("hasRole('ROLE_USER')");
+        http.authorizeRequests().antMatchers("/dashboard","/korisnik/**","**/oglas/**").access("hasRole('ROLE_USER')");
 
         http.authorizeRequests().antMatchers("/dashboardAdmin").access("hasRole('ROLE_ADMIN')")
                 .and().exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
