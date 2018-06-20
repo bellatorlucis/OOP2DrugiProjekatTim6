@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pretraga</title>
-<link rel="stylesheet" href="/nakitWeb/css/pocetnaStyle.css"
+<link rel="stylesheet" href="/nakitWeb/css/search.css"
 	type="text/css" />
 </head>
 
@@ -29,17 +29,17 @@
 	<section id="content">
 		<div class="content-header">
 		
-			<h1>Pretraga</h1>
+			<h1>Dodaj oglas</h1>
 		</div>
 		<div class="content">
 			<div class="widget-boxsample-widget">
 				<div class="widget-header">
+					<h2>Pretrazi oglas</h2>
 					<i class="fafa-cog"></i>
 				</div>
 
 				<div class="widget-content">
-				
-					<form:form class="login-container" name="f" action="/nakitWeb/oglas/rezultatiPretrage" method="post" modelAttribute="oglasSearchDto">
+									<form:form class="login-container" name="f" action="/nakitWeb/oglas/rezultatiPretrage" method="post" modelAttribute="oglasSearchDto">
 						 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<p>
 								<input type="text" id="naslov" name="naslov" placeholder="Naslov">
