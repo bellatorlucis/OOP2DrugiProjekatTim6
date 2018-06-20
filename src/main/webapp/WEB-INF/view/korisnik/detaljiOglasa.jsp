@@ -1,5 +1,7 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 
 <head>
@@ -78,10 +80,10 @@
 				</c:forEach>
 			</c:if>
 			<br>
-			<form action="">
-				<textarea rows="5" cols="30"></textarea>
+			<form:form action="/nakitWeb/oglas/dodajKomentar/${oglas.idOgla }" method="post" modelAttribute="komentar">
+				<form:textarea name="sadrzaj" path="sadrzaj" rows="5" cols="30"></form:textarea>>
 				<input type="submit" value="Komentarisi">
-			</form>
+			</form:form>
 		</div>
 	</section>
 

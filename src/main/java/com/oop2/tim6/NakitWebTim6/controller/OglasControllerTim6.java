@@ -108,21 +108,12 @@ public class OglasControllerTim6 {
     }
     
     @GetMapping (value = "/detaljiOglasa/{id_oglas}")
-    public String getOglasByID(@ModelAttribute("komentar") Komentar komentar, HttpSession session,@PathVariable int id_oglas,  Model m) {
-    	Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
+    public String getOglasByID(@ModelAttribute("komentar") Komentar komentar, HttpSession session, @PathVariable int id_oglas,  Model m) {
 		Ogla oglas = oglasService.getOglasWithId(id_oglas);
 		Ponuda ponuda = ponudaService.getTrenutnuPonuduZaOglasId(id_oglas);
 		
 		List<Komentar> komentariZaOglas = komentarService.getKomentariZaOglas(oglas);
 		m.addAttribute("komentari", komentariZaOglas);
-		
-		LocalDateTime ldt = LocalDateTime.now();	
-		komentar.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
-		
-		/**komentar.setKorisnik(korisnik);
-		komentar.setOgla(oglas);
-		
-		komentarService.dodajKomentar(komentar);**/
 		
 		m.addAttribute("oglas",oglas);
 		m.addAttribute("ponuda",ponuda);
@@ -130,15 +121,21 @@ public class OglasControllerTim6 {
 		return "korisnik/detaljiOglasa";
     }
     
-   /** @PostMapping (value = "/detaljiOglasa")
-    public String addKomentar(@ModelAttribute("komentar") Komentar komentar, HttpSession session) {
+    @PostMapping (value = "/dodajKomentar/{id_oglas}")
+    public String addKomentar(@ModelAttribute("komentar") Komentar komentar,@PathVariable int id_oglas, HttpSession session) {
     	Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
     	Ogla oglas = oglasService.getOglasWithId(id_oglas);
     	
-    	
+    	komentar.setKorisnik(korisnik);
+		komentar.setOgla(oglas);
+		
+		LocalDateTime ldt = LocalDateTime.now();	
+		komentar.setDatumVreme(java.sql.Timestamp.valueOf(ldt));
+		
+		komentarService.dodajKomentar(komentar);
 		
 		return "korisnik/detaljiOglasa";
-    }**/
+    }
 	
 	@ModelAttribute("oglas")
 	public Ogla getOglas(){
